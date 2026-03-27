@@ -46,11 +46,15 @@ On pense que certaines villes vont concentrer les milliardaires et que cela sera
     
 -   Est-ce que les pays comptant des milliardaires ont de l’inflation ?
 Par définition, l'inflation est [la perte du pouvoir d'achat de la monnaie qui se traduit par une augmentation générale et durable des prix.](https://www.insee.fr/fr/metadonnees/definition/c1473) On entend des courants divers disant que cela profite aux milliardaires et parfois, non. 
-On peut supposer que s'il y a un taux d'inflation élévé, cela peut vouloir dire que ça pourrait leur être profitable. Toutefois, nous ne sommes pas sûr de l'interprétation du résultat. Il faudrait voir la corrélation, d'abord. Nous allons croiser les pays d'habitation des milliardaires et les deux variables sur l'inflation.
+On peut supposer que s'il y a un taux d'inflation élévé, cela peut vouloir dire que ça pourrait leur être profitable. Toutefois, nous ne sommes pas sûr de l'interprétation du résultat. Il faudrait voir la corrélation. Nous allons croiser les pays d'habitation des milliardaires et les deux variables sur l'inflation.
 
 -   Comment se répartissent les milliardaires dans les états américains ?
-On peut supposer que certains états américains concentrent les milliardaires (New Jersey, Californie). On peut utiliser une carte pour rendre cela visuel. On utilise la variable state et country pour faire la visualisation.  
+On peut supposer que certains états américains concentrent les milliardaires (New Jersey, Californie). On peut utiliser une carte pour rendre cela visuel, mais il nous fraudrait les coordonnées GPS de ces états pour rendre cela possible. On utilise les variables state et country pour faire la visualisation.  
 
 -   Est-ce qu’il y a des sources de richesse récurrente parmi les milliardaires ?
+Je pense qu'ici on entend source au sens des secteurs économiques récurrents où il y a beaucoup de milliardaires. La variable source pourrait être utilisée si on a uniquement un domaine spécifique et pas un nom d'entreprise. 
+Cependant, avec un diagramme à barres, on pourrait afficher chaque secteur économique représenté (variable category ou industries) et à l'intérieur, préciser le domaine spécifique ou le nom de l'entreprise (variable source) dans la barre.
+J'avoue que nous ne savons pas vraiment quel secteur va être surprésenté ou non. On peut s'attendre à voir les catégories technologiques, informatiques, fashion représentées pour sûr mais c'est parce que leurs dirigeants sont visibles. 
 
 -   Y a-t-il un lien entre l'âge et la richesse ?
+On suppose qu'une personne riche est certainement agée car il faut du temps pour faire fortune et qu'on ne met pas à la tête d'une entreprise quelqu'un de jeune et d'inexpérimenté. C'est ce qu'on s'attend à voir représenté. On aura besoin de tester la corrélation entre l'âge et la fortune. On ne laisse de côté aucun milliardaire. 
