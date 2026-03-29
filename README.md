@@ -63,10 +63,10 @@ J'avoue que nous ne savons pas vraiment quel secteur va être surprésenter ou n
 
 -   Y a-t-il un lien entre l'âge et la richesse ?
 On suppose qu'une personne riche est certainement agée car il faut du temps pour faire fortune et qu'on ne met pas à la tête d'une entreprise quelqu'un de jeune et d'inexpérimenté. C'est ce qu'on s'attend à voir représenté. On aura besoin de tester la corrélation entre l'âge et la fortune. 
-On ne laisse de côté aucun milliardaire. On va faire un histogramme pour répondre à cette question. 
+On ne laisse de côté aucun milliardaire. On va faire un histogramme pour répondre à cette question. On va utiliser la variable age.  
 
--  Est-ce que les milliardaires viennent seulement de pays très peuplé ?
-On se heurte à des considérations de définitions car qu'est-ce qu'est un pays très peuplé. Il faut aller chercher dans des sources officielles qui peuvent parfois ne pas être d'accord, les unes avec les autres. On va utiliser la variable countryOfCitizenship 
+-  Quelle est la proportion de milliardaires honorifiés ou titrés ?
+On cherche simplement à savoir s'il y a beaucoup de milliardaires honorifiés ou titrés. On s'attend à en trouver peu. On va utiliser la variable title. La question sera représentée par un bar chart.
 
 -  Est-ce que les milliardaires dont le statut est “self-made” viennent d’un pays dont le taux d’inscription dans le supérieur est bas ?
 Avec cette question, on veut voir si un pays avec un taux d'accès dans le supérieur bas peut produire des milliardaires car il a statistiquement moins de chances d'aller dans le supérieur, à moins de faire partie d'une élite, sans pour autant, pouvoir hérité d'une entreprise/fortune.
