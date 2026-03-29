@@ -58,4 +58,25 @@ Cependant, avec un diagramme à barres, on pourrait afficher chaque secteur éco
 J'avoue que nous ne savons pas vraiment quel secteur va être surprésenté ou non. On peut s'attendre à voir les catégories technologiques, informatiques, fashion représentées pour sûr mais c'est parce que leurs dirigeants sont visibles. 
 
 -   Y a-t-il un lien entre l'âge et la richesse ?
-On suppose qu'une personne riche est certainement agée car il faut du temps pour faire fortune et qu'on ne met pas à la tête d'une entreprise quelqu'un de jeune et d'inexpérimenté. C'est ce qu'on s'attend à voir représenté. On aura besoin de tester la corrélation entre l'âge et la fortune. On ne laisse de côté aucun milliardaire. 
+On suppose qu'une personne riche est certainement agée car il faut du temps pour faire fortune et qu'on ne met pas à la tête d'une entreprise quelqu'un de jeune et d'inexpérimenté. C'est ce qu'on s'attend à voir représenté. On aura besoin de tester la corrélation entre l'âge et la fortune. 
+On ne laisse de côté aucun milliardaire.
+
+-  Est-ce que les milliardaires viennent seulement de pays très peuplé ?
+On se heurte à des considérations de définitions car qu'est-ce qu'est un pays très peuplé. Il faut aller chercher dans des sources officielles qui peuvent parfois ne pas être d'accord, les unes avec les autres. On va utiliser la variable countryOfCitizenship 
+
+-  Est-ce que les milliardaires dont le statut est “self-made” viennent d’un pays dont le taux d’inscription dans le supérieur est bas ?
+Avec cette question, on veut voir si un pays avec un taux d'accès dans le supérieur bas peut produire des milliardaires car il a statistiquement moins de chances d'aller dans le supérieur, à moins de faire partie d'une élite, sans pour autant, pouvoir hérité d'une entreprise/fortune.
+On veut savoir si on peut finalement "se faire soi-même" ou si notre environnement nous favorise grandement par des indicateurs sociaux-économiques très favorables et que ceux étant milliardaires venant d'un pays ayant un taux d'accès dans le supérieur sont des erreurs statistiques. 
+Pour faire cette analyse correctement, il faudrait aller chercher en ligne ce qui est considéré comme un taux d'accès bas à l'enseignement supérieur. On aurait peut-être des données qui pourrait varier légèrement en fonction de la source.
+
+-   Où sont répartis les milliardaires dans le monde ?
+On veut voir où se répartissent les milliardaires sur une carte à bulles. On compte faire l'analyse par rapport à l'hémisphère Nord/Sud et on s'attend à trouver beaucoup de milliardaire dans l'hémisphère nord et un nombre certain dans les BRICS+. 
+On va utiliser les variables country et les latitudes et longitudes pour les placer sur une carte. 
+
+-   Quelle est la nationalité la plus représentée parmi les milliardaires ?
+On veut voir si un pays a produit le plus de milliardaires. On s'attend à trouver les pays les plus développés et comptant le plus d'habitants. On va utiliser la variable countryOfCitizenship. On peut utiliser un diagramme à barre pour cette visualisation. 
+
+-   Existe-t-il une corrélation entre la densité de milliardaires pays et le niveau d'éducation d'un pays mesuré par, le taux de scolarisation dans l’enseignement primaire et supérieur?
+Nous utilisons la densité afin de lisser en divisant par la population du pays car plus un pays compte d'habitant plus il y comptera de milliardaires. Nous pensons qu'il y a une corrélation positive entre les trois variables. 
+Il faudrait trancher entre un scatter plot matrix pour analyser les trois dimensions en même temps ou deux scatter plot, un attestant de la corrélation nombre de milliardaire par habitant et taux de scolarisation primaire et un autre avec l'enseignement supérieur.
+Néanmoins, il nous semble qu'un scatter plot matrix est plus intérressant car on pourrait voir une corrélation, ou non, entre taux de scolarisation primaire et supérieur. Pour les variables, on va utiliser country, population, gross_tertiary_education_enrollment et gross_primary_education_enrollment_country.
