@@ -56,22 +56,23 @@ On peut supposer que certains états américains concentrent les milliardaires (
 On fait soit une carte choroplèthe, ou soit, un bar chart. 
 
 -   Est-ce qu’il y a des sources de richesse récurrentes parmi les milliardaires ?
-Je pense qu'ici on entend source au sens des secteurs économiques récurrents où il y a beaucoup de milliardaires. On envisage d'utiliser un diagramme à barre empilé. 
+On entend source, au sens, des secteurs économiques récurrents où il y a beaucoup de milliardaires. On envisage d'utiliser un diagramme à barre empilé. 
 On pourrait, alors, diviser par secteur économique représenté (variable category ou industries) et à l'intérieur, préciser le domaine spécifique ou le nom de l'entreprise (variable source) dans la barre. 
 La variable source pourrait être utilisée si on a uniquement un domaine spécifique et pas un nom d'entreprise. Il reste à savoir ce qu'on met à la place du nom de l'entreprise dans le diagramme.
 J'avoue que nous ne savons pas vraiment quel secteur va être surprésenter ou non, les secteurs économiques stables. On peut s'attendre à voir les catégories technologiques, informatiques, fashion représentées. Cependant, c'est certainement du au fait que leurs dirigeants sont connus du grand public. 
 
 -   Y a-t-il un lien entre l'âge et la richesse ?
-On suppose qu'une personne riche est certainement agée car il faut du temps pour faire fortune et qu'on ne met pas à la tête d'une entreprise quelqu'un de jeune et d'inexpérimenté. C'est ce qu'on s'attend à voir représenté. On aura besoin de tester la corrélation entre l'âge et la fortune. 
-On ne laisse de côté aucun milliardaire. On va faire un histogramme pour répondre à cette question. On va utiliser la variable age.  
+On suppose qu'une personne riche est certainement agée car il faut du temps pour faire fortune et qu'il est inhabituel de mettre à la tête d'une entreprise quelqu'un de jeune et d'inexpérimenté. Il y aura une majorité de personnes agé, au moins 40ans.
+On va faire un histogramme pour répondre à cette question en divisant par tranche de 10 ans. On va utiliser la variable age.  
 
 -  Quelle est la proportion de milliardaires honorifiés ou titrés ?
 On cherche simplement à savoir s'il y a beaucoup de milliardaires honorifiés ou titrés. On s'attend à en trouver peu. On va utiliser la variable title. La question sera représentée par un bar chart.
 
 -  Est-ce que les milliardaires dont le statut est “self-made” viennent d’un pays dont le taux d’inscription dans le supérieur est bas ?
-Avec cette question, on veut voir si un pays avec un taux d'accès dans le supérieur bas peut produire des milliardaires car il a statistiquement moins de chances d'aller dans le supérieur, à moins de faire partie d'une élite, sans pour autant, pouvoir hérité d'une entreprise/fortune.
-On veut savoir si on peut finalement "se faire soi-même" ou si notre environnement nous favorise grandement par des indicateurs sociaux-économiques très favorables et que ceux étant milliardaires venant d'un pays ayant un taux d'accès dans le supérieur sont des erreurs statistiques. 
-Pour faire cette analyse correctement, il faudrait aller chercher en ligne ce qui est considéré comme un taux d'accès bas à l'enseignement supérieur. On aurait peut-être des données qui pourrait varier légèrement en fonction de la source.
+Avec cette question, on veut voir si un pays avec un taux d'accès dans le supérieur bas peut produire des milliardaires car ces milliardaires ont statistiquement moins de chances d'aller dans le supérieur, à moins de faire partie d'une élite, sans pour autant, pouvoir hérité d'une entreprise/fortune.
+On veut savoir si on peut finalement "se faire soi-même" ou si notre environnement nous favorise grandement par des indicateurs sociaux-économiques très favorables et que ceux étant milliardaires venant d'un pays ayant un taux d'accès dans le supérieur sont potentiellement des erreurs statistiques. 
+Pour faire cette analyse correctement, il faudrait aller chercher en ligne ce qui est considéré comme un taux d'accès bas à l'enseignement supérieur. On aurait peut-être des données qui pourraient varier légèrement en fonction de la source.
+On va utiliser les variables status, gross_tertiary_education_enrollment et gross_primary_education_enrollment_country. La question sera representé avec un scatter plot. 
 
 -   Où sont répartis les milliardaires dans le monde ?
 On veut voir où se répartissent les milliardaires sur une carte à bulles. On compte faire l'analyse par rapport à l'hémisphère Nord/Sud et on s'attend à trouver beaucoup de milliardaire dans l'hémisphère nord et un nombre certain dans les BRICS+. 
