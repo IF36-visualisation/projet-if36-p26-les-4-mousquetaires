@@ -43,23 +43,27 @@ Nous avons choisi ce dataset car :
 Liste des questions :
 
 -   Quelles villes comptent le plus de milliardaires?
-On pense que certaines villes vont concentrer les milliardaires et que cela sera des métropoles ou des mégapoles. On va juste regarder la variable city et voir quel est le nombre brut de milliardaires par ville. 
+On pense que certaines villes vont concentrer les milliardaires et que cela sera dans des métropoles ou des mégapoles. On va juste regarder la variable city et voir quel est le nombre brut de milliardaires par ville. 
+On va utiliser un bar chart pour visualiser cette question. 
     
--   Est-ce que les pays comptant des milliardaires ont de l’inflation ?
+-   Existe-il une corrélation entre la densité des milliardaires par pays et le niveau d'inflation sur l'année 2019 ?
 Par définition, l'inflation est [la perte du pouvoir d'achat de la monnaie qui se traduit par une augmentation générale et durable des prix.](https://www.insee.fr/fr/metadonnees/definition/c1473) On entend des courants divers disant que cela profite aux milliardaires et parfois, non. 
-On peut supposer que s'il y a un taux d'inflation élévé, cela peut vouloir dire que ça pourrait leur être profitable. Toutefois, nous ne sommes pas sûr de l'interprétation du résultat. Il faudrait voir la corrélation. Nous allons croiser les pays d'habitation des milliardaires et les deux variables sur l'inflation.
+Néanmoins, les milliardaires se concentrent dans des pays stables économiquement avec une faible variation des prix. Toutefois, nous ne sommes pas sûr de l'interprétation du résultat.
+Nous allons croiser les variables country, population_country et cpi_country_change. On va utiliser un scatter plot pour cette question. 
 
 -   Comment se répartissent les milliardaires dans les états américains ?
 On peut supposer que certains états américains concentrent les milliardaires (New Jersey, Californie). On peut utiliser une carte pour rendre cela visuel, mais il nous fraudrait les coordonnées GPS de ces états pour rendre cela possible. On utilise les variables state et country pour faire la visualisation.  
+On fait soit une carte choroplèthe, ou soit, un bar chart. 
 
--   Est-ce qu’il y a des sources de richesse récurrente parmi les milliardaires ?
-Je pense qu'ici on entend source au sens des secteurs économiques récurrents où il y a beaucoup de milliardaires. La variable source pourrait être utilisée si on a uniquement un domaine spécifique et pas un nom d'entreprise. 
-Cependant, avec un diagramme à barres, on pourrait afficher chaque secteur économique représenté (variable category ou industries) et à l'intérieur, préciser le domaine spécifique ou le nom de l'entreprise (variable source) dans la barre.
-J'avoue que nous ne savons pas vraiment quel secteur va être surprésenté ou non. On peut s'attendre à voir les catégories technologiques, informatiques, fashion représentées pour sûr mais c'est parce que leurs dirigeants sont visibles. 
+-   Est-ce qu’il y a des sources de richesse récurrentes parmi les milliardaires ?
+Je pense qu'ici on entend source au sens des secteurs économiques récurrents où il y a beaucoup de milliardaires. On envisage d'utiliser un diagramme à barre empilé. 
+On pourrait, alors, diviser par secteur économique représenté (variable category ou industries) et à l'intérieur, préciser le domaine spécifique ou le nom de l'entreprise (variable source) dans la barre. 
+La variable source pourrait être utilisée si on a uniquement un domaine spécifique et pas un nom d'entreprise. Il reste à savoir ce qu'on met à la place du nom de l'entreprise dans le diagramme.
+J'avoue que nous ne savons pas vraiment quel secteur va être surprésenter ou non, les secteurs économiques stables. On peut s'attendre à voir les catégories technologiques, informatiques, fashion représentées. Cependant, c'est certainement du au fait que leurs dirigeants sont connus du grand public. 
 
 -   Y a-t-il un lien entre l'âge et la richesse ?
 On suppose qu'une personne riche est certainement agée car il faut du temps pour faire fortune et qu'on ne met pas à la tête d'une entreprise quelqu'un de jeune et d'inexpérimenté. C'est ce qu'on s'attend à voir représenté. On aura besoin de tester la corrélation entre l'âge et la fortune. 
-On ne laisse de côté aucun milliardaire.
+On ne laisse de côté aucun milliardaire. On va faire un histogramme pour répondre à cette question. 
 
 -  Est-ce que les milliardaires viennent seulement de pays très peuplé ?
 On se heurte à des considérations de définitions car qu'est-ce qu'est un pays très peuplé. Il faut aller chercher dans des sources officielles qui peuvent parfois ne pas être d'accord, les unes avec les autres. On va utiliser la variable countryOfCitizenship 
