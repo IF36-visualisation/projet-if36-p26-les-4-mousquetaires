@@ -85,3 +85,20 @@ On veut voir si un pays a produit le plus de milliardaires. On s'attend à trouv
 Nous utilisons la densité afin de lisser en divisant par la population du pays car plus un pays compte d'habitant plus il y comptera de milliardaires. Nous pensons qu'il y a une corrélation positive entre les trois variables. 
 Il faudrait trancher entre un scatter plot matrix pour analyser les trois dimensions en même temps ou deux scatter plot, un attestant de la corrélation nombre de milliardaire par habitant et taux de scolarisation primaire et un autre avec l'enseignement supérieur.
 Néanmoins, il nous semble qu'un scatter plot matrix est plus intérressant car on pourrait voir une corrélation, ou non, entre taux de scolarisation primaire et supérieur. Pour les variables, on va utiliser country, population, gross_tertiary_education_enrollment et gross_primary_education_enrollment_country.
+
+3. Statistique de l’âge des milliardaires. Quelle est la répartition de l’âge des milliardaires en 2023 ?
+On suppose que les milliardaires sont majoritairement dans une tranche d’âge élevée, car l’accumulation de richesse prend du temps. Cependant, il pourrait aussi y avoir une présence croissante de jeunes milliardaires, notamment dans le secteur technologique.
+On va étudier la variable âge pour observer sa distribution (moyenne, médiane, écart-type) et visualiser la répartition à l’aide d’un histogramme ou d’un diagramme. Cela permettra de voir si la richesse est concentrée dans certaines classes d’âge.
+
+13. Quels sont les points communs entre les riches dans le monde ?
+On suppose que les milliardaires partagent certaines caractéristiques communes, comme leur secteur d’activité, leur niveau d’éducation, leur âge ou encore leur pays d’origine. Ces points communs pourraient permettre d’identifier des tendances globales dans la création de richesse.
+Pour répondre à cette question, on va analyser plusieurs variables du dataset (par exemple : industrie, âge, pays, niveau d’études s’il existe) et observer les tendances dominantes ou les profils récurrents parmi les milliardaires.
+
+16. Le taux d’imposition a-t-il une influence sur le nombre de milliardaires par pays ?
+On suppose que le taux d’imposition pourrait influencer la concentration de milliardaires dans un pays. Par exemple, des impôts plus faibles pourraient attirer ou favoriser les grandes fortunes, tandis que des impôts élevés pourraient avoir l’effet inverse.
+Cependant, cette relation n’est pas forcément directe, car d’autres facteurs (économie, stabilité politique, opportunités d’investissement) entrent en jeu.
+On va croiser les données sur le taux d’imposition avec le nombre de milliardaires par pays et analyser la corrélation entre ces variables pour voir s’il existe une relation significative.
+
+19. Comment se répartit la richesse des billionaires ?
+On suppose que la richesse des milliardaires est très inégalement répartie, avec une petite partie d’entre eux possédant une grande proportion de la richesse totale (effet de concentration).
+Pour analyser cela, on va étudier la variable de richesse (net worth) et observer sa distribution. On pourra utiliser des outils comme une courbe de Lorenz ou un graphique de distribution pour voir si la richesse suit une loi très asymétrique.
