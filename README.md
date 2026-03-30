@@ -15,10 +15,10 @@ La structure du dataset est le suivant :
 -   L'entreprise à l'origine de leur fortune ou le domaine spécifique à l'origine de la fortune (source)
 -   Le nom de l'organisme ou entreprise affiliée actuellement à ces milliardaires (organization)
 -   Un indicateur si le milliardaire a produit ou hérité de sa fortune (selfMade, status)
--   L'indice des prix à la consommation (2010 base 100) du pays dans lequel ce millionnaire vit en 2019 (cpi_country)
+-   L'indice des prix à la consommation (2010 base 100) du pays dans lequel ce milliardaire vit en 2019 (cpi_country)
 -   L'inflation des prix en pourcentage entre le début et la fin de l'année 2019 dans lequel ce millionaire vit (cpi_country_change)
--   Le PIB du pays dans lequel ce millionnaire vit (gdp_country)
--   Des informations sur le taux d'éducation dans le primaire et le supérieur du pays dans lequel ce millionnaire vit (gross_tertiary_education_enrollment, gross_primary_education_enrollment_country)
+-   Le PIB du pays dans lequel ce milliardaire vit (gdp_country)
+-   Des informations sur le taux d'éducation dans le primaire et le supérieur du pays dans lequel ce milliardaire vit (gross_tertiary_education_enrollment, gross_primary_education_enrollment_country)
 -   L'espérance de vie (life_expectancy_country) 
 -   Le taux de recettes fiscales en pourcentage du PIB (tax_revenue_country_country)
 -   Le taux d'imposition sur les entreprises en pourcentage des bénéfices commerciaux (total_tax_rate_country)
@@ -178,5 +178,45 @@ On va croiser la variable selfMade avec age, gender, category et country. On env
 <summary><strong>Q19 - Quel est le nombre de milliardaires par habitant dans chaque pays ?</strong></summary>
 On suppose que les petits pays riches (Suisse, Singapour, Monaco) auront une densité de milliardaires par habitant bien plus élevée que les grandes puissances comme les États-Unis ou la Chine, qui dominent en nombre brut.
 On va utiliser les variables country et population_country pour calculer un ratio. On envisage un bar chart des top pays ou une carte choroplèthe pour visualiser la densité géographiquement.
+
+</details>
+
+<details>
+<summary><strong>Q20 - Quelle est la génération qui regroupe le plus grand nombre de milliardaires ?</strong></summary>
+Au-delà de la simple distribution par âge, il est pertinent d'analyser les milliardaires selon leur appartenance générationnelle (Baby-Boomers, Génération X, Millennials, etc.), afin d'observer si certaines périodes historiques, marquées par des transformations économiques majeures telles que la révolution numérique ou la mondialisation, ont été plus propices à la constitution de grandes fortunes.
+La variable utilisée ici sera birthYear, et pour la visualisation on envisage un diagramme en barres classé par génération.
+
+</details>
+
+<details>
+<summary><strong>Q21 - Quelle est la proportion de milliardaires ayant hérité de leur fortune par rapport à ceux l'ayant constituée eux-mêmes ?</strong></summary>
+Nous cherchons à déterminer dans quelle mesure la richesse des milliardaires est le fruit d'un effort entrepreneurial personnel ou le résultat d'un héritage. Nous supposons qu'une proportion significative des milliardaires sont dits self-made, notamment dans les secteurs technologiques et financiers, bien que l'héritage demeure un vecteur important de transmission des grandes fortunes. Il convient toutefois de nuancer cette analyse : la variable selfMade repose sur une autodéclaration, ce qui introduit un biais potentiel, certains milliardaires pouvant avoir intérêt à se présenter comme self-made pour des raisons d'image publique, indépendamment de la réalité de leur trajectoire.
+Nous utiliserons les variables selfMade et status et un diagramme en barres horizontal pour la visualisation.
+
+</details>
+
+<details>
+<summary><strong>Q22 - Quelle est la proportion de femmes et d’hommes parmi les milliardaires en 2023 ?</strong></summary>
+Les inégalités de genre sont bien documentées dans le monde des affaires et de l'entrepreneuriat. Nous supposons que les hommes sont très largement surreprésentés parmi les milliardaires, les femmes ayant historiquement eu un accès plus limité aux postes de direction et à la création d'entreprise.
+Variables utilisées : gender
+Visualisation envisagée : Diagramme circulaire (pie chart).
+
+</details>
+
+
+<details>
+<summary><strong>Q23 - Les hommes milliardaires sont-ils plus souvent self-made que les femmes ?</strong></summary>
+Cette question vise à explorer une potentielle interaction (et un stéréotype) entre le genre et le mode d'acquisition de la richesse. On peut formuler l'hypothèse que les femmes milliardaires sont davantage issues de fortunes héritées, en raison des obstacles structurels ayant historiquement limité leur accès à l'entrepreneuriat et aux fonctions dirigeantes.
+Variables utilisées : gender et selfMade
+Visualisation envisagée : Diagramme en barres groupées ou normalisées permettant de comparer les proportions par genre.
+
+</details>
+
+
+<details>
+<summary><strong>Q24 - Densité de milliardaires par pays : 
+Quel pays compte proportionnellement le plus grand nombre de milliardaires rapporté à sa population ?</strong></summary>
+Plutôt que de comptabiliser seulement le nombre brut de milliardaires par pays, ce qui avantagerait mécaniquement les pays les plus peuplés, nous rapporterons ce nombre à la population nationale afin d'obtenir une mesure plus rigoureuse de la densité de milliardaires. Nous supposons que de petits États à haute concentration de richesse (comme certains pays du Golfe ou des places financières internationales) figureront parmi les premiers.Variables utilisées : country et population_country
+Visualisation envisagée : Carte choroplèthe.
 
 </details>
