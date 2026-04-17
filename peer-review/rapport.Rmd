@@ -44,7 +44,36 @@ Nous avons choisi ce dataset car :
 
  ## Question 2 : Quelle est la répartition des milliardaires dans les différentes industries ?
 
- ## Question 3 : 
+<details>
+<summary>Question et problème étudié</summary>
+
+On se demande dans quelles industries on trouve le plus de milliardaires. Est-ce que c'est réparti à peu près équitablement, ou est-ce que quelques secteurs dominent largement ?
+
+On parie plutôt sur la seconde option : la finance, la tech et l'industrie devraient concentrer la majorité des fortunes.
+
+</details>
+
+<details>
+<summary>Visualisation</summary>
+
+Un diagramme en barres horizontales du Top 15 des industries, trié du plus grand au plus petit. Les barres horizontales permettent de lire plus facilement les noms, et la longueur reste le meilleur canal pour comparer des effectifs d'un coup d'œil.
+
+![Diagramme de la question 2 (Alexis)](../assets/q2_repartition_richesse_industrie.png)
+
+</details>
+
+<details>
+<summary>Interprétation et réponse</summary>
+
+Sans surprise, c'est très inégal. Finance & Investments, Manufacturing et Technology sont dominants avec 300 à 370 milliardaires chacun. Derrière (Fashion & Retail, Food & Beverage, Healthcare, Real Estate, Diversified) se tient autour de 180–270. Puis tout le reste tombe sous la barre des 100 : Energy, Media, Automotive, Logistics…
+
+Ça colle avec ce qu'on observe dans l'économie réelle, les actualités, etc. : les secteurs où circule le plus de capital (finance, tech) ou (manufacturing) produisent plus de très grandes fortunes.
+
+ça justifie donc l'essor du numérique, et des tendences économiques autour
+
+</details>
+
+ ## Question 3 :
 
  ## Question 4 : Où sont répartis les milliardaires dans le monde ?
 
