@@ -52,7 +52,7 @@ L'hypothèse est une distribution suivant une **loi de puissance** : une immense
 
 Pour cette analyse, un **histogramme combiné à une courbe de densité** est idéal. Nous utilisons une **échelle logarithmique** sur l'axe des abscisses.
 
-![Diagramme de la question 1 (Huy Bui)](../assets/q1_repartition_richesse_billionaires)
+![Diagramme de la question 1 (Huy Bui)](../assets/q1_repartition_richesse_billionaires.png)
 
 </details>
 
