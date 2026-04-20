@@ -6,37 +6,36 @@ Le [dataset](https://www.kaggle.com/datasets/nelgiriyewithana/billionaires-stati
 
 Ce dataset provient de [Nidula Elgiriyewithana](https://www.linkedin.com/in/nidula/), un ingénieur chercheur en IA et regroupe un ensemble d'informations sur les milliardaires.
 
-La structure du dataset est le suivant : 
+La structure du dataset est le suivant :
 
--   Le classement du milliardaire (rank)
--   Le montant de sa fortune (finalWorth)
--   Le secteur économique dans lequel le milliardaire opère (category, industries)
--   Les informations personnelles du milliardaire (personName, age, country, state, city, countryOfCitizenship, gender, birthDate, ...)
--   L'entreprise à l'origine de leur fortune ou le domaine spécifique à l'origine de la fortune (source)
--   Le nom de l'organisme ou entreprise affiliée actuellement à ces milliardaires (organization)
--   Un indicateur si le milliardaire a produit ou hérité de sa fortune (selfMade, status)
--   L'indice des prix à la consommation (2010 base 100) du pays dans lequel ce milliardaire vit en 2019 (cpi_country)
--   L'inflation des prix en pourcentage entre le début et la fin de l'année 2019 dans lequel ce millionaire vit (cpi_country_change)
--   Le PIB du pays dans lequel ce milliardaire vit (gdp_country)
--   Des informations sur le taux d'éducation dans le primaire et le supérieur du pays dans lequel ce milliardaire vit (gross_tertiary_education_enrollment, gross_primary_education_enrollment_country)
--   L'espérance de vie (life_expectancy_country) 
--   Le taux de recettes fiscales en pourcentage du PIB (tax_revenue_country_country)
--   Le taux d'imposition sur les entreprises en pourcentage des bénéfices commerciaux (total_tax_rate_country)
--   La population du pays dans lequel le milliardaire réside (population_country)
+- Le classement du milliardaire (rank)
+- Le montant de sa fortune (finalWorth)
+- Le secteur économique dans lequel le milliardaire opère (category, industries)
+- Les informations personnelles du milliardaire (personName, age, country, state, city, countryOfCitizenship, gender, birthDate, ...)
+- L'entreprise à l'origine de leur fortune ou le domaine spécifique à l'origine de la fortune (source)
+- Le nom de l'organisme ou entreprise affiliée actuellement à ces milliardaires (organization)
+- Un indicateur si le milliardaire a produit ou hérité de sa fortune (selfMade, status)
+- L'indice des prix à la consommation (2010 base 100) du pays dans lequel ce milliardaire vit en 2019 (cpi_country)
+- L'inflation des prix en pourcentage entre le début et la fin de l'année 2019 dans lequel ce millionaire vit (cpi_country_change)
+- Le PIB du pays dans lequel ce milliardaire vit (gdp_country)
+- Des informations sur le taux d'éducation dans le primaire et le supérieur du pays dans lequel ce milliardaire vit (gross_tertiary_education_enrollment, gross_primary_education_enrollment_country)
+- L'espérance de vie (life_expectancy_country)
+- Le taux de recettes fiscales en pourcentage du PIB (tax_revenue_country_country)
+- Le taux d'imposition sur les entreprises en pourcentage des bénéfices commerciaux (total_tax_rate_country)
+- La population du pays dans lequel le milliardaire réside (population_country)
 
-
-Cependant, certaines variables se recoupent. En effet, personName, qui inclut le nom et le prénom, se retrouve dans lastName (nom) et firstName (prénom). 
-La date d'anniversaire entière du milliardaire (birthDate), qui est présente, est divisée aussi dans les données par birthYear, birthMonth et birthDay. 
-Le pays où habite le milliardaire est présent (country), mais, on trouve aussi les coordonnées du pays d'origine du pays (latitude_country,longitude_country). 
-Les variables category et industries sont redondantes. 
+Cependant, certaines variables se recoupent. En effet, personName, qui inclut le nom et le prénom, se retrouve dans lastName (nom) et firstName (prénom).
+La date d'anniversaire entière du milliardaire (birthDate), qui est présente, est divisée aussi dans les données par birthYear, birthMonth et birthDay.
+Le pays où habite le milliardaire est présent (country), mais, on trouve aussi les coordonnées du pays d'origine du pays (latitude_country,longitude_country).
+Les variables category et industries sont redondantes.
 
 Ce dataset est composé, pour les variables pertinentes, de données : discrètes, continues et nominale.
 
 Nous avons choisi ce dataset car :
 
--   Il est complet et toutes les informations nécessaires pour répondre à nos questions y figurent.
--   Nous avons la volonté et la curiosité d'en apprendre plus sur les milliardaires comme la provenance de leur richesse et leur répartition dans le monde nous intéresse.
--   Avec cette large quantitée d'informations variées, il est possible d'obtenir des réponses plus ou moins pertinentes sur des questions qu'on pourrait tous se poser et d'en tirer des conclusions générales d'un point de vue sociologique. (proportions d'hommes/femmes, gagnée par l'héritage ou le travail, etc.)
+- Il est complet et toutes les informations nécessaires pour répondre à nos questions y figurent.
+- Nous avons la volonté et la curiosité d'en apprendre plus sur les milliardaires comme la provenance de leur richesse et leur répartition dans le monde nous intéresse.
+- Avec cette large quantitée d'informations variées, il est possible d'obtenir des réponses plus ou moins pertinentes sur des questions qu'on pourrait tous se poser et d'en tirer des conclusions générales d'un point de vue sociologique. (proportions d'hommes/femmes, gagnée par l'héritage ou le travail, etc.)
 
 ## Plan d'analyse
 
@@ -99,7 +98,7 @@ On va utiliser les variables status, gross_tertiary_education_enrollment et gros
 <details>
 <summary><strong>Q8 - Où sont répartis les milliardaires dans le monde ?</strong></summary>
 On veut voir où se répartissent les milliardaires sur une carte à bulles. On compte faire l'analyse par rapport à l'hémisphère Nord/Sud et on s'attend à trouver beaucoup de milliardaire dans l'hémisphère nord et un nombre certain dans les BRICS+. 
-On va utiliser les variables country et les latitudes et longitudes pour les placer sur une carte.
+On va utiliser les variables de villes et pays puis récupérer une longitude et une latitude pour les placer sur une carte.
 
 </details>
 
@@ -203,7 +202,6 @@ Visualisation envisagée : Diagramme circulaire (pie chart).
 
 </details>
 
-
 <details>
 <summary><strong>Q23 - Les hommes milliardaires sont-ils plus souvent self-made que les femmes ?</strong></summary>
 Cette question vise à explorer une potentielle interaction (et un stéréotype) entre le genre et le mode d'acquisition de la richesse. On peut formuler l'hypothèse que les femmes milliardaires sont davantage issues de fortunes héritées, en raison des obstacles structurels ayant historiquement limité leur accès à l'entrepreneuriat et aux fonctions dirigeantes.
@@ -211,7 +209,6 @@ Variables utilisées : gender et selfMade
 Visualisation envisagée : Diagramme en barres groupées ou normalisées permettant de comparer les proportions par genre.
 
 </details>
-
 
 <details>
 <summary><strong>Q24 - Densité de milliardaires par pays : 

@@ -1,3 +1,14 @@
+---
+title: "Analyse des milliardaires"
+author: "Les 4 Mousquetaires"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    theme: cosmo
+    code_folding: hide
+---
+
 # **Introduction**
 
 ## Données
@@ -36,7 +47,7 @@ Nous avons choisi ce dataset car :
 
 # **Analyse exploratoire**
 
-\## Question 1 : Comment se répartit la richesse des billionaires ?
+## Question 1 : Comment se répartit la richesse des billionaires ?
 
 <details>
 <summary>Question et problème étudié</summary>
@@ -71,7 +82,7 @@ En conclusion, la richesse des milliardaires ne suit pas une courbe en cloche (n
 
 </details>
 
-\## Question 2 : Quelle est la répartition des milliardaires dans les différentes industries ?
+## Question 2 : Quelle est la répartition des milliardaires dans les différentes industries ?
 
 <details>
 
@@ -105,7 +116,7 @@ Cela justifie l'essor du numérique, et les tendances économiques qui l'accompa
 
 </details>
 
-\## Question 3 :  Quelle est la génération qui regroupe le plus grand nombre de milliardaires ?
+## Question 3 :  Quelle est la génération qui regroupe le plus grand nombre de milliardaires ?
 
 
 <details>
@@ -125,7 +136,7 @@ Les anciennes générations (Génération X et surtout Baby-Boomers) devraient l
 
 Un diagramme en barres verticales présente le nombre et le pourcentage de milliardaires par génération, de la plus ancienne à la plus récente, afin de comparer clairement leur poids relatif.
 
-![Diagramme de la question 2 (Alexis)](../assets/q2_repartition_richesse_industrie.png)
+![Diagramme de la question 20 (Yasmine)](../assets/q20-repartition-richesse-par-generation.png)
 
 </details>
 
@@ -143,9 +154,36 @@ La Génération silencieuse reste significative (19,8 %), principalement grâce 
 </details>
 
 
-\## Question 4 : Où sont répartis les milliardaires dans le monde ?
+## Question 4 : Où sont répartis les milliardaires dans le monde ?
 
-\## Question 5 : Comment se répartissent les milliardaires dans les états américains ?
+<details>
+<summary>Question et problème étudié</summary>
+
+On cherche à comprendre la répartition géographique des milliardaires afin de voir si elle est concentrée dans certains pays ou régions du monde.
+On s’attend à ce que les milliardaires soient fortement concentrés dans les pays les plus riches et économiquement développés, notamment les États-Unis, la Chine, l’Allemagne, la France et le Royaume-Uni. 
+Ces pays offrent des écosystèmes favorables à la création de richesse, avec des marchés financiers matures, des infrastructures solides et des opportunités d’affaires.
+
+</details>
+
+<details>
+<summary>Visualisation</summary>
+
+Pour cette analyse, il est pertinent d’utiliser une carte du monde avec des cercles proportionnels à la concentration de milliardaires dans chaque ville. 
+Cela permet de visualiser rapidement les zones de forte concentration et de comparer les pays entre eux.
+
+![Diagramme de la question 8 (Marco)](../assets/q8_repartition_riches_monde.png)
+
+</details>
+
+<details>
+<summary>Interprétation et réponse</summary>
+
+Les données confirment globalement nos hypothèses. En majorité, on retrouve les milliardaires dans les pays les plus riches et économiquement développés, que ce soit aux États-Unis, en Chine et en Europe de l’Ouest.
+Cependant, on observe aussi des concentrations significatives dans des pays émergents comme l’Inde, qui a vu une croissance économique rapide ces dernières années, créant ainsi de nouvelles opportunités pour la création de richesse. 
+
+</details>
+
+## Question 5 : Comment se répartissent les milliardaires dans les états américains ?
 
 <details>
 
