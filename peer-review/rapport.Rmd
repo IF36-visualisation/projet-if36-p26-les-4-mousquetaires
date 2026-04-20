@@ -38,6 +38,39 @@ Nous avons choisi ce dataset car :
 
 \## Question 1 : Comment se répartit la richesse des billionaires ?
 
+<details>
+<summary>Question et problème étudié</summary>
+
+On cherche ici à comprendre la structure de la richesse au sein même du club des milliardaires. La question est de savoir si la fortune est répartie de manière "homogène" (la plupart des milliardaires ayant des fortunes similaires) ou si elle est extrêmement concentrée au sommet.
+
+L'hypothèse est une distribution suivant une **loi de puissance** : une immense majorité de "petits" milliardaires (entre 1 et 5 milliards) et une poignée d'individus possédant des fortunes dépassant l'entendement, créant une inégalité flagrante même au sein de l'élite.
+
+</details>
+
+<details>
+<summary>Visualisation</summary>
+
+Pour cette analyse, un **histogramme combiné à une courbe de densité** est idéal. Nous utilisons une **échelle logarithmique** sur l'axe des abscisses.
+
+![Diagramme de la question 1 (Huy Bui)](../assets/q1_repartition_richesse_billionaires)
+
+</details>
+
+<details>
+<summary>Interprétation et réponse</summary>
+
+L'analyse confirme une asymétrie radicale de la richesse :
+
+La masse des "petits" milliardaires : La plus haute densité (le sommet de la courbe) se situe juste après le seuil de 1 milliard de dollars. C'est là que se trouve le "gros des troupes".
+
+La "Longue Traîne" (Long Tail) : Plus on avance vers la droite (vers les 10, 50, 100 milliards), plus le nombre de personnes chute drastiquement.
+
+Le club des Centimilliardaires : Les individus comme Bernard Arnault ou Elon Musk sont des "outliers" (données aberrantes statistiquement). Leur richesse est si élevée qu'ils forment une catégorie à part entière, presque déconnectée du reste du classement.
+
+En conclusion, la richesse des milliardaires ne suit pas une courbe en cloche (normale). C'est un système où "le gagnant rafle presque tout", reflétant les dynamiques de capitalisation boursière où quelques entreprises dominantes propulsent leurs propriétaires vers des sommets isolés.
+
+</details>
+
 \## Question 2 : Quelle est la répartition des milliardaires dans les différentes industries ?
 
 <details>
