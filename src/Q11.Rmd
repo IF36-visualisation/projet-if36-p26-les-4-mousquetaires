@@ -1,1 +1,20 @@
-#
+q11 <- df %>%
+  group_by(country, population_country) %>%
+  summarise(nb = n(), .groups = "drop") %>%
+  filter(!is.na(population_country), population_country > 0) %>%
+  mutate(par_million = nb / (population_country / 1e6)) %>%
+  arrange(desc(par_million)) %>%
+  head(20)
+
+p11 <- ggplot(q11, aes(x = reorder(country, par_million), y = par_million)) +
+  geom_col(fill = "#756bb1") +
+  coord_flip() +
+  labs(
+    title = "Milliardaires par million d'habitants",
+    subtitle = "Top 20 des pays (2023)",
+    x = NULL,
+    y = "Milliardaires par million d'habitants"
+  ) +
+  theme_minimal(base_size = 13)
+
+ggsave("q11_milliardaires_par_habitant.png", p11, width = 10, height = 7, dpi = 150)

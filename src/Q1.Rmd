@@ -1,1 +1,22 @@
-#
+mois_labels <- c("Jan","Fév","Mar","Avr","Mai","Jun",
+                 "Jul","Aoû","Sep","Oct","Nov","Déc")
+
+q1 <- df %>%
+  filter(!is.na(birthMonth)) %>%
+  count(birthMonth) %>%
+  mutate(mois = factor(mois_labels[birthMonth], levels = mois_labels))
+
+p1 <- ggplot(q1, aes(x = mois, y = n)) +
+  geom_col(fill = "#41ae76") +
+  geom_hline(yintercept = mean(q1$n), linetype = "dashed", color = "red") +
+  annotate("text", x = 12, y = mean(q1$n) + 8, label = "Moyenne",
+           color = "red", size = 3.5) +
+  labs(
+    title = "Mois de naissance des milliardaires",
+    subtitle = "Distribution mensuelle — la ligne rouge indique la moyenne",
+    x = "Mois",
+    y = "Nombre de milliardaires"
+  ) +
+  theme_minimal(base_size = 13)
+
+ggsave("q01_mois_naissance.png", p1, width = 10, height = 6, dpi = 150)

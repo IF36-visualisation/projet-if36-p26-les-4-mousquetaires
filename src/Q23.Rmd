@@ -1,1 +1,16 @@
-#
+q23 <- df %>%
+  count(industries, sort = TRUE) %>%
+  head(15)
+
+p23 <- ggplot(q23, aes(x = reorder(industries, n), y = n)) +
+  geom_col(fill = "#2c7fb8") +
+  coord_flip() +
+  labs(
+    title = "Top 15 des industries les plus représentées",
+    subtitle = "Nombre de milliardaires par industrie (2023)",
+    x = NULL,
+    y = "Nombre de milliardaires"
+  ) +
+  theme_minimal(base_size = 13)
+
+ggsave("q23_industries_representees.png", p23, width = 10, height = 6, dpi = 150)

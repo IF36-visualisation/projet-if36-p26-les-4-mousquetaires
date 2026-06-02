@@ -1,1 +1,22 @@
-#
+q10 <- df %>%
+  group_by(industries) %>%
+  summarise(
+    nb = n(),
+    richesse_totale = sum(finalWorth, na.rm = TRUE) / 1e3 
+  ) %>%
+  arrange(desc(richesse_totale)) %>%
+  head(10)
+
+p10 <- ggplot(q10, aes(x = reorder(industries, richesse_totale), y = richesse_totale)) +
+  geom_col(aes(fill = richesse_totale), show.legend = FALSE) +
+  scale_fill_gradient(low = "#fdae6b", high = "#d94701") +
+  coord_flip() +
+  labs(
+    title = "Répartition de la richesse par industrie",
+    subtitle = "Richesse cumulée des milliardaires (top 10 industries)",
+    x = NULL,
+    y = "Richesse totale (milliards $)"
+  ) +
+  theme_minimal(base_size = 13)
+
+ggsave("q10_repartition_richesse_industrie.png", p10, width = 10, height = 6, dpi = 150)
