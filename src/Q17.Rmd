@@ -1,1 +1,26 @@
-#
+```{r stats}
+# Chargement des librairies nécessaires
+library(tidyr)
+library(maps)
+library(ggplot2) 
+library(dplyr) 
+library(readr)
+
+```
+
+#Q17 - Comment se répartissent les milliardaires dans les états américains ?
+```{r stats, echo=FALSE}
+american_billionaires <- data %>% filter(country =="United States", !is.na(state)) %>% count(state, sort = TRUE) %>% mutate(state = tolower(state), number_of_billionaires = n) %>% select(state, number_of_billionaires)
+
+states_map <- map_data("state")
+
+american_billionaires_map_data <- merge(states_map, american_billionaires, by.x = "region", by.y ="state", all.x = TRUE) %>% mutate(number_of_billionaires = replace_na(number_of_billionaires, 0))
+
+american_billionaires_map <- american_billionaires_map_data %>% ggplot(aes(map_id= region,fill = number_of_billionaires)) +
+    geom_map(map = states_map, colour = "black") +
+    expand_limits(x = states_map$long, y = states_map$lat) +
+    coord_map("polyconic") +
+  scale_fill_viridis_c()+
+  labs(title="Répartition des milliardaires dans les états américains", x="Longitude", y="Latitude", fill="Nombre de milliardaires" )
+american_billionaires_map
+```

@@ -1,1 +1,20 @@
-#
+```{r stats}
+# Chargement des librairies nécessaires
+library(tidyr)
+library(maps)
+library(ggplot2) 
+library(dplyr) 
+library(readr)
+```
+
+#Q14 - Y a-t-il un lien entre l'âge et la richesse ?
+```{r stats}
+age_rich_dt <- data %>% select(finalWorth, age) %>% mutate(finalWorth = finalWorth/1000)
+infla_and_billionaires <- age_rich_dt %>% ggplot(aes(x=age, y=finalWorth)) + 
+geom_point(shape = 10) + 
+stat_smooth(method=lm, se = FALSE) + 
+labs(title = "Corrélation entre l'âge et la richesse",
+       x = "Age",
+       y = "Richesse") 
+infla_and_billionaires
+```

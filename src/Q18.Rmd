@@ -1,1 +1,20 @@
-#
+```{r stats}
+# Chargement des librairies nécessaires
+library(tidyr)
+library(maps)
+library(ggplot2) 
+library(dplyr) 
+library(readr)
+```
+#Q18 - Quelles villes comptent le plus de milliardaires ?
+```{r stats}
+#Selection des 20 villes les plus peuplées
+cities_top_20 <- data %>% filter(!is.na(city)) %>% count(city, sort = TRUE) %>% slice_head(n = 20)
+
+#Diagramme à barre horizontale
+data_cities <- ggplot(cities_top_20, aes(x=reorder(city,n), y=n)) + geom_col() + coord_flip() +
+  labs(title = "Top 20 des villes avec le plus de milliardaires",
+       x = "Ville",
+       y = "Nombre de milliardaires")
+data_cities
+```

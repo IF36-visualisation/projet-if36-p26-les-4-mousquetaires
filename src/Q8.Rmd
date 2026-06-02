@@ -1,0 +1,29 @@
+```{r stats}
+# Chargement des librairies nécessaires
+library(tidyr)
+library(maps)
+library(ggplot2) 
+library(dplyr) 
+library(readr)
+```
+#Q8 - Existe-il une corrélation entre la densité des milliardaires par pays et le niveau d'inflation sur l'année 2019 ?
+```{r stats, echo=FALSE}
+#Calcul de la densité des milliardaires par pays 
+density <- data %>%
+filter(!is.na(country), !is.na(population_country), !is.na(cpi_change_country)) %>% 
+count(country, population_country, cpi_change_country, sort=TRUE) %>% 
+group_by(country) %>% 
+summarise(nb_billionnaires = n, 
+population = first(population_country), cpi_change_country) %>%
+mutate(density = nb_billionnaires * 100 / population ) %>% 
+arrange(desc(density))
+
+infla_and_billionaires <- density %>% ggplot(aes(x=cpi_change_country, y=density)) + 
+geom_point(shape = 10) + 
+stat_smooth(method=lm, se = FALSE) + 
+labs(title = "Corrélation entre le niveau d'inflation en 2019 et le nombre de milliardaires par pays",
+       x = "Inflation sur l'année 2019 (%)",
+       y = "Proportion de milliardaires par pays") + 
+       geom_label_repel(aes(label = country), size = 3)
+infla_and_billionaires
+```

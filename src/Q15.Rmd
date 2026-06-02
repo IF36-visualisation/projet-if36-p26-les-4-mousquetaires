@@ -1,1 +1,108 @@
-#
+```{r stats}
+# Chargement des librairies nécessaires
+library(tidyr)
+library(maps)
+library(ggplot2) 
+library(dplyr) 
+library(readr)
+```
+
+
+#Q4 - Est-ce qu’il y a des sources de richesse récurrentes parmi les milliardaires ?
+```{r stats}
+#Répartition des milliardaires dans les secteurs économiques
+economic_sector_1 <- data %>% 
+  filter(!is.na(industries)) %>% 
+  count(industries, sort = TRUE)
+economic_sector_1
+
+economic_sector_bar_chart<- economic_sector_1 %>% 
+  ggplot(aes(x = industries, 
+  y = n)) +
+  geom_col(width = 0.5, color = "green", fill = "green") +
+  labs(title = "Sources de richesse des milliardaires",
+  x = "Secteur économique",
+  y = "Nombre de milliardaires")
+economic_sector_bar_chart
+
+#Répartition des milliardaires dans les 5 secteurs où ils sont les plus présents en ajoutant la source de leur fortune (secteur ou entreprise)
+#Sélection des cinq secteurs où se trouvent le plus de milliardaires
+economic_sector_top5 <- data %>% 
+  filter(!is.na(industries)) %>% 
+  count(industries, sort = TRUE) %>%
+  mutate(industries = tolower(industries))%>%
+  slice_head(n = 5)
+economic_sector_top5
+
+#Sélection des sources de richesses parmis les cinq secteurs les plus représentés
+
+data_top5 <- data %>% filter(!is.na(industries), !is.na(source)) %>%
+mutate(industries = tolower(industries), source = tolower(source)) %>%   
+semi_join(economic_sector_top5, by = "industries")
+
+#Compter les occurences des sources de richesses
+
+eco_sector_source_top5 <- data_top5 %>%
+  count(industries, source)
+eco_sector_source_top5
+
+#fonction de nettoyage du texte
+clean_text <- function(x) {
+  x <- gsub("\\s+", " ", x)
+  x <- gsub("ies$", "y", x)
+  x <- gsub("s$", "", x)
+  x <- str_trim(x) %>%
+  x <- str_squish(x)
+  return(x)
+}
+
+#Nettoyage des sources ("s", accent, majuscules, "ing", ...) et tri sur l'occurence de la source
+
+cleaned_eco_sector_source <-eco_sector_source_top5 %>%
+  mutate(
+  source =  clean_text(source),
+  source = recode(source,
+      "retailing" = "retail",
+      "electronics component" = "electronic component",
+      "convinience store" = "convenience store",
+      "investing" = "investment",
+      "software service" = "software",
+      "business software" = "software",
+      .default = source
+)
+  ) %>%
+  group_by(industries) %>%
+  mutate(
+    source = ifelse(n < 5, "others", source)
+  )%>%
+  ungroup() %>%
+  group_by(industries, source) %>%
+  summarise(n = sum(n),pct = sum(pct), .groups = "drop")
+cleaned_eco_sector_source
+
+#Pourcentage de chaque source dans son secteur respectif pour faciliter la lecture du graphique
+eco_sector_source_pct <- cleaned_eco_sector_source %>%
+  group_by(industries) %>%
+  mutate(
+    pct = n / sum(n),
+    total_industry = sum(n)
+  ) %>%
+  ungroup()
+eco_sector_source_pct
+
+#Réalisation d'un diagramme à bar stacker en pourcentage
+
+economic_sector_bar_chart_2 <- eco_sector_source_pct%>% 
+ mutate(industries = reorder(industries, n, FUN = sum)) %>%
+  ggplot(aes(x = industries, y = pct, fill = source)) +
+  geom_col() +
+  scale_y_continuous(labels = scales::percent) +
+  geom_text(aes(label = source), 
+  position = position_stack(vjust = 0.5),
+  colour = "white") +
+  labs(title = "Sources de richesse des milliardaires",
+  x = "Secteur économique",
+  y = "Nombre de milliardaires")
+economic_sector_bar_chart_2
+
+```
