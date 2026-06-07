@@ -8,7 +8,21 @@ output:
     theme: cosmo
     code_folding: hide
 ---
+```{r stats, include=FALSE}
+library(tidyr)
+library(maps)
+library(ggplot2) 
+library(dplyr) 
+library(readr)
+library(ggrepel)
+library(stringr)
+library(sf)
+library(rnaturalearthdata)
+library(countrycode)
+library(stringi)
 
+data <- read_csv(data/Billionaires_Statistics_Dataset.csv)
+```
 # **Introduction**
 
 ## Données
@@ -49,23 +63,50 @@ Notre travail s'articule autour de cette question : Quels facteurs expliquent l'
 
 # **Analyse exploratoire**
 ## I. Géographie de la richesse mondiale
+Les milliardaires ont la possibilité de s’établir où ils le souhaitent en raison de leur revenu. Cependant, le choix de leur résidence n’est pas laissé au hasard. Il peut supposer qu’ils habitent dans des lieux où ils peuvent facilement avoir des opportunités entrepreneuriales, un accès aux meilleures écoles pour leur famille et proche des centres de décisions de leur(s) entreprise(s). Il semble logique que les opportunités de faire croître leur entreprises se trouvent majoritairement dans l’hémisphère nord. Il convient donc de se demander où les milliardaires se concentrent dans le monde. 
+Problématique de la partie: Où se concentrent les milliardaires dans le monde? 
 
-
-
+Q1 - Quelles villes comptent le plus de milliardaires ?
+Q3 - Comment se répartissent les milliardaires dans les états américains ?
+Q8 - Où sont répartis les milliardaires dans le monde ?
+Q9 - Quelle est la nationalité la plus représentée parmi les milliardaires ?
+Q19 - Quel est le nombre de milliardaires par habitant dans chaque pays ?
+Q25 - Y a-t-il des mouvements de milliardaires entre leur nationalité et leur lieu d'habitation dans le monde ? 
 
 
 ## II. Concentration des capitaux économique, culturel et social
 
+Problématique de la partie: Quels capitaux favorisent l’émergence ou la pérennité de la fortune des milliardaires?  
+Q10 - Existe-t-il une corrélation entre la densité de milliardaires pays et le niveau d’éducation d’un pays, mesuré par le taux de scolarisation dans l’enseignement primaire et supérieur ?
+Q21 - Quelle est la proportion de milliardaires ayant hérité de leur fortune par rapport à ceux l'ayant constituée eux-mêmes ?
+Q6 - Quelle est la proportion de milliardaires honorifiés ou titrés ?
+
 
 ## III. Le mythe du self-made man
+roblématique de la partie: Quelles sont les caractéristiques du self-made ?
+Q7 - Est-ce que les milliardaires dont le statut est “self-made” viennent d’un pays dont le taux d’inscription dans le supérieur est bas ? (ou Le niveau d’accès à l’enseignement supérieur influence-t-il l’émergence de milliardaires self-made ?)
+Q18 - Peut-on deviner si un milliardaire s'est fait tout seul à partir de son profil ?
+Q23 - Les hommes milliardaires sont-ils plus souvent self-made que les femmes ?
 
 ## IV. Concentration des richesses et des industries
+Problématique de la partie: Comment se concentrent la richesse des milliardaires? 
+Q12 - Quels sont les points communs entre les riches dans le monde ?  /Q14 - Comment se répartit la richesse des milliardaires ?/ Q15 - Quelles sont les différents types d'industrie qui sont les plus représentés ? (intégré Q4 - Est-ce qu’il y a des sources de richesse récurrentes parmi leIndustries/secteurs) Q17 - Quelle est la répartition des milliardaires dans les différentes industries ?
 
 ## V. Indicateurs de santé économique
+Problématique de la partie: Quels facteurs économiques ont une influence sur la présence des milliardaires? 
+Q2 - Existe-il une corrélation entre la densité des milliardaires par pays et le niveau d'inflation sur l'année 2019 ?
+Q13 - Le taux d’imposition a-t-il une influence sur le nombre de milliardaires par pays ?
 
 ## VI. Profil démographique
+Problématique de la partie : Quel serait le profil démorgraphique du milliardaire ?
+Q5 - Y a-t-il un lien entre l'âge et la richesse ?
+Q11 - Quelle est la répartition de l’âge des milliardaires en 2023 ?
+Q20 - Quelle est la génération qui regroupe le plus grand nombre de milliardaires ?
+Q22 - Quelle est la proportion de femmes et d’hommes parmi les milliardaires en 2023 ?
 
 ##VII. Questions annexes
+
+Q16 - Dans quel(s) mois sont nés les milliardaires ?
 ## Question 1 : Comment se répartit la richesse des billionaires ?
 
 <details>
