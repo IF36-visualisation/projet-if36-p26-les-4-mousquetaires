@@ -1,3 +1,4 @@
+```{r stat}
 mois_labels <- c("Jan","Fév","Mar","Avr","Mai","Jun",
                  "Jul","Aoû","Sep","Oct","Nov","Déc")
 
@@ -20,3 +21,4 @@ p1 <- ggplot(q1, aes(x = mois, y = n)) +
   theme_minimal(base_size = 13)
 
 ggsave("q01_mois_naissance.png", p1, width = 10, height = 6, dpi = 150)
+```

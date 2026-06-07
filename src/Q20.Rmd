@@ -1,3 +1,4 @@
+```{r stats}
 q20 <- df %>%
   filter(!is.na(selfMade), !is.na(age), !is.na(gender)) %>%
   mutate(selfMade = ifelse(selfMade, "Self-made", "Hérité"))

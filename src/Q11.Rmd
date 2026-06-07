@@ -1,3 +1,4 @@
+```{r stats}
 q11 <- df %>%
   group_by(country, population_country) %>%
   summarise(nb = n(), .groups = "drop") %>%
@@ -18,3 +19,4 @@ p11 <- ggplot(q11, aes(x = reorder(country, par_million), y = par_million)) +
   theme_minimal(base_size = 13)
 
 ggsave("q11_milliardaires_par_habitant.png", p11, width = 10, height = 7, dpi = 150)
+```
