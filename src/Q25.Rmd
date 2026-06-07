@@ -1,1 +1,62 @@
-#
+#Q6 Y a-t-il des mouvements de milliardaires entre la nationalité et le lieu d'habitation dans le monde ? 
+```{r stats}
+#Isolation des milliardaires ayant une nationalité différente de leur pays d'habitation
+mvt_bill <- data  %>% 
+  mutate(country = tolower(country), countryOfCitizenship = tolower(countryOfCitizenship)) %>% 
+  filter(country != countryOfCitizenship) %>% 
+  select(country, countryOfCitizenship) %>%
+  mutate(country = countrycode(country, "country.name", "country.name"),countryOfCitizenship = countrycode(countryOfCitizenship,"country.name", "country.name")) %>%  
+  count(country, countryOfCitizenship, name = "volume") %>%
+  mutate(country = recode(country, 
+                          "United States" = "United States of America",
+                          "St. KItts & Nevis" = "St. Kitts and Nevis",
+                          "Hong Kong SAR China" = "Hong Kong",
+                          "Macao SAR China" = "Macao",
+                           "British Virgin Islands" = "British Virgin Is.",
+                          "Turks & Caicos Islands" = "Turks and Caicos Is.",
+                          "Cayman Islands" = "Cayman Is."
+                            )) %>% 
+  mutate(countryOfCitizenship = recode(countryOfCitizenship,
+                "British Virgin Islands" = "British Virgin Is.",
+                "Cayman Islands" = "Cayman Is.",
+                "Hong Kong SAR China" = "Hong Kong",
+                 "Macao SAR China" = "Macao",
+                "Turks & Caicos Islands" = "Turks and Caicos Is.",
+                "United States" = "United States of America",
+                "St. Kitts & Nevis" = "St. Kitts and Nevis")) %>% filter(volume > 1)
+mvt_bill
+
+world <- ne_countries(scale = 110, returnclass = "sf")
+world
+
+
+centroids <- world %>%
+  select(name, geometry) %>%
+  st_centroid() %>%
+  mutate(lon = st_coordinates(geometry)[,1],
+         lat = st_coordinates(geometry)[,2]) %>%
+  st_drop_geometry()
+centroids
+
+
+flux_geo <- mvt_bill %>%
+  left_join(centroids, by = c("country" = "name")) %>%
+  rename(to_lon = lon, to_lat = lat) %>%
+  left_join(centroids, by = c("countryOfCitizenship" = "name")) %>%
+  rename(from_lon = lon, from_lat = lat)
+flux_geo
+mvt_map <- flux_geo %>% ggplot() +
+  geom_sf(data = world, fill = "gray95", color = "white") +
+  geom_segment(
+    data = flux_geo,
+    aes(x = from_lon, y = from_lat,
+        xend = to_lon, yend = to_lat, linewidth = volume),
+    color = "red",
+    alpha = 0.6,
+    linewidth = 0.8,
+    arrow = arrow(type = "closed", length = unit(0.1, "cm"))) +
+  theme_minimal()
+mvt_map 
+
+#A mettre dans le Shiny
+
