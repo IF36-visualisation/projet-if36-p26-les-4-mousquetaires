@@ -49,6 +49,23 @@ Notre travail s'articule autour de cette question : Quels facteurs expliquent l'
 
 # **Analyse exploratoire**
 ## I. Géographie de la richesse mondiale
+
+
+
+
+
+## II. Concentration des capitaux économique, culturel et social
+
+
+## III. Le mythe du self-made man
+
+## IV. Concentration des richesses et des industries
+
+## V. Indicateurs de santé économique
+
+## VI. Profil démographique
+
+##VII. Questions annexes
 ## Question 1 : Comment se répartit la richesse des billionaires ?
 
 <details>
