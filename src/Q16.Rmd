@@ -1,1 +1,92 @@
 #
+---
+title: "Q16 - Est-ce que le taux d'imposition a-t-il une influence sur le nombre de milliardaire par pays ?"
+author: "Marco Orfao"
+---
+
+# Q16 - Est-ce que le taux d'imposition a-t-il une influence sur le nombre de milliardaire par pays ?
+
+<details>
+<summary>Question et problème étudié</summary>
+
+On se demande maintenant si le taux d’imposition sur les entreprises dans un pays a une influence sur le nombre de milliardaires qu’il compte.
+On s’attend à ce que les pays avec des taux d’imposition plus bas attirent davantage de milliardaires, car ils offrent un environnement fiscal plus favorable pour la création et la préservation de la richesse.
+Cependant, il est important de noter que d’autres facteurs, tels que la stabilité politique, les infrastructures, les opportunités économiques et la qualité de vie, peuvent également jouer un rôle crucial dans l’attraction des milliardaires, ce qui pourrait atténuer l’impact du taux d’imposition.
+
+
+</details>
+
+## Initialisation des bibliothèques et chargement des données
+
+```{r}
+
+# Chargement des bibliothèques principales
+library(ggplot2)
+library(tidyverse)
+
+# Chargement du dataset
+dataset <- read.csv("./data/Billionaires_Statistics_Dataset.csv")
+
+```
+
+## Préparation des données (filtres)
+
+
+```{r}
+# Agrégation par pays
+pays_stats <- dataset %>%
+  filter(
+    !is.na(country),
+    !is.na(total_tax_rate_country)
+  ) %>%
+  group_by(country) %>%
+  summarise(
+    nb_milliardaires = n(),
+    taux_imposition = first(total_tax_rate_country)
+  )
+```
+
+
+## Paramétrage du diagramme et sauvegarde de l'image
+
+```{r}
+diagramme <- ggplot(pays_stats,
+       aes(x = taux_imposition,
+           y = nb_milliardaires)) +
+
+  geom_point(
+    color = "darkblue",
+    alpha = 0.7,
+    size = 3
+  ) +
+
+  geom_smooth(
+    method = "lm",
+    se = TRUE,
+    color = "red"
+  ) +
+
+  labs(
+    title = "Influence du taux d'imposition sur le nombre de milliardaires",
+    x = "Taux d'imposition sur les entreprises (%)",
+    y = "Nombre de milliardaires"
+  )
+
+diagramme
+
+ggsave(
+  "tax_vs_billionaires.png",
+  diagramme,
+  width = 10,
+  height = 6
+)
+```
+
+<details>
+<summary>Interprétation et réponse</summary>
+
+Visiblement, il n’y a pas de corrélation claire entre le taux d’imposition sur les entreprises et le nombre de milliardaires par pays.
+Sauf quelques outliers, la plupart des pays avec des taux d’imposition variés ont des nombres de milliardaires similaires, ce qui suggère que le taux d’imposition n’est pas un facteur déterminant pour l’attraction ou la rétention des milliardaires.
+Cependant, les outliers trois outliers respectivement les États-Unis, la Chine et l’Inde sont les pays avec le plus de milliardaires et avec aussi le plus grand nombre d’habitants, ce qui peut laisser supposer que le nombre de milliardaires est plus influencé par la taille de la population et l’économie globale du pays que par le taux d’imposition.
+
+</details>
