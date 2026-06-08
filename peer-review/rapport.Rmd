@@ -141,6 +141,8 @@ Sans surprise, les autres états comptent entre 0 et 50 milliardaires.
 La visualisation répond à la question. 
 
 </details>
+
+
 Q8 - Où sont répartis les milliardaires dans le monde ?
 <details>
 <summary>Question et problème étudié</summary>
@@ -275,7 +277,20 @@ Q15 - Quelles sont les différents types d'industrie qui sont les plus représen
 
 
 
-Suite à cette question, nous avons choisi de détailler celle-ci en regardant les sources 
+Suite à cette question, nous avons choisi de détailler celle-ci en regardant les sources de la fortune des milliardaires. Dans "sources", on trouve soit le nom d'une entreprise pour les plus connues ou le secteur précis.
+
+<details>
+<summary>Question et problème étudié</summary>
+
+L'objectif de cette data visualisation est de voir plus précisement où se concentrent les milliardaires. Les données ne sont pas nettoyées donc l'analyse risque d'être partielle. On imagine que dans l'investissement et l'agrobusiness, il y a beaucoup de milliardaires. On suppose que les entreprises les plus connues des plus gros milliardaires ne seront pas représentées (LVMH, Amazon, Microsoft,...) car cela ne concerne que peu de personne. 
+
+À noter : N'est affiché dans le bar chart les occurences de sources supérieures à 7 pour plus de lisibilité. En dessous de 7, la source est renommé en "others".
+
+</details>
+
+<details>
+<summary>Visualisation</summary>
+
 ```{r, echo=FALSE}
 
 #Sélection des secteurs où il y a le plus de milliardaires
@@ -446,6 +461,16 @@ economic_sector_bar_chart_2
 
 ```
 
+Le choix s'est porté sur un bar chart stacké en pourcentage pour faciliter la lecture du nombre de milliardaires dans chaque industrie. On a choisi des couleurs assez différentes pour respecter la magnitude estimation.
+</details>
+
+<details>
+
+<summary>Interprétation et réponse</summary>
+L'hypothèse de départ est validée mais incomplète car il y a des secteurs non cités qui représentent une part non négligeable de milliardaires. La limitaiton à sept du nombre d'occurences affaiblit l'interprétation malgré le tri fait sur les données.
+
+
+</details>
 
 Q17 - Quelle est la répartition des milliardaires dans les différentes industries ?
 <details>
