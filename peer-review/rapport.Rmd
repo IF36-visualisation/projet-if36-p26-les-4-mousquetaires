@@ -8,7 +8,7 @@ output:
     theme: cosmo
     code_folding: hide
 ---
-```{r stats, include=FALSE}
+```{r, include=FALSE}
 library(tidyr)
 library(maps)
 library(ggplot2) 
@@ -21,6 +21,8 @@ library(rnaturalearthdata)
 library(countrycode)
 library(stringi)
 library(here)
+library(scales)
+
 df <- read_csv(here("data", "Billionaires_Statistics_Dataset.csv"))
 ```
 # **Introduction**
@@ -67,7 +69,16 @@ Les milliardaires ont la possibilité de s’établir où ils le souhaitent en r
 Problématique de la partie: Où se concentrent les milliardaires dans le monde? 
 
 Q1 - Quelles villes comptent le plus de milliardaires ?
-```{r stats, echo=FALSE}
+<details>
+
+<summary>Question et problème étudié</summary>
+L'objectif est de voir où vivent les milliardaires. On suppose qu'ils vivent dans des mégalopoles dans l'hémisphère Nord où il y a des opportunités économiques intéressantes. On peut penser à new York, Los Angeles, Hong Kong, Londres mais aussi des villes en Chine et d'autres réprésentatives de certains industries iconiques.
+
+</details>
+<details>
+
+<summary>Visualisation</summary>
+```{r, echo=FALSE}
 #Selection des 20 villes les plus peuplées
 cities_top_20 <- df%>% filter(!is.na(city)) %>% count(city, sort = TRUE) %>% slice_head(n = 20)
 
@@ -78,9 +89,18 @@ data_cities <- ggplot(cities_top_20, aes(x=reorder(city,n), y=n)) + geom_col() +
        y = "Nombre de milliardaires")
 data_cities
 ```
+Mon choix s'est porté sur un diagramme à barre qui est bien pour montrer une répartition. J'ai choisi de montrer les 20 villes concentrant le plus de milliardaires pour soucis de lisibilité et de pertinence. 
+</details>
+
+<details>
+<summary>Interprétation et réponse</summary>
+La représentation répond à la question. L'hypothèse de départ est vérifiée. New York est en tête de loin et cela peut s'expliquer car la ville concentre énormément d'industries et donc d'opportunités.
+</details>
+
+
 Q3 - Comment se répartissent les milliardaires dans les états américains ?
 
-details>
+<details>
 
 <summary>Question et problème étudié</summary>
 
@@ -183,17 +203,23 @@ Le diagramme est dans le Shiny app.
 ## II. Concentration des capitaux économique, culturel et social
 
 Problématique de la partie: Quels capitaux favorisent l’émergence ou la pérennité de la fortune des milliardaires?  
+
 Q10 - Existe-t-il une corrélation entre la densité de milliardaires pays et le niveau d’éducation d’un pays, mesuré par le taux de scolarisation dans l’enseignement primaire et supérieur ?
+
 Q21 - Quelle est la proportion de milliardaires ayant hérité de leur fortune par rapport à ceux l'ayant constituée eux-mêmes ?
+
 Q6 - Quelle est la proportion de milliardaires honorifiés ou titrés ?
 
 
 ## III. Le mythe du self-made man
-roblématique de la partie: Quelles sont les caractéristiques du self-made?
+Problématique de la partie: Quelles sont les caractéristiques du self-made?
+
 Q7 - Est-ce que les milliardaires dont le statut est “self-made” viennent d’un pays dont le taux d’inscription dans le supérieur est bas ? (ou Le niveau d’accès à l’enseignement supérieur influence-t-il l’émergence de milliardaires self-made ?)
+
 Q18 - Peut-on deviner si un milliardaire s'est fait tout seul à partir de son profil ?
+
 Q23 - Les hommes milliardaires sont-ils plus souvent self-made que les femmes ?
-```{r stats, echo=FALSE}
+```{r, echo=FALSE}
 q20 <- df %>%
   filter(!is.na(selfMade), !is.na(age), !is.na(gender)) %>%
   mutate(selfMade = ifelse(selfMade, "Self-made", "Hérité"))
@@ -217,9 +243,10 @@ p20
 ## IV. Concentration des richesses et des industries
 Problématique de la partie: Comment se concentrent la richesse des milliardaires? 
 
-Q12 - Quels sont les points communs entre les riches dans le monde ?  
+Q12 - Quels sont les points communs entre les riches dans le monde?
+
 Q14 - Comment se répartit la richesse des milliardaires ?
-```{r stats}
+```{r, echo=FALSE}
 q14 <- df %>%
   group_by(industries) %>%
   summarise(
@@ -243,6 +270,183 @@ p14 <- ggplot(q14, aes(x = reorder(industries, richesse_totale), y = richesse_to
 p14
 ```
 Q15 - Quelles sont les différents types d'industrie qui sont les plus représentés ? (intégré Q4 - Est-ce qu’il y a des sources de richesse récurrentes parmi leIndustries/secteurs) 
+
+
+
+
+
+Suite à cette question, nous avons choisi de détailler celle-ci en regardant les sources 
+```{r, echo=FALSE}
+
+#Sélection des secteurs où il y a le plus de milliardaires
+
+economic_sector_top5 <- df %>%
+  filter(!is.na(industries)) %>%
+  mutate(industries = tolower(industries)) %>%
+  count(industries, sort = TRUE) %>%
+  slice_head(n = 5)
+
+#Dictionnaire
+source_dictionary <- c(
+
+  # Retail
+  "retailing" = "retail",
+  "retailer" = "retail",
+
+  # Software
+  "software service" = "software",
+  "business software" = "software",
+  "software company" = "software",
+
+  # Finance
+  "investing" = "investment",
+  "investment firm" = "investment",
+  "private equity" = "investment",
+
+  # Real estate
+  "property" = "real estate",
+  "realestate" = "real estate",
+  "real estate development" = "real estate",
+
+  # Electronics
+  "electronics component" = "electronic component",
+  "semiconductor" = "electronic component",
+
+  # Commerce
+  "ecommerce" = "e commerce",
+  "e commerce" = "e commerce",
+  "online retail" = "e commerce",
+
+  # Convenience stores
+  "convinience store" = "convenience store",
+  
+  #Eyeglasses
+  "eyeglase" = "eyeglasse"
+)
+
+# Fonction de nettoyage 
+
+clean_source <- function(x) {
+
+  x <- tolower(x)
+
+  # suppression accents
+  x <- stringi::stri_trans_general(x, "Latin-ASCII")
+
+  # uniformisation séparateurs
+  x <- str_replace_all(x, "[-_/]", " ")
+
+  # suppression ponctuation
+  x <- str_replace_all(x, "[[:punct:]]", "")
+
+  # espaces multiples
+  x <- str_squish(x)
+
+  # singulier simple
+  x <- str_replace(x, "ies$", "y")
+  x <- str_replace(x, "s$", "")
+
+  x
+}
+
+#Sélection des données
+
+data_top5 <- df %>%
+  filter(
+    !is.na(industries),
+    !is.na(source)
+  ) %>%
+  mutate(
+    industries = tolower(industries),
+    source = clean_source(source)
+  ) %>%
+  semi_join(
+    economic_sector_top5,
+    by = "industries"
+  ) %>%
+  mutate(
+    source = recode(
+      source,
+      !!!source_dictionary,
+      .default = source
+    )
+  )
+
+#Comptages du nombre de sources de richesses
+
+eco_sector_source <- data_top5 %>%
+  count(
+    industries,
+    source,
+    name = "n"
+  )
+
+#regroupement des petites sources pour plus de lisibilité
+
+eco_sector_source <- eco_sector_source %>%
+  group_by(industries) %>%
+  mutate(
+    source = if_else(
+      n < 7,
+      "others",
+      source
+    )
+  ) %>%
+  ungroup() %>%
+  group_by(industries, source) %>%
+  summarise(
+    n = sum(n),
+    .groups = "drop"
+  )
+
+#Mise en pourcentage de chaque part des sources dans le diagramme
+
+eco_sector_source_pct <- eco_sector_source %>%
+  group_by(industries) %>%
+  mutate(
+    total_industry = sum(n),
+    pct = n / total_industry
+  ) %>%
+  ungroup()
+
+# bar chart cumulé
+
+economic_sector_bar_chart_2 <- eco_sector_source_pct %>%
+  mutate(industries = reorder(industries, n, FUN = sum))%>%
+  ggplot(
+  aes(
+    x = industries,
+    y = pct,
+    fill = source
+  )
+) +
+  geom_col() +
+
+  scale_y_continuous(
+    labels =scales::percent
+  ) +
+  geom_text(
+    aes(
+      label = source), 
+    position = position_stack(vjust = 0.5), 
+    colour = "white"
+    ) +
+
+  labs(
+    title = "Sources de richesse des milliardaires",
+    subtitle = "Répartition dans les 5 secteurs les plus représentés",
+    x = "Secteur économique",
+    y = "Part des milliardaires",
+    fill = "Source de richesse"
+  ) +
+
+  theme_minimal(base_size = 7)
+
+economic_sector_bar_chart_2
+
+```
+
+
 Q17 - Quelle est la répartition des milliardaires dans les différentes industries ?
 <details>
 
@@ -257,7 +461,7 @@ On parie plutôt sur la seconde option : la finance, la tech et l'industrie devr
 <details>
 
 <summary> Visualisation <summary>
-```{r stats}
+```{r, echo=FALSE}
 q15 <- df %>%
   count(industries, sort = TRUE) %>%
   head(15)
@@ -297,7 +501,7 @@ Cela justifie l'essor du numérique, et les tendances économiques qui l'accompa
 Problématique de la partie: Quels facteurs économiques ont une influence sur la présence des milliardaires? 
 
 Q2 - Existe-il une corrélation entre la densité des milliardaires par pays et le niveau d'inflation sur l'année 2019 ?
-```{r stats, echo=FALSE}
+```{r, echo=FALSE}
 #Calcul de la densité des milliardaires par pays 
 density <- df %>%
 filter(!is.na(country), !is.na(population_country), !is.na(cpi_change_country)) %>% 
@@ -322,7 +526,7 @@ Q13 - Le taux d’imposition a-t-il une influence sur le nombre de milliardaires
 ## VI. Profil démographique
 Problématique de la partie : Quel serait le profil démorgraphique du milliardaire ?
 Q5 - Y a-t-il un lien entre l'âge et la richesse ?
-```{r stats}
+```{r echo=FALSE}
 age_rich_dt <- df %>% select(finalWorth, age) %>% mutate(finalWorth = finalWorth/1000)
 infla_and_billionaires <- age_rich_dt %>% ggplot(aes(x=age, y=finalWorth)) + 
 geom_point(shape = 10) + 
@@ -375,7 +579,7 @@ Q22 - Quelle est la proportion de femmes et d’hommes parmi les milliardaires e
 ##VII. Questions annexes
 
 Q16 - Dans quel(s) mois sont nés les milliardaires ?
-```{r stat}
+```{r echo=FALSE}
 mois_labels <- c("Jan","Fév","Mar","Avr","Mai","Jun",
                  "Jul","Aoû","Sep","Oct","Nov","Déc")
 
