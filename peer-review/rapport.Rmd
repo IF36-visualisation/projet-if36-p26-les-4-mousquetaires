@@ -199,9 +199,20 @@ p11 <- ggplot(q11, aes(x = reorder(country, par_million), y = par_million)) +
 p11
 ```
 Q25 - Y a-t-il des mouvements de milliardaires entre leur nationalité et leur lieu d'habitation dans le monde ? 
+<details>
+<summary>Question et problème étudié </summary>
+On part du constat que les milliardaires ont la possibilité de bouger et d'habiter des endroits plus favorables au développement de leur business. Cependant, certains ont pu naitre dans des pays peu propices à ce développement. Ainsi, on peut supposer que pour certains profils, il y a une différence entre la nationalité (d'origine, naissance) et leur lieu d'habitation. On propose une vue statique de ces mouvements sur l'année 2023.
+</details>
+
+<details>
+<summary> Visualisation </summary>
 Le diagramme est dans le Shiny app. 
+</details>
 
+<details>
+<summary> Interprétation et réponse </summary>
 
+</details>
 ## II. Concentration des capitaux économique, culturel et social
 
 Problématique de la partie: Quels capitaux favorisent l’émergence ou la pérennité de la fortune des milliardaires?  
