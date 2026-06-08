@@ -22,6 +22,7 @@ library(countrycode)
 library(stringi)
 library(here)
 library(scales)
+library(ggpubr)
 
 df <- read_csv(here("data", "Billionaires_Statistics_Dataset.csv"))
 ```
@@ -536,31 +537,92 @@ Cela justifie l'essor du numérique, et les tendances économiques qui l'accompa
 
 Problématique de la partie: Quels facteurs économiques ont une influence sur la présence des milliardaires? 
 
-Q2 - Existe-il une corrélation entre la densité des milliardaires par pays et le niveau d'inflation sur l'année 2019 ?
+Q2 - Existe-il une corrélation entre la densité des milliardaires par million d'habitants et le niveau d'inflation sur l'année 2019 ?
+
+<details>
+<summary>Question et problème étudié</summary>
+
+
+</details>
+<details>
+<summary> Visualisation </summary>
+
 ```{r, echo=FALSE}
 #Calcul de la densité des milliardaires par pays 
 density <- df %>%
-filter(!is.na(country), !is.na(population_country), !is.na(cpi_change_country)) %>% 
-count(country, population_country, cpi_change_country, sort=TRUE) %>% 
-group_by(country) %>% 
-summarise(nb_billionnaires = n, 
-population = first(population_country), cpi_change_country) %>%
-mutate(density = nb_billionnaires * 100 / population ) %>% 
-arrange(desc(density))
+  filter(
+    !is.na(country
+           ), 
+    !is.na(population_country
+           ), 
+    !is.na(cpi_change_country
+           )
+    ) %>%
+  group_by(country) %>%
+  summarise(
+    nb_billionnaires = n(),
+    population = first(population_country),
+    inflation = first(cpi_change_country),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    density = nb_billionnaires * 1e6 / population
+  )%>%
+  arrange(desc(density))
 
-infla_and_billionaires <- density %>% ggplot(aes(x=cpi_change_country, y=density)) + 
-geom_point(shape = 10) + 
-stat_smooth(method=lm, se = FALSE) + 
-labs(title = "Corrélation entre le niveau d'inflation en 2019 et le nombre de milliardaires par pays",
+infla_and_billionaires <- density %>% 
+  ggplot(
+    aes(
+      x=inflation, 
+      y=density
+      )
+    ) + 
+  geom_point(
+    shape = 10
+    ) + 
+  stat_smooth(
+    method=lm, 
+    se = FALSE
+    ) + 
+  stat_regline_equation(
+    aes(label = after_stat(eq.label)), 
+    label.x = 8,
+    label.y = max(density$density) * 0.95
+  ) +
+labs(title = "Corrélation entre niveau d'inflation en 2019 et nombre de milliardaires par million d'habitants",
        x = "Inflation sur l'année 2019 (%)",
-       y = "Proportion de milliardaires par pays") + 
-       geom_label_repel(aes(label = country), size = 3)
+       y = "Milliardaires par million d'habitants") + 
+       geom_label_repel(
+         aes(
+           label = country
+           ), 
+         size = 3
+         )
+
 infla_and_billionaires
 ```
+```{r echo=FALSE}
+result <- cor.test(
+  density$density,
+  density$inflation
+)
+result
+```
+
+</details>
+
+<details>
+<summary>Interprétation et réponse</summary>
+L'analyse de corrélation de Pearson montre une relation négative faible entre le taux d'inflation et la densité de milliardaires (r=−0,163). Cependant, cette corrélation n'est pas statistiquement significative car p=0,199. L'intervalle de confiance à 95 % de la corrélation inclut zéro [−0,393;0,087]. On ne peut alors,conclure à l'existence d'une relation linéaire entre ces deux variables. Ainsi, le niveau d'inflation observé en 2019 ne semble pas être corrêlé à la densité de milliardaires.
+
+
+</details>
+
+
 Q13 - Le taux d’imposition a-t-il une influence sur le nombre de milliardaires par pays ?
 
 ## VI. Profil démographique
-Problématique de la partie : Quel serait le profil démorgraphique du milliardaire ?
+Problématique de la partie : Quel serait le profil démorgraphique du milliardaire?
 Q5 - Y a-t-il un lien entre l'âge et la richesse ?
 ```{r echo=FALSE}
 age_rich_dt <- df %>% select(finalWorth, age) %>% mutate(finalWorth = finalWorth/1000)
