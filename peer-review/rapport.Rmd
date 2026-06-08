@@ -603,6 +603,8 @@ labs(title = "Corrélation entre niveau d'inflation en 2019 et nombre de milliar
 
 infla_and_billionaires
 ```
+
+
 ```{r echo=FALSE}
 result <- cor.test(
   density$density,
@@ -625,18 +627,56 @@ On peut ajouter des éléments à cette analyse comme la difficulté de délocal
 Q13 - Le taux d’imposition a-t-il une influence sur le nombre de milliardaires par pays ?
 
 ## VI. Profil démographique
-Problématique de la partie : Quel serait le profil démorgraphique du milliardaire?
+
+Problématique de la partie: Quel serait le profil démorgraphique du milliardaire?
+
 Q5 - Y a-t-il un lien entre l'âge et la richesse ?
+
+<details>
+<summary< </summary>
+</details>
+<details>
 ```{r echo=FALSE}
-age_rich_dt <- df %>% select(finalWorth, age) %>% mutate(finalWorth = finalWorth/1000)
-infla_and_billionaires <- age_rich_dt %>% ggplot(aes(x=age, y=finalWorth)) + 
-geom_point(shape = 10) + 
-stat_smooth(method=lm, se = FALSE) + 
+age_rich_dt <- df %>% 
+  select(finalWorth, age) %>% 
+  mutate(finalWorth = finalWorth/1000)
+
+infla_and_billionaires <- age_rich_dt %>% 
+  ggplot(aes(x=age, y=finalWorth)) + 
+  geom_point(shape = 10) + 
+  stat_smooth(method=lm, se = FALSE) + 
+  stat_regline_equation(
+    aes(label = after_stat(eq.label)), 
+    label.x = 8,
+    label.y = max(age_rich_dt$age) * 0.95
+  ) +
 labs(title = "Corrélation entre l'âge et la richesse",
        x = "Age",
        y = "Richesse") 
 infla_and_billionaires
+
+result <- cor.test(
+  age_rich_dt$age,
+  age_rich_dt$finalWorth,
+  method="spearman"
+)
+result
+model_age <- lm(
+  log(finalWorth) ~ age,
+  data = age_rich_dt
+)
+
+summary(model_age)
+
 ```
+</details>
+
+<details>
+<summary> </summary>
+</details>
+
+
+
 Q11 - Quelle est la répartition de l’âge des milliardaires en 2023 ?
 Q20 - Quelle est la génération qui regroupe le plus grand nombre de milliardaires ?
 <details>
