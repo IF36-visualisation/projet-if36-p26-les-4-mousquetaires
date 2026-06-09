@@ -13,6 +13,7 @@ On se demande maintenant si le taux d’imposition sur les entreprises dans un p
 On s’attend à ce que les pays avec des taux d’imposition plus bas attirent davantage de milliardaires, car ils offrent un environnement fiscal plus favorable pour la création et la préservation de la richesse.
 Cependant, il est important de noter que d’autres facteurs, tels que la stabilité politique, les infrastructures, les opportunités économiques et la qualité de vie, peuvent également jouer un rôle crucial dans l’attraction des milliardaires, ce qui pourrait atténuer l’impact du taux d’imposition.
 
+La question est donc de savoir s’il existe une corrélation. De ce fait, le diagramme sera un scatterplot avec le taux d’imposition sur les entreprises en abscisse et le nombre de milliardaires en ordonnée, avec une ligne de tendance pour visualiser la corrélation.
 
 </details>
 

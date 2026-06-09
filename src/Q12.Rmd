@@ -14,6 +14,9 @@ On cherche à comprendre la répartition géographique des milliardaires afin de
 On s’attend à ce que les milliardaires soient fortement concentrés dans les pays les plus riches et économiquement développés, notamment les États-Unis, la Chine, l’Allemagne, la France et le Royaume-Uni. 
 Ces pays offrent des écosystèmes favorables à la création de richesse, avec des marchés financiers matures, des infrastructures solides et des opportunités d’affaires.
 
+Le choix du diagramme se portera sur une carte du monde avec des points représentant les villes où résident les milliardaires, la taille des points étant proportionnelle au nombre de milliardaires dans chaque ville. 
+Cette visualisation permettra de mettre en évidence les zones de forte concentration de milliardaires à travers le monde.
+
 </details>
 
 ## Initialisation des bibliothèques et chargement des données

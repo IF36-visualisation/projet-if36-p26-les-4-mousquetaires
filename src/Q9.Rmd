@@ -15,6 +15,8 @@ L'objectif est de déterminer si les milliardaires qui ont construit leur fortun
 On s'attend à ce que les milliardaires "self-made" soient plus fréquents dans des pays avec un taux d'inscription dans le supérieur plus bas, car cela pourrait indiquer que ces individus ont dû faire preuve de plus de détermination et d'innovation pour réussir sans bénéficier d'une éducation formelle avancée.
 Cependant, il est également possible que certains milliardaires "self-made" proviennent de pays avec un taux d'inscription dans le supérieur élevé, ce qui pourrait indiquer que l'accès à l'éducation n'est pas le seul facteur déterminant pour devenir un milliardaire "self-made".
 
+Le diagramme choisi pour visualiser cette relation sera un scatterplot, avec le taux d'inscription dans le supérieur en abscisse et le nombre de milliardaires "self-made" en ordonnée, permettant ainsi de visualiser toute corrélation potentielle entre ces deux variables.
+
 </details>
 
 ## Initialisation des bibliothèques et chargement des données

@@ -10,9 +10,11 @@ author: "Marco Orfao"
 <details>
 <summary>Question et problème étudié</summary>
 
-On cherche ici à identifier les nationalités les plus représentées parmi les milliardaires, en se basant sur le dataset fourni. L'objectif est de visualiser les 10 nationalités les plus fréquentes à l'aide d'un diagramme en barres horizontales.
+On cherche ici à identifier les nationalités les plus représentées parmi les milliardaires, en se basant sur le dataset fourni.
 On s'attends à ce que les pays avec les nationalités les plus représentées soient des pays ayant une forte densité de population ou une économie développée, comme les États-Unis, la Chine, l'Inde, etc.
 Cependant, il est également possible que certains pays avec une population plus petite mais une forte concentration de richesse soient bien représentés comme la Suisse.
+
+L'objectif est de comparer les 10 nationalités les plus fréquentes, le choix du diagramme se portera sur un bar chart horizontal, avec les nationalités en ordonnée et le nombre de milliardaires en abscisse, permettant ainsi de visualiser clairement les différences entre les nationalités. 
 
 </details>
 

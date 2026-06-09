@@ -14,6 +14,9 @@ On cherche à comprendre la répartition de l'âge des milliardaires en 2023, af
 On s'attends à ce que la majorité des milliardaires soient âgés de 50 à 70 ans, car c'est généralement à cet âge que les individus ont eu suffisamment de temps pour accumuler une grande richesse. 
 Cependant, il est également possible de trouver des milliardaires plus jeunes, notamment dans le secteur de la technologie, où des entrepreneurs peuvent atteindre une grande richesse à un âge relativement jeune.
 
+Le choix du diagramme se portera sur un histogramme de l'âge des milliardaires, avec des barres représentant le nombre de milliardaires dans différentes tranches d'âge (par exemple, 0-20 ans, 21-30 ans, etc.).
+Cette visualisation permettra de mettre en évidence les tranches d'âge les plus représentées parmi les milliardaires en 2023.
+
 </details>
 
 ## Initialisation des bibliothèques et chargement des données
