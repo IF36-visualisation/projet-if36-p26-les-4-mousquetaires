@@ -104,7 +104,6 @@ La représentation répond à la question. L'hypothèse de départ est vérifié
 
 
 Q3 - Comment se répartissent les milliardaires dans les états américains ?
-
 <details>
 
 <summary>Question et problème étudié</summary>
@@ -262,7 +261,7 @@ diagramme <- ggplot(
   ) +
 
   theme_minimal()
-
+diagramme
 ```
 </details>
 
@@ -345,20 +344,20 @@ Q10 - Existe-t-il une corrélation entre la densité de milliardaires pays et le
 <summary>Interprétation et réponse</summary>
 </details>
 
-Q21 - Quelle est la proportion de milliardaires ayant hérité de leur fortune par rapport à ceux l'ayant constituée eux-mêmes ?
-<details>
-<summary>Question et problème étudié</summary>
-</details>
+<!-- Q21 - Quelle est la proportion de milliardaires ayant hérité de leur fortune par rapport à ceux l'ayant constituée eux-mêmes ? -->
+<!-- <details> -->
+<!-- <summary>Question et problème étudié</summary> -->
+<!-- </details> -->
 
-<details>
-<summary>Visualisation</summary>
-</details>
+<!-- <details> -->
+<!-- <summary>Visualisation</summary> -->
+<!-- </details> -->
 
 
 
-<details>
-<summary>Interprétation et réponse</summary>
-</details>
+<!-- <details> -->
+<!-- <summary>Interprétation et réponse</summary> -->
+<!-- </details> -->
 
 Q6 - Quelle est la proportion de milliardaires honorifiés ou titrés ?
 <details>
@@ -433,13 +432,7 @@ diagramme <- ggplot(
 
   theme_minimal()
 
-print(diagramme)
-
-ggsave(
-  "education_scatterplot.png",
-  plot = diagramme, width = 8, height = 6
-)
-
+diagramme
 ```
 </details>
 
@@ -557,20 +550,104 @@ p2
 ## IV. Concentration des richesses et des industries
 Problématique de la partie: Comment se concentrent la richesse des milliardaires? 
 
-Q12 - Quels sont les points communs entre les riches dans le monde?
+<!-- Q12 - Quels sont les points communs entre les riches dans le monde? -->
+<!-- <details> -->
+<!-- <summary>Question et problème étudié</summary> -->
+<!-- </details> -->
+
+<!-- <details> -->
+<!-- <summary>Visualisation</summary> -->
+<!-- </details> -->
+
+<!-- <details> -->
+<!-- <summaryInterprétation et réponse</summary> -->
+<!-- </details> -->
+
+Q14 - Comment se répartit la richesse des milliardaires ?
+
 <details>
 <summary>Question et problème étudié</summary>
 </details>
 
 <details>
 <summary>Visualisation</summary>
+```{r echo=FALSE}
+# Attribution d'un numéro différent tous les 660 données (2640/4) pour faire une répartition en quartile
+num_quartile <-c("Q4", "Q3", "Q2", "Q1" )
+dt_quart <- df %>% select(finalWorth) %>% mutate(quartile = rep(num_quartile, each = 660, length.out = n())) %>% mutate(finalWorth = finalWorth/1000)
+
+# Box plot pour tester la répartition
+distr_rich_quart_plot <- dt_quart %>% ggplot(aes(x=factor(quartile), y=finalWorth)) +
+geom_boxplot() +
+  labs(title ="Distribution de la richesse des milliardaires en quartiles",
+       x="Quartile",
+       y="Milliards") 
+distr_rich_quart_plot
+```
+```{r}
+# Attribution d'un numéro différent tous les 264 données (2640/10) pour faire une répartition en centile
+num_centile <-c("C10", "C09", "C08", "C07","C06", "C05","C04", "C03", "C02", "C01")
+dt_centile<- df %>% select(finalWorth) %>% mutate(centile = rep(num_centile, each = 2640/10, length.out = n())) %>%
+  mutate(finalWorth = finalWorth/1000)
+
+#Box plot pour voir la répartition
+
+distr_rich_cent_plot <- dt_centile %>% ggplot(aes(x=factor(centile), y=finalWorth)) +
+geom_boxplot()+
+  labs(title ="Distribution de la richesse des milliardaires en centile",
+       x="Centile",
+       y="Milliards")
+distr_rich_cent_plot
+
+```
+```{r}
+#On va enlever le dernier centile pour bien voir la répartition des milliardaires afin de vérifier s'il n'y a pas des choses que nous empêche de voir le dernier centile
+new_dt_centile <- dt_centile %>%filter(centile !="C10") %>% mutate(centile = rep(num_centile, each = 2376/10, length.out = n()))
+
+new_distr_rich_cent_plot <- new_dt_centile %>% ggplot(aes(x=factor(centile), y=finalWorth)) +
+geom_boxplot()+
+  labs(title ="Distribution de la richesse des milliardaires en centile, excluant les 10% les plus riches",
+       x="Centile",
+       y="Milliards")
+new_distr_rich_cent_plot
+```
+
+```{r}
+#On va regarder la distribution des 10% les plus riches en les repartissant en centile
+top_ten_dt <- dt_centile %>%filter(centile =="C10") %>% mutate(centile = rep(num_centile, each = 264/10, length.out = n()))
+
+top_ten_cent_plot <- top_ten_dt %>% ggplot(aes(x=factor(centile), y=finalWorth)) +
+geom_boxplot()+
+  labs(title ="Distribution de la richesse des 10% des milliardaires les plus riches en centile",
+       x="Centile",
+       y="Milliards")
+top_ten_cent_plot
+
+```
+
+```{r}
+#On va regarder la distribution des 10% les plus riches en les repartissant en quantile
+top_ten_quart_dt <- dt_centile %>%filter(centile =="C10") %>% mutate(centile = rep(num_quartile, each = 264/4, length.out = n())) 
+
+top_ten_quart_plot <- top_ten_quart_dt %>% ggplot(aes(x=factor(centile), y=finalWorth)) +
+geom_boxplot()+
+  labs(title ="Distribution de la richesse des 10% des milliardaires les plus riches en quartile",
+       x="Quartile",
+       y="Milliards")
+top_ten_quart_plot
+```
 </details>
+
+
 
 <details>
-<summaryInterprétation et réponse</summary>
+<summary>Interprétation et réponse</summary>
+
 </details>
 
-Q14 - Comment se répartit la richesse des milliardaires ?
+
+
+Q15 - Quelles sont les différents types d'industrie qui sont les plus représentés ? (intégré Q4 - Est-ce qu’il y a des sources de richesse récurrentes parmi leIndustries/secteurs) 
 <details>
 <summary>Question et problème étudié</summary>
 </details>
@@ -602,30 +679,6 @@ p14
 ```
 
 </details>
-
-
-
-<details>
-<summary>Interprétation et réponse</summary>
-</details>
-
-Q15 - Quelles sont les différents types d'industrie qui sont les plus représentés ? (intégré Q4 - Est-ce qu’il y a des sources de richesse récurrentes parmi leIndustries/secteurs) 
-<details>
-<summary>Question et problème étudié</summary>
-</details>
-
-<details>
-<summary>Visualisation</summary>
-</details>
-
-
-
-<details>
-<summary>Interprétation et réponse</summary>
-</details>
-
-
-
 
 Suite à cette question, nous avons choisi de détailler celle-ci en regardant les sources de la fortune des milliardaires. Dans "sources", on trouve soit le nom d'une entreprise pour les plus connues ou le secteur précis.
 
@@ -1012,12 +1065,6 @@ diagramme <- ggplot(pays_stats,
 
 diagramme
 
-ggsave(
-  "tax_vs_billionaires.png",
-  diagramme,
-  width = 10,
-  height = 6
-)
 ```
 </details>
 <details>
@@ -1124,6 +1171,7 @@ diagramme <- ggplot(
   ) +
 
   theme_minimal()
+diagramme
 ```
 </details>
 
