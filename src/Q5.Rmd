@@ -1,1 +1,89 @@
-#
+
+---
+title: "Nationalités les plus représentées parmi les milliardaires"
+author: "Marco Orfao"
+---
+
+# Nationalités les plus représentées parmi les milliardaires
+
+
+<details>
+<summary>Question et problème étudié</summary>
+
+On cherche ici à identifier les nationalités les plus représentées parmi les milliardaires, en se basant sur le dataset fourni. L'objectif est de visualiser les 10 nationalités les plus fréquentes à l'aide d'un diagramme en barres horizontales.
+On s'attends à ce que les pays avec les nationalités les plus représentées soient des pays ayant une forte densité de population ou une économie développée, comme les États-Unis, la Chine, l'Inde, etc.
+Cependant, il est également possible que certains pays avec une population plus petite mais une forte concentration de richesse soient bien représentés comme la Suisse.
+
+</details>
+
+## Initialisation des bibliothèques et chargement des données
+
+```{r}
+
+# Chargement des bibliothèques principales
+library(ggplot2)
+library(tidyverse)
+
+# Chargement du dataset
+dataset <- read.csv("./data/Billionaires_Statistics_Dataset.csv")
+
+```
+
+## Préparation des données (filtres)
+
+
+```{r}
+# Comptage par nationalité
+nationalites <- dataset %>%
+  filter(!is.na(countryOfCitizenship),
+         countryOfCitizenship != "") %>%
+  count(countryOfCitizenship, sort = TRUE)
+
+# Top 10 nationalités
+top10 <- nationalites %>%
+  slice(1:10)
+```
+
+
+## Paramétrage du diagramme et sauvegarde de l'image
+
+```{r}
+diagramme <- ggplot(
+  top10,
+  aes(
+    x = reorder(countryOfCitizenship, n),
+    y = n
+  )
+) +
+
+  geom_col(fill = "darkblue") +
+
+  coord_flip() +
+
+  labs(
+    title = "Top 10 des nationalités les plus représentées parmi les milliardaires",
+    x = "Nationalité",
+    y = "Nombre de milliardaires"
+  ) +
+
+  theme_minimal()
+
+ggsave(
+  "top10_nationalites.png",
+  diagramme,
+  width = 10,
+  height = 6
+)
+```
+
+
+<details>
+<summary>Interprétation et réponse</summary>
+
+La densité de population semble avoir une bien plus grosse influence que la richesse d'un pays sur le nombre de milliardaires qu'il compte. 
+En effet, les États-Unis, la Chine et l'Inde sont les trois pays les plus représentés, alors que des pays comme la Suisse ou le Luxembourg, qui ont une forte concentration de richesse, ne figurent pas dans le top 10.
+Cependant, les Etats-Unis, qui ont une population d'environ 330 millions d'habitants, sont largement en tête avec plus de 700 milliardaires, ce qui est bien plus que la Chine (environ 1,4 milliard d'habitants) et l'Inde (environ 1,3 milliard d'habitants).
+Cela suggère que la taille de la population est un facteur clé dans le nombre de milliardaires mais que d'autres facteurs semblent également jouer un rôle, comme la culture entrepreneuriale, les opportunités économiques, et les politiques fiscales.
+Si ce n'étais pas le cas, on s'attendrait du top 3 d'être composé de la chine ou l'inde en numéro 1 et 2, et les états-unis en numéro 3, ce qui n'est pas le cas.
+
+</details>

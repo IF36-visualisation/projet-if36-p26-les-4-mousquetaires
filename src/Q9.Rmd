@@ -1,1 +1,95 @@
-#
+
+---
+title: "Est-ce que les milliardaires dont le statut est “self-made” viennent-ils d’un pays dont le taux d’inscription dans le supérieur est bas ?"
+author: "Marco Orfao"
+---
+
+# Est-ce que les milliardaires dont le statut est “self-made” viennent-ils d’un pays dont le taux d’inscription dans le supérieur est bas ?
+
+
+<details>
+<summary>Question et problème étudié</summary>
+
+On cherche à analyser la relation entre le statut de "self-made" des milliardaires et le taux d'inscription dans l'enseignement supérieur de leur pays d'origine. 
+L'objectif est de déterminer si les milliardaires qui ont construit leur fortune par eux-mêmes proviennent majoritairement de pays où l'accès à l'enseignement supérieur est limité, ce qui pourrait suggérer que ces individus ont dû surmonter des obstacles éducatifs pour réussir.
+On s'attend à ce que les milliardaires "self-made" soient plus fréquents dans des pays avec un taux d'inscription dans le supérieur plus bas, car cela pourrait indiquer que ces individus ont dû faire preuve de plus de détermination et d'innovation pour réussir sans bénéficier d'une éducation formelle avancée.
+Cependant, il est également possible que certains milliardaires "self-made" proviennent de pays avec un taux d'inscription dans le supérieur élevé, ce qui pourrait indiquer que l'accès à l'éducation n'est pas le seul facteur déterminant pour devenir un milliardaire "self-made".
+
+</details>
+
+## Initialisation des bibliothèques et chargement des données
+
+```{r}
+
+# Chargement des bibliothèques principales
+library(ggplot2)
+library(tidyverse)
+
+# Chargement du dataset
+dataset <- read.csv("./data/Billionaires_Statistics_Dataset.csv")
+
+```
+
+## Préparation des données (filtres)
+
+
+```{r}
+
+pays <- billionaires %>%
+  filter(
+    !is.na(country),
+    !is.na(gross_tertiary_education_enrollment)
+  ) %>%
+  group_by(country) %>%
+  summarise(
+    taux_superieur = first(gross_tertiary_education_enrollment),
+    proportion_selfmade = mean(selfMade)
+  )
+
+```
+
+
+## Paramétrage du diagramme et sauvegarde de l'image
+
+```{r}
+
+diagramme <- ggplot(
+  pays,
+  aes(
+    x = taux_superieur,
+    y = proportion_selfmade * 100
+  )
+) +
+
+  geom_point(color = "darkblue") +
+
+  geom_smooth(
+    method = "lm",
+    color = "red"
+  ) +
+
+  labs(
+    title = "Part des milliardaires self-made et accès à l'enseignement supérieur",
+    x = "Taux d'inscription dans le supérieur (%)",
+    y = "Part de self-made (%)"
+  ) +
+
+  theme_minimal()
+
+print(diagramme)
+
+ggsave(
+  "education_scatterplot.png",
+  plot = diagramme, width = 8, height = 6
+)
+
+```
+
+
+<details>
+<summary>Interprétation et réponse</summary>
+
+Finalement, on observe une légère tendance à ce que les pays avec un taux d'inscription dans le supérieur plus bas aient une proportion légèrement plus élevée de milliardaires "self-made". 
+Cependant, la corrélation n'est pas très forte, ce qui suggère que d'autres facteurs, tels que l'environnement économique, les opportunités d'affaires et les politiques gouvernementales, peuvent également jouer un rôle important dans la réussite des milliardaires "self-made".
+
+</details>

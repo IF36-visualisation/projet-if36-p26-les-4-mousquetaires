@@ -1,1 +1,77 @@
-##
+
+---
+title: "Répartition de l'âge des milliardaires en 2023"
+author: "Marco Orfao"
+---
+
+# Répartition de l'âge des milliardaires en 2023
+
+
+<details>
+<summary>Question et problème étudié</summary>
+
+On cherche à comprendre la répartition de l'âge des milliardaires en 2023, afin de voir si elle est concentrée dans certaines tranches d'âge ou si elle est plus uniformément répartie.
+On s'attends à ce que la majorité des milliardaires soient âgés de 50 à 70 ans, car c'est généralement à cet âge que les individus ont eu suffisamment de temps pour accumuler une grande richesse. 
+Cependant, il est également possible de trouver des milliardaires plus jeunes, notamment dans le secteur de la technologie, où des entrepreneurs peuvent atteindre une grande richesse à un âge relativement jeune.
+
+</details>
+
+## Initialisation des bibliothèques et chargement des données
+
+```{r}
+
+# Chargement des bibliothèques principales
+library(ggplot2)
+library(tidyverse)
+
+# Chargement du dataset
+dataset <- read.csv("./data/Billionaires_Statistics_Dataset.csv")
+
+```
+
+## Préparation des données (filtres)
+
+
+```{r}
+# Suppression des âges manquants
+ages <- dataset %>%
+  filter(!is.na(age))
+```
+
+
+## Paramétrage du diagramme et sauvegarde de l'image
+
+```{r}
+diagramme <- ggplot(
+  ages,
+  aes(x = age)
+) +
+
+  geom_histogram(
+    binwidth = 1,
+    fill = "darkblue",
+    color = "white"
+  ) +
+
+  labs(
+    title = "Répartition de l'âge des milliardaires en 2023",
+    x = "Âge",
+    y = "Nombre de milliardaires"
+  ) +
+
+  theme_minimal()
+
+ggsave(
+  "age_histogram.png",
+  plot = diagramme, width = 8, height = 6
+)
+```
+
+
+<details>
+<summary>Interprétation et réponse</summary>
+
+Comme nous le pensions, la majorité des milliardaires étaient âgés d'environ 48 à 83 ans, avec une concentration plus forte entre 50 et 70 ans.
+Cependant, on observe aussi une présence significative de milliardaires plus jeunes, notamment dans la tranche d'âge de 30 à 40 ans, ce qui peut être attribué à la montée en puissance du secteur de la technologie et à l'émergence de jeunes entrepreneurs qui ont réussi à accumuler une grande richesse rapidement.
+
+</details>
