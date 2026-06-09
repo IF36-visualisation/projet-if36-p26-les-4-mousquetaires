@@ -190,6 +190,12 @@ Q9 - Quelle est la nationalité la plus représentée parmi les milliardaires ?
 </details>
 
 Q19 - Quel est le nombre de milliardaires par habitant dans chaque pays ?
+<details>
+<summary>Question et problème étudié</summary>
+</details>
+
+<details>
+<summary>Visualisation</summary>
 ```{r, echo=FALSE}
 q11 <- df %>%
   group_by(country, population_country) %>%
@@ -211,6 +217,16 @@ p11 <- ggplot(q11, aes(x = reorder(country, par_million), y = par_million)) +
   theme_minimal(base_size = 13)
 p11
 ```
+
+
+</details>
+
+
+
+<details>
+<summaryInterprétation et réponse</summary>
+</details>
+
 Q25 - Y a-t-il des mouvements de milliardaires entre leur nationalité et leur lieu d'habitation dans le monde ? 
 <details>
 <summary>Question et problème étudié </summary>
@@ -316,13 +332,6 @@ Q23 - Les hommes milliardaires sont-ils plus souvent self-made que les femmes ?
 
 <details>
 <summary>Visualisation</summary>
-</details>
-
-
-
-<details>
-<summaryInterprétation et réponse</summary>
-</details>
 ```{r, echo=FALSE}
 q20 <- df %>%
   filter(!is.na(selfMade), !is.na(age), !is.na(gender)) %>%
@@ -344,6 +353,14 @@ p20 <- ggplot(q20, aes(x = age, y = finalWorth / 1e3, color = selfMade)) +
   theme(legend.position = "bottom")
 p20
 ```
+</details>
+
+
+
+<details>
+<summaryInterprétation et réponse</summary>
+</details>
+
 ## IV. Concentration des richesses et des industries
 Problématique de la partie: Comment se concentrent la richesse des milliardaires? 
 
@@ -369,13 +386,6 @@ Q14 - Comment se répartit la richesse des milliardaires ?
 
 <details>
 <summary>Visualisation</summary>
-</details>
-
-
-
-<details>
-<summaryInterprétation et réponse</summary>
-</details>
 ```{r, echo=FALSE}
 q14 <- df %>%
   group_by(industries) %>%
@@ -399,6 +409,15 @@ p14 <- ggplot(q14, aes(x = reorder(industries, richesse_totale), y = richesse_to
   theme_minimal(base_size = 13)
 p14
 ```
+
+</details>
+
+
+
+<details>
+<summaryInterprétation et réponse</summary>
+</details>
+
 Q15 - Quelles sont les différents types d'industrie qui sont les plus représentés ? (intégré Q4 - Est-ce qu’il y a des sources de richesse récurrentes parmi leIndustries/secteurs) 
 <details>
 <summary>Question et problème étudié</summary>
@@ -643,6 +662,7 @@ p15 <- ggplot(q15, aes(x = reorder(industries, n), y = n)) +
   theme_minimal(base_size = 13)
 p15
 ```
+
 Un diagramme en barres horizontales du Top 15 des industries, trié du plus grand au plus petit. Les barres horizontales permettent de lire plus facilement les noms, et la longueur reste le meilleur canal pour comparer des effectifs d'un coup d'œil.
 </details>
 
@@ -657,9 +677,6 @@ Sans surprise, c'est très inégal. Finance & Investments, Manufacturing et Tech
 Cela justifie l'essor du numérique, et les tendances économiques qui l'accompagne. 
 
 </details>
-
-
-
 
 ## V. Indicateurs de santé économique
 
@@ -894,13 +911,7 @@ Q16 - Dans quel(s) mois sont nés les milliardaires ?
 
 <details>
 <summary>Visualisation</summary>
-</details>
 
-
-
-<details>
-<summaryInterprétation et réponse</summary>
-</details>
 ```{r echo=FALSE}
 mois_labels <- c("Jan","Fév","Mar","Avr","Mai","Jun",
                  "Jul","Aoû","Sep","Oct","Nov","Déc")
@@ -924,6 +935,14 @@ p16 <- ggplot(q16, aes(x = mois, y = n)) +
   theme_minimal(base_size = 13)
 p16
 ```
+</details>
+
+
+
+<details>
+<summaryInterprétation et réponse</summary>
+</details>
+
 
 
 
