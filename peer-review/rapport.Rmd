@@ -75,7 +75,7 @@ Problématique de la partie: Où se concentrent les milliardaires dans le monde?
 
 ### 1. Lieux d'habitation des milliardaires
 
-Q8 - Où sont répartis les milliardaires dans le monde ?
+#### a. Où sont répartis les milliardaires dans le monde ?
 <details>
 <summary>Question et problème étudié</summary>
 
@@ -138,16 +138,20 @@ diagramme
 <summary>Interprétation et réponse</summary>
 
 Les données confirment globalement nos hypothèses. En majorité, on retrouve les milliardaires dans les pays les plus riches et économiquement développés, que ce soit aux États-Unis, en Chine et en Europe de l’Ouest.
-Cependant, on observe aussi des concentrations significatives dans des pays émergents comme l’Inde, qui a vu une croissance économique rapide ces dernières années, créant ainsi de nouvelles opportunités pour la création de richesse. 
+Cependant, on observe aussi des concentrations significatives dans des pays émergents comme l’Inde, qui a vu une croissance économique rapide ces dernières années, créant ainsi de nouvelles opportunités pour la création et la concentration de richesses. 
 </details>
 
-Q1 - Quelles villes comptent le plus de milliardaires ?
+Ensuite, nous avons choisi d'affiner notre analyse pour regarder dans quelles villes il y a le plus de milliardaires, qui confirmera et affinera notre analyse sur la répartition géographique des milliardaires. 
+
+#### b. Les villes peuplées de milliardaires 
+
 <details>
-
 <summary>Question et problème étudié</summary>
-L'objectif est de voir où vivent les milliardaires. On suppose qu'ils vivent dans des mégalopoles dans l'hémisphère Nord où il y a des opportunités économiques intéressantes. On peut penser à new York, Los Angeles, Hong Kong, Londres mais aussi des villes en Chine et d'autres réprésentatives de certains industries iconiques.
+
+L'objectif est de voir où vivent les milliardaires. On suppose qu'ils vivent dans des mégalopoles dans l'hémisphère Nord où il y a des opportunités économiques intéressantes. On peut penser à New York, Los Angeles, Hong Kong, Londres mais aussi des villes en Chine et des villes de pays émergents.
 
 </details>
+
 <details>
 
 <summary>Visualisation</summary>
@@ -162,21 +166,21 @@ data_cities <- ggplot(cities_top_20, aes(x=reorder(city,n), y=n)) + geom_col() +
        y = "Nombre de milliardaires")
 data_cities
 ```
-Mon choix s'est porté sur un diagramme à barre qui est bien pour montrer une répartition. J'ai choisi de montrer les 20 villes concentrant le plus de milliardaires pour soucis de lisibilité et de pertinence. 
+Mon choix s'est porté sur un diagramme à barre qui est fait pour montrer une répartition. J'ai choisi de montrer les 20 villes concentrant le plus de milliardaires par soucis, de lisibilité et de pertinence. 
 </details>
 
 <details>
 <summary>Interprétation et réponse</summary>
-La représentation répond à la question. L'hypothèse de départ est vérifiée. New York est en tête de loin et cela peut s'expliquer car la ville concentre énormément d'industries et donc d'opportunités.
+ L'hypothèse de départ est vérifiée. New York est en tête de loin et cela peut s'expliquer car la ville concentre énormément d'industries et donc d'opportunités mais elle est aussi extrêmement peuplée. La présence de ces villes, qui dépassent, pour la plupart sauf San Francisco, le million d'habitants, s'expliquent par la présence d'industries, de main d'œuvres et d'un tissu économique favorable au développement de la richesse des milliardaires. Comme elles ont attirés des milliardaires qui ont favorisé leur développement, elles attirent les nouveaux et cela donne une concentration de richesses importante. 
 </details>
-
-#### 1.1 Focus US
+Nous avons fait le choix de regarder où se concentrent les milliardaires américains car plusieurs villes se retrouvent dans le Top ci-dessus et que les États-Unis sont assez visibles sur la carte du a .
+#### c. Focus US
 Q3 - Comment se répartissent les milliardaires dans les états américains ?
 <details>
 
 <summary>Question et problème étudié</summary>
 
-Les États-Unis sont un grand pays qui concentrent des milliardaires. Cependant, la répartition de la population dans ce pays est inégale donc on suppose que les milliardaires se concentrent dans les grandes villes qui sont dans les états qui concentrent la population (Californie, New York, ...). Les états ruraux comptent pas ou peu de milliardaires en comparaison (Wyoming, ...). L'objectif de cette data visualisation est de vérifier cette hypothèse.
+Les États-Unis sont un grand pays qui concentrent des milliardaires. Cependant, la répartition de la population dans ce pays est inégale donc on suppose que les milliardaires se concentrent dans les grandes villes qui sont dans les États qui concentrent la population (Californie, New York, ...). Les états ruraux comptent pas ou peu de milliardaires en comparaison (Wyoming, ...). L'objectif de cette data visualisation est de vérifier cette hypothèse.
 
 </details>
 
@@ -208,15 +212,16 @@ On a choisi de représenter cela avec une carte pour rendre cela visuel, pour av
 
 <details>
 <summary>Interprétation et réponse</summary>
-Les états les plus peuplés concentrent le plus de milliardaires : Californie, Texas, Floride et New York. Ce sont les états qui concentrent des villes importantes : Los Angeles, New York, Austin, Dallas, Miami, ... D'autant plus que la Silicon Valley, épicentre des entreprises de la tech américains, se trouvent en Californie, ce qui explique qu'elle compte plus de 150 milliardaires. 
+Les états les plus peuplés concentrent le plus de milliardaires : Californie, Texas, Floride et New York. Ce sont les États qui concentrent des villes importantes : Los Angeles, New York, Austin, Dallas, Miami, ... D'autant plus que la Silicon Valley, épicentre des entreprises de la tech américains, se trouvent en Californie, ce qui explique qu'elle compte plus de 150 milliardaires. 
 Sans surprise, les autres états comptent entre 0 et 50 milliardaires. 
-La visualisation répond à la question. 
 
 </details>
 
+Ainsi, numériquement, les riches se trouvent dans les pays occidentaux, économiquement développés, mais aussi dans les pays émergents (BRICS) dans les mégalopoles qui sont déjà des centres de concentration de richesses et d'opportunités. Le focus sur les États-Unis montrent qu'en effet, il y a peu voir quasiment pas de milliardaires en milieu rural. On peut supposer que cela s'étend au monde. Cependant, il faudrait savoir si ces pays "produisent" des milliardaires. On peut regarder les nationalités des milliardaires
+
 ### 2. Origine et mouvements des milliardaires
 
-Q9 - Quelle est la nationalité la plus représentée parmi les milliardaires ?
+####a. Nationalité
 <details>
 <summary>Question et problème étudié</summary>
 
@@ -270,12 +275,15 @@ diagramme
 <summary>Interprétation et réponse</summary>
 
 La densité de population semble avoir une bien plus grosse influence que la richesse d'un pays sur le nombre de milliardaires qu'il compte. 
-En effet, les États-Unis, la Chine et l'Inde sont les trois pays les plus représentés, alors que des pays comme la Suisse ou le Luxembourg, qui ont une forte concentration de richesse, ne figurent pas dans le top 10.
+En effet, les États-Unis, la Chine et l'Inde sont les trois pays les plus représentés, alors que des pays comme la Suisse ou le Luxembourg, qui ont une forte concentration de richesses, ne figurent pas dans le top 10.
 Cependant, les Etats-Unis, qui ont une population d'environ 330 millions d'habitants, sont largement en tête avec plus de 700 milliardaires, ce qui est bien plus que la Chine (environ 1,4 milliard d'habitants) et l'Inde (environ 1,3 milliard d'habitants).
-Cela suggère que la taille de la population est un facteur clé dans le nombre de milliardaires mais que d'autres facteurs semblent également jouer un rôle, comme la culture entrepreneuriale, les opportunités économiques, et les politiques fiscales.
-Si ce n'étais pas le cas, on s'attendrait du top 3 d'être composé de la chine ou l'inde en numéro 1 et 2, et les états-unis en numéro 3, ce qui n'est pas le cas.
+Cela suggère que la taille de la population est un facteur clé dans le nombre de milliardaires mais que d'autres facteurs semblent également jouer un rôle, comme la culture entrepreneuriale, les opportunités économiques, les politiques de naturalisation et les politiques fiscales.
+Si ce n'était pas le cas, on s'attendrait à ce que le top 3 soit composé de la Chine ou l'Inde en numéro 1 et 2, et les États-Unis en numéro 3, ce qui n'est pas le cas.
 
 </details>
+
+Pour expliquer la dynamique des lieux d'habitations et des nationalités les plus représentés, on peut regarder s'il n'y a pas de mouvements de milliardaires, c'est-à-dire, que certains sont nés dans des pays peu développés et qu'ils ont bougés dans d'autres lieux. De ce fait, on confirme que la présence de milliardaires entraine leur concentration.  
+
 Q25 - Y a-t-il des mouvements de milliardaires entre leur nationalité et leur lieu d'habitation dans le monde ? 
 <details>
 <summary>Question et problème étudié </summary>
@@ -290,8 +298,9 @@ Le diagramme est dans le Shiny app.
 <details>
 <summary> Interprétation et réponse </summary>
 
-</details>
 
+</details>
+On constate que les pays et les villes comptant le plus de milliardaires sont aussi ceux avec le plus de ressortissants milliardaires. Ces aires géographiques attirent les milliardaires des pays moins développés. Toutefois, nous avons travaillés sur des chiffres brutes ce qui peut orienter nos interprétations. 
 
 ### 3. Concentration des milliardaires
 Q19 - Quel est le nombre de milliardaires par millions d'habitant par pays ?
@@ -327,7 +336,9 @@ p11
 <details>
 <summary>Interprétation et réponse</summary>
 </details>
+Bien que les États-Unis apparaissent toujours, la Chine et l'Inde qui sont top 2 et 3 en nombre brute n'apparaissent pas au regard de leur population. Le graphique ci-dessus réaffirme la concentration des milliardaires dans les pays de l'Ouest à deux exceptions près (Singapore et UAE). 
 
+Pour conclure, les milliardaires sont répartis dans les pays de l'Ouest et dans les BRICS, idem pour les nationalités, mais ils sont concentrés dans les pays développés, notamment les paradis fiscaux. Les 
 
 <!-- ## II. Concentration des capitaux économique, culturel et social -->
 
