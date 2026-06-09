@@ -33,7 +33,7 @@ library(rnaturalearth)
 world <- ne_countries(scale = "medium", returnclass = "sf")
 
 # Chargement du dataset
-dataset <- read.csv("./data/Billionaires_Statistics_Dataset.csv")
+dataset <- read_csv("./data/Billionaires_Statistics_Dataset.csv")
 
 ```
 
