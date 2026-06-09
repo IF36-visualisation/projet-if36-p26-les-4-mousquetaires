@@ -232,7 +232,7 @@ L'objectif est de comparer les 10 nationalités les plus fréquentes, le choix d
 
 ```{r echo=FALSE}
 # Comptage par nationalité
-nationalites <- dataset %>%
+nationalites <- df %>%
   filter(!is.na(countryOfCitizenship),
          countryOfCitizenship != "") %>%
   count(countryOfCitizenship, sort = TRUE)
@@ -395,7 +395,7 @@ Le diagramme choisi pour visualiser cette relation sera un scatterplot, avec le 
 
 ```{r}
 
-pays <- billionaires %>%
+pays <- df %>%
   filter(
     !is.na(country),
     !is.na(gross_tertiary_education_enrollment)
@@ -481,8 +481,6 @@ p20
 ```
 </details>
 
-
-
 <details>
 <summary>Interprétation et réponse</summary>
 </details>
@@ -495,6 +493,18 @@ Q23 - Les hommes milliardaires sont-ils plus souvent self-made que les femmes ?
 <details>
 <summary>Visualisation</summary>
 ```{r echo=FALSE}
+df_clean <- df %>%
+  filter(!is.na(gender), !is.na(selfMade)) %>%
+  mutate(
+    Genre    = if_else(gender == "M", "Homme", "Femme"),
+    SelfMade = if_else(selfMade == TRUE, "Self-made", "Hérité / Autre")
+  )
+col_selfmade <- c("Self-made"     = "#2C6E9B",
+                  "Hérité / Autre" = "#E07B39")
+
+col_genre    <- c("Homme" = "#2C6E9B",
+                  "Femme" = "#E07B39")
+
 selfmade_by_genre <- df_clean %>%
   count(Genre, SelfMade) %>%
   group_by(Genre) %>%
@@ -535,23 +545,10 @@ p2 <- ggplot(selfmade_by_genre,
     panel.grid.major.x = element_blank(),
     panel.grid.minor  = element_blank()
   )
-
-# Diagramme 
-
-final_plot <- (p1 / p2) +
-  plot_annotation(
-    title   = "Genre et richesse chez les milliardaires en 2023",
-    theme   = theme(
-      plot.title   = element_text(face = "bold", size = 16, hjust = 0.5),
-      plot.caption = element_text(colour = "grey55", size = 9)
-    )
-  ) +
-  plot_layout(heights = c(1, 2.5))
-final_plot
+p2
 ```
 
 </details>
-
 
 <details>
 <summary>Interprétation et réponse</summary>
@@ -568,8 +565,6 @@ Q12 - Quels sont les points communs entre les riches dans le monde?
 <details>
 <summary>Visualisation</summary>
 </details>
-
-
 
 <details>
 <summaryInterprétation et réponse</summary>
@@ -976,11 +971,12 @@ Cependant, il est important de noter que d’autres facteurs, tels que la stabil
 La question est donc de savoir s’il existe une corrélation. De ce fait, le diagramme sera un scatterplot avec le taux d’imposition sur les entreprises en abscisse et le nombre de milliardaires en ordonnée, avec une ligne de tendance pour visualiser la corrélation.
 
 </details>
-
+<details>
+<summary> Visualisation </summary>
 
 ```{r}
 # Agrégation par pays
-pays_stats <- dataset %>%
+pays_stats <- df %>%
   filter(
     !is.na(country),
     !is.na(total_tax_rate_country)
@@ -1023,7 +1019,7 @@ ggsave(
   height = 6
 )
 ```
-
+</details>
 <details>
 <summary>Interprétation et réponse</summary>
 
@@ -1104,7 +1100,7 @@ Cette visualisation permettra de mettre en évidence les tranches d'âge les plu
 
 ```{r}
 # Suppression des âges manquants
-ages <- dataset %>%
+ages <- df %>%
   filter(!is.na(age))
 
 
@@ -1159,7 +1155,7 @@ Un diagramme en barres verticales présente le nombre et le pourcentage de milli
 
 ```{r}
 # Définition des générations selon birthYear
-billionaires_gen <- billionaires %>%
+billionaires_gen <- df %>%
   filter(!is.na(birthYear)) %>%
   mutate(generation = case_when(
     birthYear >= 1997 & birthYear <= 2012 ~ "Génération Z\n(1997–2012)",
