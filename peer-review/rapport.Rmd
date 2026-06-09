@@ -23,7 +23,9 @@ library(countrycode)
 library(stringi)
 library(here)
 library(scales)
+library(patchwork)
 library(ggpubr)
+library(forcats)
 
 df <- read_csv(here("data", "Billionaires_Statistics_Dataset.csv"))
 ```
@@ -155,14 +157,14 @@ On s’attend à ce que les milliardaires soient fortement concentrés dans les 
 Ces pays offrent des écosystèmes favorables à la création de richesse, avec des marchés financiers matures, des infrastructures solides et des opportunités d’affaires.
 opportunités d’affaires.
 
+Le choix du diagramme se portera sur une carte du monde avec des points représentant les villes où résident les milliardaires, la taille des points étant proportionnelle au nombre de milliardaires dans chaque ville. 
+Cette visualisation permettra de mettre en évidence les zones de forte concentration de milliardaires à travers le monde.
+
+
 </details>
 
 <details>
 <summary>Visualisation</summary>
-
-Pour cette analyse, il est pertinent d’utiliser une carte du monde avec des cercles proportionnels à la concentration de milliardaires dans chaque ville. 
-Cela permet de visualiser rapidement les zones de forte concentration et de comparer les pays entre eux.
-![Diagramme de la question 8 (Marco)](../assets/q8_repartition_riches_monde.png)
 
 ```{r stats, eval=FALSE, include=FALSE}
 # Filtrage des données pour ne conserver que les villes et pays valides
@@ -217,16 +219,62 @@ Cependant, on observe aussi des concentrations significatives dans des pays éme
 Q9 - Quelle est la nationalité la plus représentée parmi les milliardaires ?
 <details>
 <summary>Question et problème étudié</summary>
-</details>
 
+On cherche ici à identifier les nationalités les plus représentées parmi les milliardaires, en se basant sur le dataset fourni.
+On s'attends à ce que les pays avec les nationalités les plus représentées soient des pays ayant une forte densité de population ou une économie développée, comme les États-Unis, la Chine, l'Inde, etc.
+Cependant, il est également possible que certains pays avec une population plus petite mais une forte concentration de richesse soient bien représentés comme la Suisse.
+
+L'objectif est de comparer les 10 nationalités les plus fréquentes, le choix du diagramme se portera sur un bar chart horizontal, avec les nationalités en ordonnée et le nombre de milliardaires en abscisse, permettant ainsi de visualiser clairement les différences entre les nationalités. 
+
+</details>
 <details>
 <summary>Visualisation</summary>
+
+```{r echo=FALSE}
+# Comptage par nationalité
+nationalites <- dataset %>%
+  filter(!is.na(countryOfCitizenship),
+         countryOfCitizenship != "") %>%
+  count(countryOfCitizenship, sort = TRUE)
+
+# Top 10 nationalités
+top10 <- nationalites %>%
+  slice(1:10)
+
+## Paramétrage du diagramme et sauvegarde de l'image
+
+diagramme <- ggplot(
+  top10,
+  aes(
+    x = reorder(countryOfCitizenship, n),
+    y = n
+  )
+) +
+
+  geom_col(fill = "darkblue") +
+
+  coord_flip() +
+
+  labs(
+    title = "Top 10 des nationalités les plus représentées parmi les milliardaires",
+    x = "Nationalité",
+    y = "Nombre de milliardaires"
+  ) +
+
+  theme_minimal()
+
+```
 </details>
 
-
-
 <details>
-<summaryInterprétation et réponse</summary>
+<summary>Interprétation et réponse</summary>
+
+La densité de population semble avoir une bien plus grosse influence que la richesse d'un pays sur le nombre de milliardaires qu'il compte. 
+En effet, les États-Unis, la Chine et l'Inde sont les trois pays les plus représentés, alors que des pays comme la Suisse ou le Luxembourg, qui ont une forte concentration de richesse, ne figurent pas dans le top 10.
+Cependant, les Etats-Unis, qui ont une population d'environ 330 millions d'habitants, sont largement en tête avec plus de 700 milliardaires, ce qui est bien plus que la Chine (environ 1,4 milliard d'habitants) et l'Inde (environ 1,3 milliard d'habitants).
+Cela suggère que la taille de la population est un facteur clé dans le nombre de milliardaires mais que d'autres facteurs semblent également jouer un rôle, comme la culture entrepreneuriale, les opportunités économiques, et les politiques fiscales.
+Si ce n'étais pas le cas, on s'attendrait du top 3 d'être composé de la chine ou l'inde en numéro 1 et 2, et les états-unis en numéro 3, ce qui n'est pas le cas.
+
 </details>
 
 Q19 - Quel est le nombre de milliardaires par habitant dans chaque pays ?
@@ -257,14 +305,10 @@ p11 <- ggplot(q11, aes(x = reorder(country, par_million), y = par_million)) +
   theme_minimal(base_size = 13)
 p11
 ```
-
-
 </details>
 
-
-
 <details>
-<summaryInterprétation et réponse</summary>
+<summary>Interprétation et réponse</summary>
 </details>
 
 Q25 - Y a-t-il des mouvements de milliardaires entre leur nationalité et leur lieu d'habitation dans le monde ? 
@@ -298,7 +342,7 @@ Q10 - Existe-t-il une corrélation entre la densité de milliardaires pays et le
 
 
 <details>
-<summaryInterprétation et réponse</summary>
+<summary>Interprétation et réponse</summary>
 </details>
 
 Q21 - Quelle est la proportion de milliardaires ayant hérité de leur fortune par rapport à ceux l'ayant constituée eux-mêmes ?
@@ -313,7 +357,7 @@ Q21 - Quelle est la proportion de milliardaires ayant hérité de leur fortune p
 
 
 <details>
-<summaryInterprétation et réponse</summary>
+<summary>Interprétation et réponse</summary>
 </details>
 
 Q6 - Quelle est la proportion de milliardaires honorifiés ou titrés ?
@@ -338,34 +382,76 @@ Problématique de la partie: Quelles sont les caractéristiques du self-made?
 Q7 - Est-ce que les milliardaires dont le statut est “self-made” viennent d’un pays dont le taux d’inscription dans le supérieur est bas ? (ou Le niveau d’accès à l’enseignement supérieur influence-t-il l’émergence de milliardaires self-made ?)
 <details>
 <summary>Question et problème étudié</summary>
+
+On cherche à analyser la relation entre le statut de "self-made" des milliardaires et le taux d'inscription dans l'enseignement supérieur de leur pays d'origine. 
+L'objectif est de déterminer si les milliardaires qui ont construit leur fortune par eux-mêmes proviennent majoritairement de pays où l'accès à l'enseignement supérieur est limité, ce qui pourrait suggérer que ces individus ont dû surmonter des obstacles éducatifs pour réussir.
+On s'attend à ce que les milliardaires "self-made" soient plus fréquents dans des pays avec un taux d'inscription dans le supérieur plus bas, car cela pourrait indiquer que ces individus ont dû faire preuve de plus de détermination et d'innovation pour réussir sans bénéficier d'une éducation formelle avancée.
+Cependant, il est également possible que certains milliardaires "self-made" proviennent de pays avec un taux d'inscription dans le supérieur élevé, ce qui pourrait indiquer que l'accès à l'éducation n'est pas le seul facteur déterminant pour devenir un milliardaire "self-made".
+
+Le diagramme choisi pour visualiser cette relation sera un scatterplot, avec le taux d'inscription dans le supérieur en abscisse et le nombre de milliardaires "self-made" en ordonnée, permettant ainsi de visualiser toute corrélation potentielle entre ces deux variables.
+
+</details>
+<details> <summary> Visualisation</summary>
+
+```{r}
+
+pays <- billionaires %>%
+  filter(
+    !is.na(country),
+    !is.na(gross_tertiary_education_enrollment)
+  ) %>%
+  group_by(country) %>%
+  summarise(
+    taux_superieur = first(gross_tertiary_education_enrollment),
+    proportion_selfmade = mean(selfMade)
+  )
+
+
+## Paramétrage du diagramme et sauvegarde de l'image
+
+
+diagramme <- ggplot(
+  pays,
+  aes(
+    x = taux_superieur,
+    y = proportion_selfmade * 100
+  )
+) +
+
+  geom_point(color = "darkblue") +
+
+  geom_smooth(
+    method = "lm",
+    color = "red"
+  ) +
+
+  labs(
+    title = "Part des milliardaires self-made et accès à l'enseignement supérieur",
+    x = "Taux d'inscription dans le supérieur (%)",
+    y = "Part de self-made (%)"
+  ) +
+
+  theme_minimal()
+
+print(diagramme)
+
+ggsave(
+  "education_scatterplot.png",
+  plot = diagramme, width = 8, height = 6
+)
+
+```
 </details>
 
 <details>
-<summary>Visualisation</summary>
-</details>
+<summary>Interprétation et réponse</summary>
 
+Finalement, on observe une légère tendance à ce que les pays avec un taux d'inscription dans le supérieur plus bas aient une proportion légèrement plus élevée de milliardaires "self-made". 
+Cependant, la corrélation n'est pas très forte, ce qui suggère que d'autres facteurs, tels que l'environnement économique, les opportunités d'affaires et les politiques gouvernementales, peuvent également jouer un rôle important dans la réussite des milliardaires "self-made".
 
-
-<details>
-<summaryInterprétation et réponse</summary>
 </details>
 
 Q18 - Peut-on deviner si un milliardaire s'est fait tout seul à partir de son profil ?
-<details>
-<summary>Question et problème étudié</summary>
-</details>
-
-<details>
-<summary>Visualisation</summary>
-</details>
-
-
-
-<details>
-<summaryInterprétation et réponse</summary>
-</details>
-
-Q23 - Les hommes milliardaires sont-ils plus souvent self-made que les femmes ?
 <details>
 <summary>Question et problème étudié</summary>
 </details>
@@ -398,7 +484,77 @@ p20
 
 
 <details>
-<summaryInterprétation et réponse</summary>
+<summary>Interprétation et réponse</summary>
+</details>
+
+Q23 - Les hommes milliardaires sont-ils plus souvent self-made que les femmes ?
+<details>
+<summary>Question et problème étudié</summary>
+</details>
+
+<details>
+<summary>Visualisation</summary>
+```{r echo=FALSE}
+selfmade_by_genre <- df_clean %>%
+  count(Genre, SelfMade) %>%
+  group_by(Genre) %>%
+  mutate(
+    pct   = n / sum(n),
+    total = sum(n),
+    label = paste0(percent(pct, accuracy = 0.1), "\n(n=", comma(n), ")")
+  ) %>%
+  ungroup() %>%
+  mutate(SelfMade = fct_relevel(SelfMade, "Self-made", "Hérité / Autre"))
+
+p2 <- ggplot(selfmade_by_genre,
+             aes(x = Genre, y = pct, fill = SelfMade)) +
+  geom_col(position = "fill", width = 0.55, colour = "white", linewidth = 0.6) +
+  geom_text(aes(label = label),
+            position = position_fill(vjust = 0.5),
+            colour = "white", size = 3.5, fontface = "bold", lineheight = 1.3) +
+  # Annotation : effectif total par genre sous l'axe
+  geom_text(data = selfmade_by_genre %>% distinct(Genre, total),
+            aes(x = Genre, y = -0.04,
+                label = paste0("N = ", comma(total))),
+            inherit.aes = FALSE,
+            colour = "grey40", size = 3.2) +
+  scale_fill_manual(values = col_selfmade) +
+  scale_y_continuous(labels = percent_format(),
+                     limits = c(-0.07, 1.01),
+                     expand = c(0, 0)) +
+  labs(
+    title    = "Répartition des selfMade selon le genre",
+    x = NULL, y = NULL, fill = NULL
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    plot.title      = element_text(face = "bold", size = 13),
+    plot.subtitle   = element_text(colour = "grey50", size = 10),
+    legend.position = "bottom",
+    legend.key.size = unit(0.4, "cm"),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor  = element_blank()
+  )
+
+# Diagramme 
+
+final_plot <- (p1 / p2) +
+  plot_annotation(
+    title   = "Genre et richesse chez les milliardaires en 2023",
+    theme   = theme(
+      plot.title   = element_text(face = "bold", size = 16, hjust = 0.5),
+      plot.caption = element_text(colour = "grey55", size = 9)
+    )
+  ) +
+  plot_layout(heights = c(1, 2.5))
+final_plot
+```
+
+</details>
+
+
+<details>
+<summary>Interprétation et réponse</summary>
 </details>
 
 ## IV. Concentration des richesses et des industries
@@ -455,7 +611,7 @@ p14
 
 
 <details>
-<summaryInterprétation et réponse</summary>
+<summary>Interprétation et réponse</summary>
 </details>
 
 Q15 - Quelles sont les différents types d'industrie qui sont les plus représentés ? (intégré Q4 - Est-ce qu’il y a des sources de richesse récurrentes parmi leIndustries/secteurs) 
@@ -470,7 +626,7 @@ Q15 - Quelles sont les différents types d'industrie qui sont les plus représen
 
 
 <details>
-<summaryInterprétation et réponse</summary>
+<summary>Interprétation et réponse</summary>
 </details>
 
 
@@ -812,16 +968,69 @@ On peut ajouter des éléments à cette analyse comme la difficulté de délocal
 Q13 - Le taux d’imposition a-t-il une influence sur le nombre de milliardaires par pays ?
 <details>
 <summary>Question et problème étudié</summary>
+
+On se demande maintenant si le taux d’imposition sur les entreprises dans un pays a une influence sur le nombre de milliardaires qu’il compte.
+On s’attend à ce que les pays avec des taux d’imposition plus bas attirent davantage de milliardaires, car ils offrent un environnement fiscal plus favorable pour la création et la préservation de la richesse.
+Cependant, il est important de noter que d’autres facteurs, tels que la stabilité politique, les infrastructures, les opportunités économiques et la qualité de vie, peuvent également jouer un rôle crucial dans l’attraction des milliardaires, ce qui pourrait atténuer l’impact du taux d’imposition.
+
+La question est donc de savoir s’il existe une corrélation. De ce fait, le diagramme sera un scatterplot avec le taux d’imposition sur les entreprises en abscisse et le nombre de milliardaires en ordonnée, avec une ligne de tendance pour visualiser la corrélation.
+
 </details>
 
+
+```{r}
+# Agrégation par pays
+pays_stats <- dataset %>%
+  filter(
+    !is.na(country),
+    !is.na(total_tax_rate_country)
+  ) %>%
+  group_by(country) %>%
+  summarise(
+    nb_milliardaires = n(),
+    taux_imposition = first(total_tax_rate_country)
+  )
+
+## Paramétrage du diagramme et sauvegarde de l'image
+diagramme <- ggplot(pays_stats,
+       aes(x = taux_imposition,
+           y = nb_milliardaires)) +
+
+  geom_point(
+    color = "darkblue",
+    alpha = 0.7,
+    size = 3
+  ) +
+
+  geom_smooth(
+    method = "lm",
+    se = TRUE,
+    color = "red"
+  ) +
+
+  labs(
+    title = "Influence du taux d'imposition sur le nombre de milliardaires",
+    x = "Taux d'imposition sur les entreprises (%)",
+    y = "Nombre de milliardaires"
+  )
+
+diagramme
+
+ggsave(
+  "tax_vs_billionaires.png",
+  diagramme,
+  width = 10,
+  height = 6
+)
+```
+
 <details>
-<summary>Visualisation</summary>
-</details>
+<summary>Interprétation et réponse</summary>
 
+Visiblement, il n’y a pas de corrélation claire entre le taux d’imposition sur les entreprises et le nombre de milliardaires par pays.
+Sauf quelques outliers, la plupart des pays avec des taux d’imposition variés ont des nombres de milliardaires similaires, ce qui suggère que le taux d’imposition n’est pas un facteur déterminant pour l’attraction ou la rétention des milliardaires.
+Cependant, les outliers trois outliers respectivement les États-Unis, la Chine et l’Inde sont les pays avec le plus de milliardaires et avec aussi le plus grand nombre d’habitants, ce qui peut laisser supposer que le nombre de milliardaires est plus influencé par la taille de la population et l’économie globale du pays que par le taux d’imposition.
 
-
-<details>
-<summaryInterprétation et réponse</summary>
 </details>
 
 ## VI. Profil démographique
@@ -880,16 +1089,54 @@ summary(model_age)
 Q11 - Quelle est la répartition de l’âge des milliardaires en 2023 ?
 <details>
 <summary>Question et problème étudié</summary>
+
+On cherche à comprendre la répartition de l'âge des milliardaires en 2023, afin de voir si elle est concentrée dans certaines tranches d'âge ou si elle est plus uniformément répartie.
+On s'attends à ce que la majorité des milliardaires soient âgés de 50 à 70 ans, car c'est généralement à cet âge que les individus ont eu suffisamment de temps pour accumuler une grande richesse. 
+Cependant, il est également possible de trouver des milliardaires plus jeunes, notamment dans le secteur de la technologie, où des entrepreneurs peuvent atteindre une grande richesse à un âge relativement jeune.
+
+Le choix du diagramme se portera sur un histogramme de l'âge des milliardaires, avec des barres représentant le nombre de milliardaires dans différentes tranches d'âge (par exemple, 0-20 ans, 21-30 ans, etc.).
+Cette visualisation permettra de mettre en évidence les tranches d'âge les plus représentées parmi les milliardaires en 2023.
+
 </details>
 
 <details>
 <summary>Visualisation</summary>
+
+```{r}
+# Suppression des âges manquants
+ages <- dataset %>%
+  filter(!is.na(age))
+
+
+## Paramétrage du diagramme et sauvegarde de l'image
+
+diagramme <- ggplot(
+  ages,
+  aes(x = age)
+) +
+
+  geom_histogram(
+    binwidth = 1,
+    fill = "darkblue",
+    color = "white"
+  ) +
+
+  labs(
+    title = "Répartition de l'âge des milliardaires en 2023",
+    x = "Âge",
+    y = "Nombre de milliardaires"
+  ) +
+
+  theme_minimal()
+```
 </details>
 
-
-
 <details>
-<summaryInterprétation et réponse</summary>
+<summary>Interprétation et réponse</summary>
+
+Comme nous le pensions, la majorité des milliardaires étaient âgés d'environ 48 à 83 ans, avec une concentration plus forte entre 50 et 70 ans.
+Cependant, on observe aussi une présence significative de milliardaires plus jeunes, notamment dans la tranche d'âge de 30 à 40 ans, ce qui peut être attribué à la montée en puissance du secteur de la technologie et à l'émergence de jeunes entrepreneurs qui ont réussi à accumuler une grande richesse rapidement.
+
 </details>
 Q20 - Quelle est la génération qui regroupe le plus grand nombre de milliardaires ?
 <details>
@@ -909,8 +1156,71 @@ Les anciennes générations (Génération X et surtout Baby-Boomers) devraient l
 
 Un diagramme en barres verticales présente le nombre et le pourcentage de milliardaires par génération, de la plus ancienne à la plus récente, afin de comparer clairement leur poids relatif.
 
-![Diagramme de la question 20 (Yasmine)](../assets/q20-repartition-richesse-par-generation.png)
+
 ```{r}
+# Définition des générations selon birthYear
+billionaires_gen <- billionaires %>%
+  filter(!is.na(birthYear)) %>%
+  mutate(generation = case_when(
+    birthYear >= 1997 & birthYear <= 2012 ~ "Génération Z\n(1997–2012)",
+    birthYear >= 1981 & birthYear <= 1996 ~ "Millennials\n(1981–1996)",
+    birthYear >= 1965 & birthYear <= 1980 ~ "Génération X\n(1965–1980)",
+    birthYear >= 1946 & birthYear <= 1964 ~ "Baby-Boomers\n(1946–1964)",
+    birthYear >= 1928 & birthYear <= 1945 ~ "Génération silencieuse\n(1928–1945)",
+    birthYear <  1928                     ~ "Génération GI\n(avant 1928)",
+    TRUE ~ NA_character_
+  )) %>%
+  filter(!is.na(generation))
+
+# Comptage par génération
+gen_counts <- billionaires_gen %>%
+  count(generation, name = "n_billionaires") %>%
+  mutate(
+    generation = factor(generation, levels = c(
+      "Génération GI\n(avant 1928)",
+      "Génération silencieuse\n(1928–1945)",
+      "Baby-Boomers\n(1946–1964)",
+      "Génération X\n(1965–1980)",
+      "Millennials\n(1981–1996)",
+      "Génération Z\n(1997–2012)"
+    ))
+  )
+
+
+
+# Visualisation
+ggplot(gen_counts, aes(x = generation, y = n_billionaires, fill = n_billionaires)) +
+  geom_col(width = 0.65, show.legend = FALSE) +
+  geom_text(
+    aes(label = paste0(n_billionaires, "\n(", round(n_billionaires / sum(n_billionaires) * 100, 1), "%)")),
+    vjust = -0.4,
+    size  = 3.5,
+    fontface = "bold",
+    color = "grey30"
+  ) +
+  scale_fill_gradient(low = "#a8d0f0", high = "#0d47a1", guide = "none") +
+  scale_y_continuous(
+    expand = expansion(mult = c(0, 0.18)),  # 0.12 → 0.18
+    labels = scales::comma
+  ) +
+  labs(
+    title    = "Distribution des milliardaires par génération",
+    subtitle = "Quelle génération compte le plus grand nombre de milliardaires ?",
+    x        = NULL,
+    y        = "Nombre de milliardaires",
+    caption  = "Source : Billionaires Statistics Dataset (2023)"
+  ) +
+  theme_minimal(base_size = 13) + 
+  theme(
+    plot.title       = element_text(face = "bold", size = 15, margin = margin(b = 4)),
+    plot.subtitle    = element_text(color = "grey45", size = 11, margin = margin(b = 12)),
+    plot.caption     = element_text(color = "grey60", size = 9, hjust = 1),
+    axis.text.x      = element_text(size = 9, lineheight = 1.2),
+    axis.text.y      = element_text(color = "grey50"),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor   = element_blank(),
+    plot.margin      = margin(16, 16, 12, 16)
+  )
 ```
 
 </details>
@@ -935,12 +1245,54 @@ Q22 - Quelle est la proportion de femmes et d’hommes parmi les milliardaires e
 
 <details>
 <summary>Visualisation</summary>
+```{r echo=FALSE}
+df_clean <- df %>%
+  filter(!is.na(gender), !is.na(selfMade)) %>%
+  mutate(
+    Genre    = if_else(gender == "M", "Homme", "Femme"),
+    SelfMade = if_else(selfMade == TRUE, "Self-made", "Hérité / Autre")
+  )
+
+# Encodage par couleur
+col_selfmade <- c("Self-made"     = "#2C6E9B",
+                  "Hérité / Autre" = "#E07B39")
+
+col_genre    <- c("Homme" = "#2C6E9B",
+                  "Femme" = "#E07B39")
+
+
+gender_counts <- df_clean %>%
+  count(Genre) %>%
+  mutate(pct = n / sum(n),
+         label = paste0(Genre, "\n", comma(n), "\n(", percent(pct, accuracy = 0.1), ")"))
+
+p1 <- ggplot(gender_counts, aes(x = "", y = pct, fill = Genre)) +
+  geom_col(width = 0.55, colour = "white", linewidth = 0.6) +
+  geom_text(aes(label = label),
+            position = position_stack(vjust = 0.5),
+            colour = "white", size = 3.8, fontface = "bold", lineheight = 1.3) +
+  coord_flip() +
+  scale_fill_manual(values = col_genre) +
+  scale_y_continuous(labels = percent_format(), expand = c(0, 0)) +
+  labs(
+    title    = "Répartition des milliardaires selon le genre",
+    subtitle = paste0("N = ", comma(sum(gender_counts$n)), " milliardaires"),
+    x = NULL, y = NULL, fill = NULL
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    plot.title      = element_text(face = "bold", size = 13),
+    plot.subtitle   = element_text(colour = "grey50", size = 10),
+    legend.position = "none",
+    axis.text       = element_blank(),
+    panel.grid      = element_blank()
+  )
+p1
+```
 </details>
 
-
-
 <details>
-<summaryInterprétation et réponse</summary>
+<summary>Interprétation et réponse</summary>
 </details>
 
 ##VII. Questions annexes
@@ -978,14 +1330,9 @@ p16
 ```
 </details>
 
-
-
 <details>
-<summaryInterprétation et réponse</summary>
+<summary>Interprétation et réponse</summary>
 </details>
-
-
-
 
 ## Question 1 : Comment se répartit la richesse des billionaires ?
 

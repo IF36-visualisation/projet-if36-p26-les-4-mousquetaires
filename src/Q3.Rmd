@@ -18,7 +18,8 @@ Le choix du diagramme se portera sur un histogramme de l'âge des milliardaires,
 Cette visualisation permettra de mettre en évidence les tranches d'âge les plus représentées parmi les milliardaires en 2023.
 
 </details>
-
+<details>
+<summary>Visualisation</summary>
 ## Initialisation des bibliothèques et chargement des données
 
 ```{r}
@@ -69,7 +70,7 @@ ggsave(
   plot = diagramme, width = 8, height = 6
 )
 ```
-
+</details>
 
 <details>
 <summary>Interprétation et réponse</summary>

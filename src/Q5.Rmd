@@ -17,6 +17,8 @@ Cependant, il est également possible que certains pays avec une population plus
 L'objectif est de comparer les 10 nationalités les plus fréquentes, le choix du diagramme se portera sur un bar chart horizontal, avec les nationalités en ordonnée et le nombre de milliardaires en abscisse, permettant ainsi de visualiser clairement les différences entre les nationalités. 
 
 </details>
+<details>
+<summary>Visualisation</summary>
 
 ## Initialisation des bibliothèques et chargement des données
 
@@ -77,7 +79,7 @@ ggsave(
   height = 6
 )
 ```
-
+</details>
 
 <details>
 <summary>Interprétation et réponse</summary>

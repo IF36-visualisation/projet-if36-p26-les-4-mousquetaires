@@ -18,6 +18,8 @@ Le choix du diagramme se portera sur une carte du monde avec des points représe
 Cette visualisation permettra de mettre en évidence les zones de forte concentration de milliardaires à travers le monde.
 
 </details>
+<details>
+<summary>Visualisation</summary>
 
 ## Initialisation des bibliothèques et chargement des données
 
@@ -90,7 +92,7 @@ diagramme
 
 #ggsave("map.png", diagramme, width = 10, height = 6, bg = "white")
 ```
-
+</details>
 
 <details>
 <summary>Interprétation et réponse</summary>
