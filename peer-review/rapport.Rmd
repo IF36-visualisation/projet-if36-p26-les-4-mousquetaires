@@ -175,7 +175,19 @@ Cependant, on observe aussi des concentrations significatives dans des pays éme
 </details>
 
 Q9 - Quelle est la nationalité la plus représentée parmi les milliardaires ?
+<details>
+<summary>Question et problème étudié</summary>
+</details>
 
+<details>
+<summary>Visualisation</summary>
+</details>
+
+
+
+<details>
+<summaryInterprétation et réponse</summary>
+</details>
 
 Q19 - Quel est le nombre de milliardaires par habitant dans chaque pays ?
 ```{r, echo=FALSE}
@@ -219,20 +231,98 @@ Le diagramme est dans le Shiny app.
 Problématique de la partie: Quels capitaux favorisent l’émergence ou la pérennité de la fortune des milliardaires?  
 
 Q10 - Existe-t-il une corrélation entre la densité de milliardaires pays et le niveau d’éducation d’un pays, mesuré par le taux de scolarisation dans l’enseignement primaire et supérieur ?
+<details>
+<summary>Question et problème étudié</summary>
+</details>
+
+<details>
+<summary>Visualisation</summary>
+</details>
+
+
+
+<details>
+<summaryInterprétation et réponse</summary>
+</details>
 
 Q21 - Quelle est la proportion de milliardaires ayant hérité de leur fortune par rapport à ceux l'ayant constituée eux-mêmes ?
+<details>
+<summary>Question et problème étudié</summary>
+</details>
+
+<details>
+<summary>Visualisation</summary>
+</details>
+
+
+
+<details>
+<summaryInterprétation et réponse</summary>
+</details>
 
 Q6 - Quelle est la proportion de milliardaires honorifiés ou titrés ?
+<details>
+<summary>Question et problème étudié</summary>
+</details>
+
+<details>
+<summary>Visualisation</summary>
+</details>
+
+
+
+<details>
+<summaryInterprétation et réponse</summary>
+</details>
 
 
 ## III. Le mythe du self-made man
 Problématique de la partie: Quelles sont les caractéristiques du self-made?
 
 Q7 - Est-ce que les milliardaires dont le statut est “self-made” viennent d’un pays dont le taux d’inscription dans le supérieur est bas ? (ou Le niveau d’accès à l’enseignement supérieur influence-t-il l’émergence de milliardaires self-made ?)
+<details>
+<summary>Question et problème étudié</summary>
+</details>
+
+<details>
+<summary>Visualisation</summary>
+</details>
+
+
+
+<details>
+<summaryInterprétation et réponse</summary>
+</details>
 
 Q18 - Peut-on deviner si un milliardaire s'est fait tout seul à partir de son profil ?
+<details>
+<summary>Question et problème étudié</summary>
+</details>
+
+<details>
+<summary>Visualisation</summary>
+</details>
+
+
+
+<details>
+<summaryInterprétation et réponse</summary>
+</details>
 
 Q23 - Les hommes milliardaires sont-ils plus souvent self-made que les femmes ?
+<details>
+<summary>Question et problème étudié</summary>
+</details>
+
+<details>
+<summary>Visualisation</summary>
+</details>
+
+
+
+<details>
+<summaryInterprétation et réponse</summary>
+</details>
 ```{r, echo=FALSE}
 q20 <- df %>%
   filter(!is.na(selfMade), !is.na(age), !is.na(gender)) %>%
@@ -258,8 +348,34 @@ p20
 Problématique de la partie: Comment se concentrent la richesse des milliardaires? 
 
 Q12 - Quels sont les points communs entre les riches dans le monde?
+<details>
+<summary>Question et problème étudié</summary>
+</details>
+
+<details>
+<summary>Visualisation</summary>
+</details>
+
+
+
+<details>
+<summaryInterprétation et réponse</summary>
+</details>
 
 Q14 - Comment se répartit la richesse des milliardaires ?
+<details>
+<summary>Question et problème étudié</summary>
+</details>
+
+<details>
+<summary>Visualisation</summary>
+</details>
+
+
+
+<details>
+<summaryInterprétation et réponse</summary>
+</details>
 ```{r, echo=FALSE}
 q14 <- df %>%
   group_by(industries) %>%
@@ -284,7 +400,19 @@ p14 <- ggplot(q14, aes(x = reorder(industries, richesse_totale), y = richesse_to
 p14
 ```
 Q15 - Quelles sont les différents types d'industrie qui sont les plus représentés ? (intégré Q4 - Est-ce qu’il y a des sources de richesse récurrentes parmi leIndustries/secteurs) 
+<details>
+<summary>Question et problème étudié</summary>
+</details>
 
+<details>
+<summary>Visualisation</summary>
+</details>
+
+
+
+<details>
+<summaryInterprétation et réponse</summary>
+</details>
 
 
 
@@ -625,6 +753,19 @@ On peut ajouter des éléments à cette analyse comme la difficulté de délocal
 
 
 Q13 - Le taux d’imposition a-t-il une influence sur le nombre de milliardaires par pays ?
+<details>
+<summary>Question et problème étudié</summary>
+</details>
+
+<details>
+<summary>Visualisation</summary>
+</details>
+
+
+
+<details>
+<summaryInterprétation et réponse</summary>
+</details>
 
 ## VI. Profil démographique
 
@@ -633,9 +774,10 @@ Problématique de la partie: Quel serait le profil démorgraphique du milliardai
 Q5 - Y a-t-il un lien entre l'âge et la richesse ?
 
 <details>
-<summary< </summary>
+<summary>Question et problème étudié</summary> 
 </details>
 <details>
+<summary>Visualisation</summary>
 ```{r echo=FALSE}
 age_rich_dt <- df %>% 
   select(finalWorth, age) %>% 
@@ -672,12 +814,25 @@ summary(model_age)
 </details>
 
 <details>
-<summary> </summary>
+<summary> Interprétation et réponse</summary>
 </details>
 
 
 
 Q11 - Quelle est la répartition de l’âge des milliardaires en 2023 ?
+<details>
+<summary>Question et problème étudié</summary>
+</details>
+
+<details>
+<summary>Visualisation</summary>
+</details>
+
+
+
+<details>
+<summaryInterprétation et réponse</summary>
+</details>
 Q20 - Quelle est la génération qui regroupe le plus grand nombre de milliardaires ?
 <details>
 
@@ -716,10 +871,36 @@ La Génération silencieuse reste significative (19,8 %), principalement grâce 
 </details>
 
 Q22 - Quelle est la proportion de femmes et d’hommes parmi les milliardaires en 2023 ?
+<details>
+<summary>Question et problème étudié</summary>
+</details>
+
+<details>
+<summary>Visualisation</summary>
+</details>
+
+
+
+<details>
+<summaryInterprétation et réponse</summary>
+</details>
 
 ##VII. Questions annexes
 
 Q16 - Dans quel(s) mois sont nés les milliardaires ?
+<details>
+<summary>Question et problème étudié</summary>
+</details>
+
+<details>
+<summary>Visualisation</summary>
+</details>
+
+
+
+<details>
+<summaryInterprétation et réponse</summary>
+</details>
 ```{r echo=FALSE}
 mois_labels <- c("Jan","Fév","Mar","Avr","Mai","Jun",
                  "Jul","Aoû","Sep","Oct","Nov","Déc")
