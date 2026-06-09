@@ -32,11 +32,14 @@ library(dplyr)
 library(tidygeocoder)
 library(sf)
 library(rnaturalearth)
+library(here)
 
 world <- ne_countries(scale = "medium", returnclass = "sf")
 
 # Chargement du dataset
-dataset <- read.csv("./data/Billionaires_Statistics_Dataset.csv")
+dataset <- read_csv(here("data", "Billionaires_Statistics_Dataset.csv"))
+
+#dataset <- read_csv("./data/Billionaires_Statistics_Dataset.csv")
 
 ```
 
@@ -85,7 +88,7 @@ diagramme <- ggplot() +
 
 diagramme
 
-ggsave("map.png", diagramme, width = 10, height = 6, bg = "white")
+#ggsave("map.png", diagramme, width = 10, height = 6, bg = "white")
 ```
 
 

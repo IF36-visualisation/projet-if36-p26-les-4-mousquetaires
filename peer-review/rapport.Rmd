@@ -18,6 +18,7 @@ library(ggrepel)
 library(stringr)
 library(sf)
 library(rnaturalearthdata)
+library(tidygeocoder)
 library(countrycode)
 library(stringi)
 library(here)
@@ -66,7 +67,8 @@ Notre travail s'articule autour de cette question : Quels facteurs expliquent l'
 
 # **Analyse exploratoire**
 ## I. Géographie de la richesse mondiale
-Les milliardaires ont la possibilité de s’établir où ils le souhaitent en raison de leur revenu. Cependant, le choix de leur résidence n’est pas laissé au hasard. Il peut supposer qu’ils habitent dans des lieux où ils peuvent facilement avoir des opportunités entrepreneuriales, un accès aux meilleures écoles pour leur famille et proche des centres de décisions de leur(s) entreprise(s). Il semble logique que les opportunités de faire croître leur entreprises se trouvent majoritairement dans l’hémisphère nord. Il convient donc de se demander où les milliardaires se concentrent dans le monde. 
+Les milliardaires ont la possibilité de s’établir où ils le souhaitent en raison de leur revenu. Cependant, le choix de leur résidence n’est pas laissé au hasard. Il peut supposer qu’ils habitent dans des lieux où ils peuvent facilement avoir des opportunités entrepreneuriales, un accès aux meilleures écoles pour leur famille et proche des centres de décisions de leur(s) entreprise(s). Il semble logique que les opportunités de faire croître leur entreprises se trouvent majoritairement dans l’hémisphère nord. Il convient donc de se demander où les milliardaires se concentrent dans le monde.
+
 Problématique de la partie: Où se concentrent les milliardaires dans le monde? 
 
 Q1 - Quelles villes comptent le plus de milliardaires ?
@@ -151,6 +153,7 @@ Q8 - Où sont répartis les milliardaires dans le monde ?
 On cherche à comprendre la répartition géographique des milliardaires afin de voir si elle est concentrée dans certains pays ou régions du monde.
 On s’attend à ce que les milliardaires soient fortement concentrés dans les pays les plus riches et économiquement développés, notamment les États-Unis, la Chine, l’Allemagne, la France et le Royaume-Uni. 
 Ces pays offrent des écosystèmes favorables à la création de richesse, avec des marchés financiers matures, des infrastructures solides et des opportunités d’affaires.
+opportunités d’affaires.
 
 </details>
 
@@ -161,7 +164,43 @@ Pour cette analyse, il est pertinent d’utiliser une carte du monde avec des ce
 Cela permet de visualiser rapidement les zones de forte concentration et de comparer les pays entre eux.
 ![Diagramme de la question 8 (Marco)](../assets/q8_repartition_riches_monde.png)
 
-```{r stats, echo=FALSE}
+```{r stats, eval=FALSE, include=FALSE}
+# Filtrage des données pour ne conserver que les villes et pays valides
+# Compte le nombre de milliardaires par ville pour former des groupes uniques
+villes <- df %>% filter(
+    !is.na(city), city != "",
+    !is.na(country), country != ""
+  ) %>% count(city, country, sort = TRUE)
+
+# Géocodification des villes pour obtenir les coordonnées (latitude et longitude)
+villes_geo <- villes %>%
+  mutate(location = paste(city, country, sep = ", ")) %>%
+  geocode(location, method = "osm", lat = lat, long = lon) %>%
+  # Filtrage pour ne conserver que les villes trouvées
+  filter(!is.na(lat), !is.na(lon))
+
+
+
+## Paramétrage du diagramme
+diagramme <- ggplot() +
+  geom_sf(data = world, fill = "white", color = "grey80") +
+  geom_point(
+    data = villes_geo,
+    aes(x = lon, y = lat, size = n),
+    color = "darkblue",
+    alpha = 0.7
+  ) +
+  scale_size(
+    name = "Nombre de milliardaires",
+    range = c(0.1, 3),
+    trans = "log",
+    breaks = c(1,4,8,16,32, 64),
+    labels = c("1", "4", "8", "16", "32", "64+")
+  ) +
+  labs(title = "Répartition des milliardaires dans le monde") +
+  theme_void()
+
+diagramme
 ```
 
 </details>
@@ -172,12 +211,31 @@ Cela permet de visualiser rapidement les zones de forte concentration et de comp
 Les données confirment globalement nos hypothèses. En majorité, on retrouve les milliardaires dans les pays les plus riches et économiquement développés, que ce soit aux États-Unis, en Chine et en Europe de l’Ouest.
 Cependant, on observe aussi des concentrations significatives dans des pays émergents comme l’Inde, qui a vu une croissance économique rapide ces dernières années, créant ainsi de nouvelles opportunités pour la création de richesse. 
 
+
 </details>
 
 Q9 - Quelle est la nationalité la plus représentée parmi les milliardaires ?
+<details>
+<summary>Question et problème étudié</summary>
+</details>
 
+<details>
+<summary>Visualisation</summary>
+</details>
+
+
+
+<details>
+<summaryInterprétation et réponse</summary>
+</details>
 
 Q19 - Quel est le nombre de milliardaires par habitant dans chaque pays ?
+<details>
+<summary>Question et problème étudié</summary>
+</details>
+
+<details>
+<summary>Visualisation</summary>
 ```{r, echo=FALSE}
 q11 <- df %>%
   group_by(country, population_country) %>%
@@ -199,6 +257,16 @@ p11 <- ggplot(q11, aes(x = reorder(country, par_million), y = par_million)) +
   theme_minimal(base_size = 13)
 p11
 ```
+
+
+</details>
+
+
+
+<details>
+<summaryInterprétation et réponse</summary>
+</details>
+
 Q25 - Y a-t-il des mouvements de milliardaires entre leur nationalité et leur lieu d'habitation dans le monde ? 
 <details>
 <summary>Question et problème étudié </summary>
@@ -219,20 +287,91 @@ Le diagramme est dans le Shiny app.
 Problématique de la partie: Quels capitaux favorisent l’émergence ou la pérennité de la fortune des milliardaires?  
 
 Q10 - Existe-t-il une corrélation entre la densité de milliardaires pays et le niveau d’éducation d’un pays, mesuré par le taux de scolarisation dans l’enseignement primaire et supérieur ?
+<details>
+<summary>Question et problème étudié</summary>
+</details>
+
+<details>
+<summary>Visualisation</summary>
+</details>
+
+
+
+<details>
+<summaryInterprétation et réponse</summary>
+</details>
 
 Q21 - Quelle est la proportion de milliardaires ayant hérité de leur fortune par rapport à ceux l'ayant constituée eux-mêmes ?
+<details>
+<summary>Question et problème étudié</summary>
+</details>
+
+<details>
+<summary>Visualisation</summary>
+</details>
+
+
+
+<details>
+<summaryInterprétation et réponse</summary>
+</details>
 
 Q6 - Quelle est la proportion de milliardaires honorifiés ou titrés ?
+<details>
+<summary>Question et problème étudié</summary>
+</details>
+
+<details>
+<summary>Visualisation</summary>
+</details>
+
+
+
+<details>
+<summaryInterprétation et réponse</summary>
+</details>
 
 
 ## III. Le mythe du self-made man
 Problématique de la partie: Quelles sont les caractéristiques du self-made?
 
 Q7 - Est-ce que les milliardaires dont le statut est “self-made” viennent d’un pays dont le taux d’inscription dans le supérieur est bas ? (ou Le niveau d’accès à l’enseignement supérieur influence-t-il l’émergence de milliardaires self-made ?)
+<details>
+<summary>Question et problème étudié</summary>
+</details>
+
+<details>
+<summary>Visualisation</summary>
+</details>
+
+
+
+<details>
+<summaryInterprétation et réponse</summary>
+</details>
 
 Q18 - Peut-on deviner si un milliardaire s'est fait tout seul à partir de son profil ?
+<details>
+<summary>Question et problème étudié</summary>
+</details>
+
+<details>
+<summary>Visualisation</summary>
+</details>
+
+
+
+<details>
+<summaryInterprétation et réponse</summary>
+</details>
 
 Q23 - Les hommes milliardaires sont-ils plus souvent self-made que les femmes ?
+<details>
+<summary>Question et problème étudié</summary>
+</details>
+
+<details>
+<summary>Visualisation</summary>
 ```{r, echo=FALSE}
 q20 <- df %>%
   filter(!is.na(selfMade), !is.na(age), !is.na(gender)) %>%
@@ -254,12 +393,39 @@ p20 <- ggplot(q20, aes(x = age, y = finalWorth / 1e3, color = selfMade)) +
   theme(legend.position = "bottom")
 p20
 ```
+</details>
+
+
+
+<details>
+<summaryInterprétation et réponse</summary>
+</details>
+
 ## IV. Concentration des richesses et des industries
 Problématique de la partie: Comment se concentrent la richesse des milliardaires? 
 
 Q12 - Quels sont les points communs entre les riches dans le monde?
+<details>
+<summary>Question et problème étudié</summary>
+</details>
+
+<details>
+<summary>Visualisation</summary>
+</details>
+
+
+
+<details>
+<summaryInterprétation et réponse</summary>
+</details>
 
 Q14 - Comment se répartit la richesse des milliardaires ?
+<details>
+<summary>Question et problème étudié</summary>
+</details>
+
+<details>
+<summary>Visualisation</summary>
 ```{r, echo=FALSE}
 q14 <- df %>%
   group_by(industries) %>%
@@ -283,8 +449,29 @@ p14 <- ggplot(q14, aes(x = reorder(industries, richesse_totale), y = richesse_to
   theme_minimal(base_size = 13)
 p14
 ```
-Q15 - Quelles sont les différents types d'industrie qui sont les plus représentés ? (intégré Q4 - Est-ce qu’il y a des sources de richesse récurrentes parmi leIndustries/secteurs) 
 
+</details>
+
+
+
+<details>
+<summaryInterprétation et réponse</summary>
+</details>
+
+Q15 - Quelles sont les différents types d'industrie qui sont les plus représentés ? (intégré Q4 - Est-ce qu’il y a des sources de richesse récurrentes parmi leIndustries/secteurs) 
+<details>
+<summary>Question et problème étudié</summary>
+</details>
+
+<details>
+<summary>Visualisation</summary>
+</details>
+
+
+
+<details>
+<summaryInterprétation et réponse</summary>
+</details>
 
 
 
@@ -497,7 +684,7 @@ On parie plutôt sur la seconde option : la finance, la tech et l'industrie devr
 
 <details>
 
-<summary> Visualisation <summary>
+<summary> Visualisation </summary>
 ```{r, echo=FALSE}
 q15 <- df %>%
   count(industries, sort = TRUE) %>%
@@ -515,6 +702,7 @@ p15 <- ggplot(q15, aes(x = reorder(industries, n), y = n)) +
   theme_minimal(base_size = 13)
 p15
 ```
+
 Un diagramme en barres horizontales du Top 15 des industries, trié du plus grand au plus petit. Les barres horizontales permettent de lire plus facilement les noms, et la longueur reste le meilleur canal pour comparer des effectifs d'un coup d'œil.
 </details>
 
@@ -529,9 +717,6 @@ Sans surprise, c'est très inégal. Finance & Investments, Manufacturing et Tech
 Cela justifie l'essor du numérique, et les tendances économiques qui l'accompagne. 
 
 </details>
-
-
-
 
 ## V. Indicateurs de santé économique
 
@@ -625,6 +810,19 @@ On peut ajouter des éléments à cette analyse comme la difficulté de délocal
 
 
 Q13 - Le taux d’imposition a-t-il une influence sur le nombre de milliardaires par pays ?
+<details>
+<summary>Question et problème étudié</summary>
+</details>
+
+<details>
+<summary>Visualisation</summary>
+</details>
+
+
+
+<details>
+<summaryInterprétation et réponse</summary>
+</details>
 
 ## VI. Profil démographique
 
@@ -633,9 +831,11 @@ Problématique de la partie: Quel serait le profil démorgraphique du milliardai
 Q5 - Y a-t-il un lien entre l'âge et la richesse ?
 
 <details>
-<summary< </summary>
+<summary>Question et problème étudié</summary> 
 </details>
+
 <details>
+<summary>Visualisation</summary>
 ```{r echo=FALSE}
 age_rich_dt <- df %>% 
   select(finalWorth, age) %>% 
@@ -672,12 +872,25 @@ summary(model_age)
 </details>
 
 <details>
-<summary> </summary>
+<summary> Interprétation et réponse</summary>
 </details>
 
 
 
 Q11 - Quelle est la répartition de l’âge des milliardaires en 2023 ?
+<details>
+<summary>Question et problème étudié</summary>
+</details>
+
+<details>
+<summary>Visualisation</summary>
+</details>
+
+
+
+<details>
+<summaryInterprétation et réponse</summary>
+</details>
 Q20 - Quelle est la génération qui regroupe le plus grand nombre de milliardaires ?
 <details>
 
@@ -716,10 +929,30 @@ La Génération silencieuse reste significative (19,8 %), principalement grâce 
 </details>
 
 Q22 - Quelle est la proportion de femmes et d’hommes parmi les milliardaires en 2023 ?
+<details>
+<summary>Question et problème étudié</summary>
+</details>
+
+<details>
+<summary>Visualisation</summary>
+</details>
+
+
+
+<details>
+<summaryInterprétation et réponse</summary>
+</details>
 
 ##VII. Questions annexes
 
 Q16 - Dans quel(s) mois sont nés les milliardaires ?
+<details>
+<summary>Question et problème étudié</summary>
+</details>
+
+<details>
+<summary>Visualisation</summary>
+
 ```{r echo=FALSE}
 mois_labels <- c("Jan","Fév","Mar","Avr","Mai","Jun",
                  "Jul","Aoû","Sep","Oct","Nov","Déc")
@@ -743,6 +976,14 @@ p16 <- ggplot(q16, aes(x = mois, y = n)) +
   theme_minimal(base_size = 13)
 p16
 ```
+</details>
+
+
+
+<details>
+<summaryInterprétation et réponse</summary>
+</details>
+
 
 
 
