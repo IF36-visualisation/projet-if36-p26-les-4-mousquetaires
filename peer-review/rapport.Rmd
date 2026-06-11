@@ -173,7 +173,8 @@ Mon choix s'est porté sur un diagramme à barre qui est fait pour montrer une r
 <summary>Interprétation et réponse</summary>
  L'hypothèse de départ est vérifiée. New York est en tête de loin et cela peut s'expliquer car la ville concentre énormément d'industries et donc d'opportunités mais elle est aussi extrêmement peuplée. La présence de ces villes, qui dépassent, pour la plupart sauf San Francisco, le million d'habitants, s'expliquent par la présence d'industries, de main d'œuvres et d'un tissu économique favorable au développement de la richesse des milliardaires. Comme elles ont attirés des milliardaires qui ont favorisé leur développement, elles attirent les nouveaux et cela donne une concentration de richesses importante. 
 </details>
-Nous avons fait le choix de regarder où se concentrent les milliardaires américains car plusieurs villes se retrouvent dans le Top ci-dessus et que les États-Unis sont assez visibles sur la carte du a .
+Nous avons fait le choix de regarder où se concentrent les milliardaires américains car plusieurs villes se retrouvent dans le Top ci-dessus et que les États-Unis sont assez visibles sur la carte du a.
+
 #### c. Focus US
 Q3 - Comment se répartissent les milliardaires dans les états américains ?
 <details>
@@ -221,7 +222,8 @@ Ainsi, numériquement, les riches se trouvent dans les pays occidentaux, économ
 
 ### 2. Origine et mouvements des milliardaires
 
-####a. Nationalité
+#### a. Nationalité
+
 <details>
 <summary>Question et problème étudié</summary>
 
@@ -284,7 +286,7 @@ Si ce n'était pas le cas, on s'attendrait à ce que le top 3 soit composé de l
 
 Pour expliquer la dynamique des lieux d'habitations et des nationalités les plus représentés, on peut regarder s'il n'y a pas de mouvements de milliardaires, c'est-à-dire, que certains sont nés dans des pays peu développés et qu'ils ont bougés dans d'autres lieux. De ce fait, on confirme que la présence de milliardaires entraine leur concentration.  
 
-Q25 - Y a-t-il des mouvements de milliardaires entre leur nationalité et leur lieu d'habitation dans le monde ? 
+#### b. Mouvements
 <details>
 <summary>Question et problème étudié </summary>
 On part du constat que les milliardaires ont la possibilité de bouger et d'habiter des endroits plus favorables au développement de leur business. Cependant, certains ont pu naitre dans des pays peu propices à ce développement. Ainsi, on peut supposer que pour certains profils, il y a une différence entre la nationalité (d'origine, naissance) et leur lieu d'habitation. On propose une vue statique de ces mouvements sur l'année 2023.
@@ -338,7 +340,7 @@ p11
 </details>
 Bien que les États-Unis apparaissent toujours, la Chine et l'Inde qui sont top 2 et 3 en nombre brute n'apparaissent pas au regard de leur population. Le graphique ci-dessus réaffirme la concentration des milliardaires dans les pays de l'Ouest à deux exceptions près (Singapore et UAE). 
 
-Pour conclure, les milliardaires sont répartis dans les pays de l'Ouest et dans les BRICS, idem pour les nationalités, mais ils sont concentrés dans les pays développés, notamment les paradis fiscaux. Les 
+Pour conclure, les milliardaires sont répartis dans les pays de l'Ouest et dans les BRICS, idem pour les nationalités, mais ils sont concentrés dans les pays développés, notamment les paradis fiscaux.
 
 <!-- ## II. Concentration des capitaux économique, culturel et social -->
 
@@ -1380,3 +1382,6 @@ p16
 <summary>Interprétation et réponse</summary>
 </details>
 
+
+# Conclusion
+# Annexe
