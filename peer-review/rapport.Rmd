@@ -28,6 +28,7 @@ library(ggpubr)
 library(forcats)
 
 df <- read_csv(here("data", "Billionaires_Statistics_Dataset.csv"))
+summary(df)
 ```
 # **Introduction**
 
@@ -589,31 +590,48 @@ Q14 - Comment se répartit la richesse des milliardaires ?
 
 <details>
 <summary>Question et problème étudié</summary>
-On cherche ici à comprendre la structure de la richesse au sein même du club des milliardaires. La question est de savoir si la fortune est répartie de manière "homogène" (la plupart des milliardaires ayant des fortunes similaires) ou si elle est extrêmement concentrée au sommet.
+On cherche ici à comprendre la structure de la richesse au sein même du club des milliardaires. La question est de savoir si la fortune est répartie de manière homogène. En effet, on cherche à déterminer si la plupart des milliardaires ont des fortunes similaires ou si la richesse est extrêmement concentrée au sommet.
 
 L’hypothèse est une distribution suivant une loi de puissance : une immense majorité de “petits” milliardaires (entre 1 et 5 milliards) et une poignée d’individus possédant des fortunes dépassant l’entendement, créant une inégalité flagrante même au sein de l’élite.
+
+Tout d'abord, pour faire une observation générale, j'ai choisi de faire un box plot. C'est une manière efficace d'analyser les données puisqu'on a plusieurs données mathématiques.
+</details>
+<details>
+<summary>Visualisation</summary>
+
+```{r echo=FALSE}
+# Tri des données
+dt_finalWorth <- df %>% select(finalWorth) %>% mutate(finalWorth = finalWorth/1000)
+
+# Box plot pour tester la répartition
+distr_rich_quart_plot <- dt_finalWorth %>% ggplot(aes(y = 1,x=finalWorth )) +
+geom_boxplot() +
+  scale_y_continuous(breaks = NULL) +
+  labs(title ="Distribution de la richesse des milliardaires",
+       x="Milliards") 
+distr_rich_quart_plot
+```
+</details>
+<details>
+<summary>Interprétation et ouverture</summary>
+La richesse des milliardaires est effectivement très concentrée. La médiane est basse et il y a énormément d'outliers, ce qui confirme une distribution très inégale de la richesse parmis les milliardaires. Pour avoir une analyse plus fine, nous proposons de diviser les observations en centiles plutôt qu'en quartiles car le box plot risque d'être encore peu lisible. 
 </details>
 
 <details>
 <summary>Visualisation</summary>
-```{r echo=FALSE}
-# Attribution d'un numéro différent tous les 660 données (2640/4) pour faire une répartition en quartile
-num_quartile <-c("Q4", "Q3", "Q2", "Q1" )
-dt_quart <- df %>% select(finalWorth) %>% mutate(quartile = rep(num_quartile, each = 660, length.out = n())) %>% mutate(finalWorth = finalWorth/1000)
 
-# Box plot pour tester la répartition
-distr_rich_quart_plot <- dt_quart %>% ggplot(aes(x=factor(quartile), y=finalWorth)) +
-geom_boxplot() +
-  labs(title ="Distribution de la richesse des milliardaires en quartiles",
-       x="Quartile",
-       y="Milliards") 
-distr_rich_quart_plot
-```
 ```{r}
 # Attribution d'un numéro différent tous les 264 données (2640/10) pour faire une répartition en centile
 num_centile <-c("C10", "C09", "C08", "C07","C06", "C05","C04", "C03", "C02", "C01")
-dt_centile<- df %>% select(finalWorth) %>% mutate(centile = rep(num_centile, each = 2640/10, length.out = n())) %>%
-  mutate(finalWorth = finalWorth/1000)
+dt_centile<- df %>% select(finalWorth) %>% arrange(finalWorth) %>%
+  mutate(
+    centile = ntile(finalWorth, 10),
+    centile = factor(
+      centile,
+      labels = rev(num_centile)
+      ),
+    finalWorth = finalWorth/1000
+  )
 
 #Box plot pour voir la répartition
 
@@ -625,53 +643,50 @@ geom_boxplot()+
 distr_rich_cent_plot
 
 ```
-```{r}
-#On va enlever le dernier centile pour bien voir la répartition des milliardaires afin de vérifier s'il n'y a pas des choses que nous empêche de voir le dernier centile
-new_dt_centile <- dt_centile %>%filter(centile !="C10") %>% mutate(centile = rep(num_centile, each = 2376/10, length.out = n()))
+</details>
 
-new_distr_rich_cent_plot <- new_dt_centile %>% ggplot(aes(x=factor(centile), y=finalWorth)) +
-geom_boxplot()+
-  labs(title ="Distribution de la richesse des milliardaires en centile, excluant les 10% les plus riches",
-       x="Centile",
-       y="Milliards")
-new_distr_rich_cent_plot
-```
+<details>
+<summary>Interprétation et ouverture</summary>
+Le graphique est un peu plus lisible et montre une vraie concentration de la richesse sur le dernier centile alors que les neuf autres centiles sont compris entre 1 et 8 milliards.Cependant, il y a encore énormément de données abbérantes dans C10 qui nous pousse à isoler ce dernier centil afin d'avoir une répartition encore plus fine de ces 264 milliardaires.
+</details>
+
+<details>
+<summary>Visualisation</summary>
 
 ```{r}
 #On va regarder la distribution des 10% les plus riches en les repartissant en centile
-top_ten_dt <- dt_centile %>%filter(centile =="C10") %>% mutate(centile = rep(num_centile, each = 264/10, length.out = n()))
-
+top_ten_dt <- dt_centile %>%
+  filter(centile =="C10") %>%
+  arrange(finalWorth) %>%
+  mutate(
+    centile = ntile(finalWorth, 10),
+    centile = factor(
+      centile,
+      labels = rev(num_centile)
+      ),
+  )
+top_ten_dt
 top_ten_cent_plot <- top_ten_dt %>% ggplot(aes(x=factor(centile), y=finalWorth)) +
 geom_boxplot()+
-  labs(title ="Distribution de la richesse des 10% des milliardaires les plus riches en centile",
+  labs(title ="Distribution de la richesse des 10% des milliardaires les plus riches",
        x="Centile",
        y="Milliards")
 top_ten_cent_plot
 
 ```
-
-```{r}
-#On va regarder la distribution des 10% les plus riches en les repartissant en quantile
-top_ten_quart_dt <- dt_centile %>%filter(centile =="C10") %>% mutate(centile = rep(num_quartile, each = 264/4, length.out = n())) 
-
-top_ten_quart_plot <- top_ten_quart_dt %>% ggplot(aes(x=factor(centile), y=finalWorth)) +
-geom_boxplot()+
-  labs(title ="Distribution de la richesse des 10% des milliardaires les plus riches en quartile",
-       x="Quartile",
-       y="Milliards")
-top_ten_quart_plot
-```
+<details>
+<summary>Interprétation</summary>
+Finalement à l'intérieur même des 10% les plus fortunés, les inégalités de richesse restent flagrantes. C10 est le box qui montre la plus grande disparité de données alors les neuf autres restent homogènes en leur seins. Mais on note enfin une vraie différence à l'œil nu pour les neuf premiers centiles. On ne pouvait pas déceler cela si facilement avec le C10 du graphique du dessus.  Les écarts vont de 8 à 43 milliards. 
 </details>
-
 
 
 <details>
 <summary>Interprétation et réponse</summary>
 L’analyse confirme une asymétrie radicale de la richesse :
 
-La masse des “petits” milliardaires : La plus haute densité (le sommet de la courbe) se situe juste après le seuil de 1 milliard de dollars. C’est là que se trouve le “gros des troupes”.
+Il y la masse des petits, et aussi, nouveaux milliardaires : ils se situent juste après le seuil de 1 milliard entre C01 et C05 sur la première datavisualisation en centile. 
 
-La “Longue Traîne” (Long Tail) : Plus on avance vers la droite (vers les 10, 50, 100 milliards), plus le nombre de personnes chute drastiquement.
+Ensuite, on trouve La "Longue Traîne” (Long Tail) : Plus on avance vers la droite (vers les 10, 50, 100 milliards), plus le nombre de personnes chute drastiquement.
 
 Le club des Centimilliardaires : Les individus comme Bernard Arnault ou Elon Musk sont des “outliers” (données aberrantes statistiquement). Leur richesse est si élevée qu’ils forment une catégorie à part entière, presque déconnectée du reste du classement.
 
@@ -1383,5 +1398,5 @@ p16
 </details>
 
 
-# Conclusion
-# Annexe
+# **Conclusion**
+# **Annexe**
