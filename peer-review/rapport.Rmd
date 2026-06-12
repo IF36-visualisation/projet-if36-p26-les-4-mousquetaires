@@ -217,7 +217,7 @@ Sans surprise, les autres états comptent entre 0 et 50 milliardaires.
 
 </details>
 
-Ainsi, numériquement, les riches se trouvent dans les pays occidentaux, économiquement développés, mais aussi dans les pays émergents (BRICS) dans les mégalopoles qui sont déjà des centres de concentration de richesses et d'opportunités. Le focus sur les États-Unis montrent qu'en effet, il y a peu, voire quasiment pas de milliardaires en milieu rural. On peut supposer que cela s'étend au monde. Cependant, il faudrait savoir si ces pays "produisent" des milliardaires. On peut regarder les nationalités des milliardaires
+Ainsi, numériquement, les riches se trouvent dans les pays occidentaux, économiquement développés, mais aussi dans les pays émergents (BRICS) dans les mégalopoles qui sont déjà des centres de concentration de richesses et d'opportunités. Le focus sur les États-Unis montrent qu'en effet, il y a peu, voire quasiment pas de milliardaires en milieu rural. On peut supposer que cela s'étend au monde. Cependant, il faudrait savoir si ces pays "produisent" des milliardaires. On peut alors regarder les nationalités des milliardaires.
 
 ### 2. Origine et mouvements des milliardaires
 
@@ -341,62 +341,10 @@ Bien que les États-Unis apparaissent toujours, la Chine et l'Inde qui sont top 
 
 Pour conclure, les milliardaires sont répartis dans les pays de l'Ouest et dans les BRICS, idem pour les nationalités, mais ils sont concentrés dans les pays développés, notamment les paradis fiscaux.
 
-<!-- ## II. Concentration des capitaux économique, culturel et social -->
-
-<!-- Problématique de la partie: Quels capitaux favorisent l’émergence ou la pérennité de la fortune des milliardaires?   -->
-
-<!-- Q10 - Existe-t-il une corrélation entre la densité de milliardaires pays et le niveau d’éducation d’un pays, mesuré par le taux de scolarisation dans l’enseignement primaire et supérieur ? -->
-<!-- <details> -->
-<!-- <summary>Question et problème étudié</summary> -->
-<!-- </details> -->
-
-<!-- <details> -->
-<!-- <summary>Visualisation</summary> -->
-<!-- </details> -->
-
-
-
-<!-- <details> -->
-<!-- <summary>Interprétation et réponse</summary> -->
-<!-- </details> -->
-
-<!-- Q21 - Quelle est la proportion de milliardaires ayant hérité de leur fortune par rapport à ceux l'ayant constituée eux-mêmes ? -->
-<!-- <details> -->
-<!-- <summary>Question et problème étudié</summary> -->
-<!-- </details> -->
-
-<!-- <details> -->
-<!-- <summary>Visualisation</summary> -->
-<!-- </details> -->
-
-
-
-<!-- <details> -->
-<!-- <summary>Interprétation et réponse</summary> -->
-<!-- </details> -->
-
-<!-- Q6 - Quelle est la proportion de milliardaires honorifiés ou titrés ? -->
-<!-- <details> -->
-<!-- <summary>Question et problème étudié</summary> -->
-<!-- </details> -->
-
-<!-- <details> -->
-<!-- <summary>Visualisation</summary> -->
-<!-- </details> -->
-
-
-
-<!-- <details> -->
-<!-- <summaryInterprétation et réponse</summary> -->
-<!-- </details> -->
-
-
-## III. Le mythe du self-made man
+## II. Le mythe du self-made man
 Le mythe du self-made man est apparu aux États-Unis à partir de 1830. C'est l'idée selon laquelle quelqu'un pourrait se faire tout seul mais surtout, sans bénéficier d'un héritage conséquent. Cela peut sous-entendre, qu'au moins aux États-Unis, il y a un système méritocratique qui permet à tout un chacun de s'élever socialement car il est volontaire et travailleur. Sa représentation dans les supports culturels est toujours présente aujourd'hui comme dans le film "Le Loup de Wall Street" (2013). Certains millionnaires et milliardaires cultivent eux-mêmes cette image comme Elon Musk. Le dataset a une variable "self-made", qui n'engage que l'auteur et correspond à sa définition. Cette partie cherche à déterminer s'il y a des traits récurrents parmis les self-made. 
 
 ### 1. Accès à l'éducation
-
-Q7 - Le niveau d’accès à l’enseignement supérieur influence-t-il l’émergence de milliardaires self-made ?
 <details>
 <summary>Question et problème étudié</summary>
 
@@ -461,6 +409,8 @@ Finalement, on observe une légère tendance à ce que les pays avec un taux d'i
 Cependant, la corrélation n'est pas très forte, ce qui suggère que d'autres facteurs, tels que l'environnement économique, les opportunités d'affaires et les politiques gouvernementales, peuvent également jouer un rôle important dans la réussite des milliardaires "self-made".
 
 </details>
+Il nous a semblé pertinent d'étudier l'influence du genre sur le statut de selfmade. En effet, les femmes ont moins souvent accès aux postes à haute décision et aux hautes rémunérations à cause du plafond de verre mais sont pourtant, elles ont des notes plus élevées que les hommes à l'école et sont plus représentées dans l'enseignement supérieur. 
+
 ### 2. Genre
 Q23 - Les hommes milliardaires sont-ils plus souvent self-made que les femmes ?
 <details>
@@ -531,6 +481,7 @@ p2
 <summary>Interprétation et réponse</summary>
 </details>
 
+Pour finir, il serait intéressant de comparer les profils entre selfmade et héritiés afin de capter et comprendre les caractéristiques majeurs qui les influencent. 
 ### 3. Portrait du milliardaire self-made
 
 Q18 - Peut-on deviner si un milliardaire s'est fait tout seul à partir de son profil ? (ou "Existe-t-il des différences de profil entre les milliardaires self-made et les héritiés?")
@@ -567,24 +518,9 @@ p20
 <summary>Interprétation et réponse</summary>
 </details>
 
-
-## IV. Fortunes : industries et richesses
+## III. Fortunes : industries et richesses
 Dans ce dataset, les fortunes des milliardaires sont majoritairement associées à une activité économique, entrepreneuriale ou patrimoniale. Elles proviennent toutes de secteurs variés qui leur permet de faire partie d'une élite économique mais aussi sociale et culturelle. Néanmoins, les milliardaires n'ont pas tous investis les mêmes secteurs économiques, ni le même niveau de fortune. Cette partie cherche à déterminer si certains secteurs économiques/industries concentrent la richesse et les milliardaires.
-Problématique de la partie: Comment se concentrent la richesse des milliardaires? 
-
-<!-- Q12 - Quels sont les points communs entre les riches dans le monde? -->
-<!-- <details> -->
-<!-- <summary>Question et problème étudié</summary> -->
-<!-- </details> -->
-
-<!-- <details> -->
-<!-- <summary>Visualisation</summary> -->
-<!-- </details> -->
-
-<!-- <details> -->
-<!-- <summary>Interprétation et réponse</summary> -->
-<!-- </details> -->
-
+n
 ### 1. Répartition des fortunes
 
 <details>
@@ -989,8 +925,10 @@ L'hypothèse de départ est validée mais incomplète car il y a des secteurs no
 
 </details>
 
-## V. Indicateurs de santé économique
-La fortune des milliardaires est constitué de différents revenus, du travail et du capital. Ils sont presque tous à la tête d'une entreprise et donc bénéficie majoritairement de revenus du capital, lié à la performace de leur entreprise. Au sein de leur entreprise, ils doivent s'acquitter de taxes à l'État dans lequel ils produisent. La pérennité de leur entreprise dépend donc fortement de la santé économique et du cadre réglementaire du pays où leurs activités sont implantées. Cette partie cherche à déterminer si les indicateurs macroéconomiques influencent la présence des milliardaires et de leur entreprises sur un territoire national.
+## IV. Indicateurs de santé économique
+La fortune des milliardaires est constitué de différents revenus, du travail (salaire de PDG) et du capital(actifs). Ils résident dans des pays dont les caractéristiques fiscales et économiques, sont parfois, radicalement différentes.
+Il faut souligner que notre jeu de données ne donne pas le lieu d'implantation de leur entreprise et non le lieu d'implantation de leur entreprise. Cependant, il nous renseigne sur le lieu de résidence des milliardaires. Il n'est donc pas possible d'établir directement un lien entre les indicateurs macroéconomiques d'un pays et la performance ou la localisation de leurs sociétés. Néanmoins, on peut supposer qu'il existe un lien entre le pays de résidence et une partie des activités économiques, notammenet lorsqu'il y exerce toujours des fonctions de direction. 
+Cette partie cherche à déterminer si les indicateurs macroéconomiques du pays de résidence influencent la présence des milliardaires sur leur sol.
 
 ### 1. Niveau d'inflation
 Q2 - Existe-il une corrélation entre la densité des milliardaires par million d'habitants et le niveau d'inflation sur l'année 2019 ?
@@ -1141,7 +1079,7 @@ Cependant, les outliers trois outliers respectivement les États-Unis, la Chine 
 
 </details>
 
-## VI. Profil démographique
+## V. Profil démographique
 La démographie se compose en plusieurs données telles que l'âge, le genre, le niveau d'étude, la situation professionnelle, la situation familiale, le revenu annuel, le logement et la possession d'une entreprise. Dans le cas des milliardaires, la démographie est déjà établit. Le dataset fournit le revenu annuel pour 2023 (finalWorth), la situation professionnel (chef d'entreprise), la possession d'une entreprise (nom de l'entreprise), l'âge, le genre et le niveau d'étude du pays duquel ils ont la nationalité. La situation familiale et le logement ne sont pas fournis par le dataset. Cependant, ces variables ne sont pas pertinentes pour l'analyse. Etant donnée que la situation professionnel et le revenu annuel sont excellents comparé au reste de la population et qu'ils sont étudiés dans d'autres parties de ce rapport. Le niveau d'étude est aussi étudié dans une autre partie. Cette partie est consacrée à déterminer le profil démographie des milliardaires en étudiant l'âge et au genre. 
 
 ### 1. Genre
@@ -1386,6 +1324,7 @@ La Génération silencieuse reste significative (19,8 %), principalement grâce 
 
 
 ## VII. Questions annexes
+L'objectif de cette partie est de tester le dataset et de voir s'il y a des choses drôles ou étranges sur les milliardaires. 
 
 Q16 - Dans quel(s) mois sont nés les milliardaires ?
 <details>
