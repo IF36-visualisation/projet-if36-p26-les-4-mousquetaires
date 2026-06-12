@@ -70,9 +70,8 @@ Notre travail s'articule autour de cette question : Quels facteurs expliquent l'
 
 # **Analyse exploratoire**
 ## I. Géographie de la richesse mondiale
-Les milliardaires ont la possibilité de s’établir où ils le souhaitent en raison de leur revenu. Cependant, le choix de leur résidence n’est pas laissé au hasard. Il peut supposer qu’ils habitent dans des lieux où ils peuvent facilement avoir des opportunités entrepreneuriales, un accès aux meilleures écoles pour leur famille et proche des centres de décisions de leur(s) entreprise(s). Il semble logique que les opportunités de faire croître leur entreprises se trouvent majoritairement dans l’hémisphère nord. Il convient donc de se demander où les milliardaires se concentrent dans le monde.
 
-Problématique de la partie: Où se concentrent les milliardaires dans le monde? 
+Les milliardaires ont la possibilité de s’établir où ils le souhaitent en raison de leur revenu. Cependant, le choix de leur résidence n’est pas laissé au hasard. Le choix du lieu de résidence peut être influencé par de nombreux facteurs, tels que la proximité des centres économiques, des sièges sociaux, des marchés financiers ou encore des infrastructures et services de haut niveau. Cette partie cherche à déterminer si une concentration géographique apparaît effectivement dans les données.
 
 ### 1. Lieux d'habitation des milliardaires
 
@@ -172,7 +171,7 @@ Mon choix s'est porté sur un diagramme à barre qui est fait pour montrer une r
 
 <details>
 <summary>Interprétation et réponse</summary>
- L'hypothèse de départ est vérifiée. New York est en tête de loin et cela peut s'expliquer car la ville concentre énormément d'industries et donc d'opportunités mais elle est aussi extrêmement peuplée. La présence de ces villes, qui dépassent, pour la plupart sauf San Francisco, le million d'habitants, s'expliquent par la présence d'industries, de main d'œuvres et d'un tissu économique favorable au développement de la richesse des milliardaires. Comme elles ont attirés des milliardaires qui ont favorisé leur développement, elles attirent les nouveaux et cela donne une concentration de richesses importante. 
+ L'hypothèse de départ est vérifiée. New York est en tête de loin et cela peut s'expliquer car la ville concentre énormément d'industries et donc d'opportunités mais elle est aussi extrêmement peuplée. La présence de ces villes, qui dépassent, pour la plupart sauf San Francisco, le million d'habitants, s'expliquent par la présence d'industries, de main d'œuvres et d'un tissu économique favorable au développement de la richesse des milliardaires. Cette concentration peut s'expliquer par un environnement économique favorable et par des effets d'agglomération, sans que les données permettent d'établir un lien causal direct.
 </details>
 Nous avons fait le choix de regarder où se concentrent les milliardaires américains car plusieurs villes se retrouvent dans le Top ci-dessus et que les États-Unis sont assez visibles sur la carte du a.
 
@@ -219,7 +218,7 @@ Sans surprise, les autres états comptent entre 0 et 50 milliardaires.
 
 </details>
 
-Ainsi, numériquement, les riches se trouvent dans les pays occidentaux, économiquement développés, mais aussi dans les pays émergents (BRICS) dans les mégalopoles qui sont déjà des centres de concentration de richesses et d'opportunités. Le focus sur les États-Unis montrent qu'en effet, il y a peu voir quasiment pas de milliardaires en milieu rural. On peut supposer que cela s'étend au monde. Cependant, il faudrait savoir si ces pays "produisent" des milliardaires. On peut regarder les nationalités des milliardaires
+Ainsi, numériquement, les riches se trouvent dans les pays occidentaux, économiquement développés, mais aussi dans les pays émergents (BRICS) dans les mégalopoles qui sont déjà des centres de concentration de richesses et d'opportunités. Le focus sur les États-Unis montrent qu'en effet, il y a peu, voire quasiment pas de milliardaires en milieu rural. On peut supposer que cela s'étend au monde. Cependant, il faudrait savoir si ces pays "produisent" des milliardaires. On peut regarder les nationalités des milliardaires
 
 ### 2. Origine et mouvements des milliardaires
 
@@ -277,7 +276,7 @@ diagramme
 <details>
 <summary>Interprétation et réponse</summary>
 
-La densité de population semble avoir une bien plus grosse influence que la richesse d'un pays sur le nombre de milliardaires qu'il compte. 
+Les pays les plus peuplés figurent parmi ceux comptant le plus de milliardaires en valeur absolue, ce qui suggère que la population semble avoir une grande influence. 
 En effet, les États-Unis, la Chine et l'Inde sont les trois pays les plus représentés, alors que des pays comme la Suisse ou le Luxembourg, qui ont une forte concentration de richesses, ne figurent pas dans le top 10.
 Cependant, les Etats-Unis, qui ont une population d'environ 330 millions d'habitants, sont largement en tête avec plus de 700 milliardaires, ce qui est bien plus que la Chine (environ 1,4 milliard d'habitants) et l'Inde (environ 1,3 milliard d'habitants).
 Cela suggère que la taille de la population est un facteur clé dans le nombre de milliardaires mais que d'autres facteurs semblent également jouer un rôle, comme la culture entrepreneuriale, les opportunités économiques, les politiques de naturalisation et les politiques fiscales.
@@ -303,7 +302,7 @@ Le diagramme est dans le Shiny app.
 
 
 </details>
-On constate que les pays et les villes comptant le plus de milliardaires sont aussi ceux avec le plus de ressortissants milliardaires. Ces aires géographiques attirent les milliardaires des pays moins développés. Toutefois, nous avons travaillés sur des chiffres brutes ce qui peut orienter nos interprétations. 
+On constate que les pays et les villes comptant le plus de milliardaires sont aussi ceux avec le plus de ressortissants milliardaires. Ces aires géographiques attirent les milliardaires des pays moins développés. Toutefois, nous avons travaillé sur des chiffres brutes ce qui peut orienter nos interprétations. 
 
 ### 3. Concentration des milliardaires
 Q19 - Quel est le nombre de milliardaires par millions d'habitant par pays ?
@@ -394,7 +393,7 @@ Pour conclure, les milliardaires sont répartis dans les pays de l'Ouest et dans
 
 
 ## III. Le mythe du self-made man
-Problématique de la partie: Quelles sont les grands traits du self-made?
+Le mythe du self-made man est apparu aux États-Unis à partir de 1830. C'est l'idée selon laquelle quelqu'un pourrait se faire tout seul mais surtout, sans bénéficier d'un héritage conséquent. Cela peut sous-entendre, qu'au moins aux États-Unis, il y a un système méritocratique qui permet à tout un chacun de s'élever socialement car il est volontaire et travailleur. Sa représentation dans les supports culturels est toujours présente aujourd'hui comme dans le film "Le Loup de Wall Street" (2013). Certains millionnaires et milliardaires cultivent eux-mêmes cette image comme Elon Musk. Le dataset a une variable "self-made", qui n'engage que l'auteur et correspond à sa définition. Cette partie cherche à déterminer s'il y a des traits récurrents parmis les self-made. 
 
 ### 1. Accès à l'éducation
 
@@ -535,7 +534,7 @@ p2
 
 ### 3. Portrait du milliardaire self-made
 
-Q18 - Peut-on deviner si un milliardaire s'est fait tout seul à partir de son profil ?
+Q18 - Peut-on deviner si un milliardaire s'est fait tout seul à partir de son profil ? (ou "Existe-t-il des différences de profil entre les milliardaires self-made et les héritiés?")
 <details>
 <summary>Question et problème étudié</summary>
 </details>
@@ -570,7 +569,8 @@ p20
 </details>
 
 
-## IV. Concentration des richesses et des industries
+## IV. Fortunes : industries et richesses
+Dans ce dataset, les fortunes des milliardaires sont majoritairement associées à une activité économique, entrepreneuriale ou patrimoniale. Elles proviennent toutes de secteurs variés qui leur permet de faire partie d'une élite économique mais aussi sociale et culturelle. Néanmoins, les milliardaires n'ont pas tous investis les mêmes secteurs économiques, ni le même niveau de fortune. Cette partie cherche à déterminer si certains secteurs économiques/industries concentrent la richesse et les milliardaires.
 Problématique de la partie: Comment se concentrent la richesse des milliardaires? 
 
 <!-- Q12 - Quels sont les points communs entre les riches dans le monde? -->
@@ -583,10 +583,10 @@ Problématique de la partie: Comment se concentrent la richesse des milliardaire
 <!-- </details> -->
 
 <!-- <details> -->
-<!-- <summaryInterprétation et réponse</summary> -->
+<!-- <summary>Interprétation et réponse</summary> -->
 <!-- </details> -->
 
-Q14 - Comment se répartit la richesse des milliardaires ?
+### 1. Répartition des fortunes
 
 <details>
 <summary>Question et problème étudié</summary>
@@ -601,29 +601,40 @@ Tout d'abord, pour faire une observation générale, j'ai choisi de faire un box
 
 ```{r echo=FALSE}
 # Tri des données
-dt_finalWorth <- df %>% select(finalWorth) %>% mutate(finalWorth = finalWorth/1000)
+dt_finalWorth <- df %>% 
+  select(finalWorth) %>% 
+  mutate(
+    finalWorth = finalWorth/1000
+    )
 
 # Box plot pour tester la répartition
-distr_rich_quart_plot <- dt_finalWorth %>% ggplot(aes(y = 1,x=finalWorth )) +
-geom_boxplot() +
+distr_rich_quart_plot <- dt_finalWorth %>% 
+  ggplot(aes(
+    y = 1,x=finalWorth
+    )
+    ) +
+  geom_boxplot() +
   scale_y_continuous(breaks = NULL) +
-  labs(title ="Distribution de la richesse des milliardaires",
-       x="Milliards") 
+  labs(
+    title ="Distribution de la richesse des milliardaires",
+    x="Milliards") 
 distr_rich_quart_plot
 ```
 </details>
 <details>
 <summary>Interprétation et ouverture</summary>
-La richesse des milliardaires est effectivement très concentrée. La médiane est basse et il y a énormément d'outliers, ce qui confirme une distribution très inégale de la richesse parmis les milliardaires. Pour avoir une analyse plus fine, nous proposons de diviser les observations en centiles plutôt qu'en quartiles car le box plot risque d'être encore peu lisible. 
+La richesse des milliardaires est effectivement très concentrée. La médiane est faible relativement aux plus grandes fortunes observées. Il y a énormément d'outliers, ce qui confirme une distribution très inégale de la richesse parmis les milliardaires. Pour avoir une analyse plus fine, nous proposons de diviser les observations en déciles plutôt qu'en quartiles car le box plot risque d'être encore peu lisible. 
 </details>
 
 <details>
 <summary>Visualisation</summary>
 
 ```{r}
-# Attribution d'un numéro différent tous les 264 données (2640/10) pour faire une répartition en centile
+# Attribution d'un numéro différent tous les 264 données (2640/10) pour faire une répartition en décile
 num_centile <-c("C10", "C09", "C08", "C07","C06", "C05","C04", "C03", "C02", "C01")
-dt_centile<- df %>% select(finalWorth) %>% arrange(finalWorth) %>%
+dt_decile<- df %>% 
+  select(finalWorth) %>% 
+  arrange(finalWorth) %>%
   mutate(
     centile = ntile(finalWorth, 10),
     centile = factor(
@@ -635,27 +646,30 @@ dt_centile<- df %>% select(finalWorth) %>% arrange(finalWorth) %>%
 
 #Box plot pour voir la répartition
 
-distr_rich_cent_plot <- dt_centile %>% ggplot(aes(x=factor(centile), y=finalWorth)) +
+distr_rich_dec_plot <- dt_decile %>% 
+  ggplot(aes(
+    x=factor(centile), 
+    y=finalWorth)
+    ) +
 geom_boxplot()+
-  labs(title ="Distribution de la richesse des milliardaires en centile",
-       x="Centile",
+  labs(title ="Distribution de la richesse des milliardaires en décile",
+       x="Décile",
        y="Milliards")
-distr_rich_cent_plot
+distr_rich_dec_plot
 
 ```
 </details>
-
 <details>
 <summary>Interprétation et ouverture</summary>
-Le graphique est un peu plus lisible et montre une vraie concentration de la richesse sur le dernier centile alors que les neuf autres centiles sont compris entre 1 et 8 milliards.Cependant, il y a encore énormément de données abbérantes dans C10 qui nous pousse à isoler ce dernier centil afin d'avoir une répartition encore plus fine de ces 264 milliardaires.
+Le graphique est un peu plus lisible et montre une vraie concentration des fortunes élevées dans le dernier décile alors que les neuf autres déciles sont compris entre 1 et 8 milliards.Cependant, il y a encore énormément de données extrêmes dans C10 qui nous pousse à isoler ce dernier décile afin d'avoir une répartition encore plus fine de ces 264 milliardaires.
 </details>
 
 <details>
 <summary>Visualisation</summary>
 
 ```{r}
-#On va regarder la distribution des 10% les plus riches en les repartissant en centile
-top_ten_dt <- dt_centile %>%
+#On va regarder la distribution des 10% les plus riches en les repartissant en décile
+top_ten_dt <- dt_decile %>%
   filter(centile =="C10") %>%
   arrange(finalWorth) %>%
   mutate(
@@ -665,18 +679,21 @@ top_ten_dt <- dt_centile %>%
       labels = rev(num_centile)
       ),
   )
-top_ten_dt
-top_ten_cent_plot <- top_ten_dt %>% ggplot(aes(x=factor(centile), y=finalWorth)) +
+top_ten_cent_plot <- top_ten_dt %>% 
+  ggplot(aes
+         (x=factor(centile), 
+           y=finalWorth)
+         ) +
 geom_boxplot()+
   labs(title ="Distribution de la richesse des 10% des milliardaires les plus riches",
-       x="Centile",
+       x="Décile",
        y="Milliards")
 top_ten_cent_plot
-
 ```
+</details>
 <details>
 <summary>Interprétation</summary>
-Finalement à l'intérieur même des 10% les plus fortunés, les inégalités de richesse restent flagrantes. C10 est le box qui montre la plus grande disparité de données alors les neuf autres restent homogènes en leur seins. Mais on note enfin une vraie différence à l'œil nu pour les neuf premiers centiles. On ne pouvait pas déceler cela si facilement avec le C10 du graphique du dessus.  Les écarts vont de 8 à 43 milliards. 
+Finalement à l'intérieur même des 10% les plus fortunés, les inégalités de richesse restent flagrantes. C10 est le box qui montre la plus grande disparité de données alors les neuf autres restent homogènes en leur seins. Mais on note enfin une vraie différence à l'œil nu pour les neuf premiers déciles. On ne pouvait pas déceler cela si facilement avec le C10 du graphique du dessus.  Les écarts vont de 8 à 43 milliards. 
 </details>
 
 
@@ -684,17 +701,19 @@ Finalement à l'intérieur même des 10% les plus fortunés, les inégalités de
 <summary>Interprétation et réponse</summary>
 L’analyse confirme une asymétrie radicale de la richesse :
 
-Il y la masse des petits, et aussi, nouveaux milliardaires : ils se situent juste après le seuil de 1 milliard entre C01 et C05 sur la première datavisualisation en centile. 
+Il y la masse des milliardaires proches du seuil d'entrée : ils se situent juste après le seuil de 1 milliard entre C01 et C05 sur la première datavisualisation en centile. 
 
-Ensuite, on trouve La "Longue Traîne” (Long Tail) : Plus on avance vers la droite (vers les 10, 50, 100 milliards), plus le nombre de personnes chute drastiquement.
+Ensuite, on trouve La "Longue Traîne” (Long Tail). Plus on avance vers la droite (vers les 10, 50, 100 milliards), plus le nombre de personnes chute drastiquement.
 
-Le club des Centimilliardaires : Les individus comme Bernard Arnault ou Elon Musk sont des “outliers” (données aberrantes statistiquement). Leur richesse est si élevée qu’ils forment une catégorie à part entière, presque déconnectée du reste du classement.
+Le club des centimilliardaires : Les individus comme Bernard Arnault ou Elon Musk sont des “outliers”. Leur richesse est si élevée qu’ils forment une catégorie à part entière, presque déconnectée du reste du classement.
 
-En conclusion, la richesse des milliardaires ne suit pas une courbe en cloche (normale). C’est un système où “le gagnant rafle presque tout”, reflétant les dynamiques de capitalisation boursière où quelques entreprises dominantes propulsent leurs propriétaires vers des sommets isolés.
+En conclusion, la richesse des milliardaires ne suit pas une courbe en cloche (normale). La distribution est très inégale et montre une concentration des patrimoines  extrême au sommet, reflétant les dynamiques de capitalisation boursière. Ces résultats suggèrent que les inégalités patrimoniales ne s'arrêtent pas à l'entrée dans le club des milliardaires mais se prolongent fortement à l'intérieur de celui-ci.
 
 </details>
 
-Q15 - Quelles sont les différents types d'industrie qui sont les plus représentés ? 
+### 2. Des industries inégalitaires
+
+Q15 - Quelles sont les différents types d'industrie qui sont les plus représentées ? 
 <details>
 <summary>Question et problème étudié</summary>
 </details>
@@ -770,7 +789,7 @@ Un diagramme en barres horizontales du Top 15 des industries, trié du plus gran
 
 <summary>Interprétation et réponse</summary>
 
-Sans surprise, c'est très inégal. Finance & Investments, Manufacturing et Technology sont dominants avec 300 à 370 milliardaires chacun. Derrière (Fashion & Retail, Food & Beverage, Healthcare, Real Estate, Diversified) se tient autour de 180–270. Puis tout le reste tombe sous la barre des 100 : Energy, Media, Automotive, Logistics…
+C'est très inégal. Finance & Investments, Manufacturing et Technology sont dominants avec 300 à 370 milliardaires chacun. Derrière (Fashion & Retail, Food & Beverage, Healthcare, Real Estate, Diversified) se tient autour de 180–270. Puis tout le reste tombe sous la barre des 100 : Energy, Media, Automotive, Logistics…
 
 Ça colle avec ce qu'on observe dans l'économie réelle, les actualités, etc. : les secteurs où circule le plus de capital (finance, tech) ou (manufacturing) produisent plus de très grandes fortunes.
 
@@ -972,9 +991,9 @@ L'hypothèse de départ est validée mais incomplète car il y a des secteurs no
 </details>
 
 ## V. Indicateurs de santé économique
+La fortune des milliardaires est constitué de différents revenus, du travail et du capital. Ils sont presque tous à la tête d'une entreprise et donc bénéficie majoritairement de revenus du capital, lié à la performace de leur entreprise. Au sein de leur entreprise, ils doivent s'acquitter de taxes à l'État dans lequel ils produisent. La pérennité de leur entreprise dépend donc fortement de la santé économique et du cadre réglementaire du pays où leurs activités sont implantées. Cette partie cherche à déterminer si les indicateurs macroéconomiques influencent la présence des milliardaires et de leur entreprises sur un territoire national.
 
-Problématique de la partie: Quels facteurs économiques ont une influence sur la présence des milliardaires? 
-
+### 1. Niveau d'inflation
 Q2 - Existe-il une corrélation entre la densité des milliardaires par million d'habitants et le niveau d'inflation sur l'année 2019 ?
 
 <details>
@@ -986,6 +1005,7 @@ On entend régulièrement qu'une bonne santé économique favorise l'émergence 
 </details>
 <details>
 <summary> Visualisation </summary>
+Le choix de la visualisation se porte sur un scatter plot, utilisé pour chercher une corrélation entre deux variables. Pour annuler l'effet "taille la population", nous regardons le nombre de milliardaires par pays par millions d'habitants. Beaucoup de pays ayant des niveaux d'inflation proches, la datavisualisation n'est pas très lisible sauf pour les valeurs extrêmes. Par soucis de clarté et de transparence, les points représentant les pays sont légendés si leur lecture est possible. 
 
 ```{r, echo=FALSE}
 #Calcul de la densité des milliardaires par pays 
@@ -1029,7 +1049,7 @@ infla_and_billionaires <- density %>%
     label.x = 8,
     label.y = max(density$density) * 0.95
   ) +
-labs(title = "Corrélation entre niveau d'inflation en 2019 et nombre de milliardaires par million d'habitants",
+labs(title = "Corrélation niveau d'inflation en 2019 et nombre de milliardaires par million d'habitants",
        x = "Inflation sur l'année 2019 (%)",
        y = "Milliardaires par million d'habitants") + 
        geom_label_repel(
@@ -1058,8 +1078,8 @@ On peut ajouter des éléments à cette analyse comme la difficulté de délocal
 
 </details>
 
+### 2. Taux d'imposition
 
-Q13 - Le taux d’imposition a-t-il une influence sur le nombre de milliardaires par pays ?
 <details>
 <summary>Question et problème étudié</summary>
 
@@ -1126,6 +1146,63 @@ Cependant, les outliers trois outliers respectivement les États-Unis, la Chine 
 
 Problématique de la partie: Quel serait le profil démorgraphique du milliardaire?
 
+### 1. Genre
+Q22 - Quelle est la proportion de femmes et d’hommes parmi les milliardaires en 2023 ?
+<details>
+<summary>Question et problème étudié</summary>
+</details>
+
+<details>
+<summary>Visualisation</summary>
+```{r echo=FALSE}
+df_clean <- df %>%
+  filter(!is.na(gender), !is.na(selfMade)) %>%
+  mutate(
+    Genre    = if_else(gender == "M", "Homme", "Femme"),
+    SelfMade = if_else(selfMade == TRUE, "Self-made", "Hérité / Autre")
+  )
+
+# Encodage par couleur
+col_selfmade <- c("Self-made"     = "#2C6E9B",
+                  "Hérité / Autre" = "#E07B39")
+
+col_genre    <- c("Homme" = "#2C6E9B",
+                  "Femme" = "#E07B39")
+
+
+gender_counts <- df_clean %>%
+  count(Genre) %>%
+  mutate(pct = n / sum(n),
+         label = paste0(Genre, "\n", comma(n), "\n(", percent(pct, accuracy = 0.1), ")"))
+
+p1 <- ggplot(gender_counts, aes(x = "", y = pct, fill = Genre)) +
+  geom_col(width = 0.55, colour = "white", linewidth = 0.6) +
+  geom_text(aes(label = label),
+            position = position_stack(vjust = 0.5),
+            colour = "white", size = 3.8, fontface = "bold", lineheight = 1.3) +
+  coord_flip() +
+  scale_fill_manual(values = col_genre) +
+  scale_y_continuous(labels = percent_format(), expand = c(0, 0)) +
+  labs(
+    title    = "Répartition des milliardaires selon le genre",
+    subtitle = paste0("N = ", comma(sum(gender_counts$n)), " milliardaires"),
+    x = NULL, y = NULL, fill = NULL
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    plot.title      = element_text(face = "bold", size = 13),
+    plot.subtitle   = element_text(colour = "grey50", size = 10),
+    legend.position = "none",
+    axis.text       = element_blank(),
+    panel.grid      = element_blank()
+  )
+p1
+```
+</details>
+
+<details>
+<summary>Interprétation et réponse</summary>
+</details>
 Q5 - Y a-t-il un lien entre l'âge et la richesse ?
 
 <details>
@@ -1173,7 +1250,7 @@ summary(model_age)
 <summary> Interprétation et réponse</summary>
 </details>
 
-
+### 2. Âge
 
 Q11 - Quelle est la répartition de l’âge des milliardaires en 2023 ?
 <details>
@@ -1301,62 +1378,7 @@ La Génération silencieuse reste significative (19,8 %), principalement grâce 
 
 </details>
 
-Q22 - Quelle est la proportion de femmes et d’hommes parmi les milliardaires en 2023 ?
-<details>
-<summary>Question et problème étudié</summary>
-</details>
 
-<details>
-<summary>Visualisation</summary>
-```{r echo=FALSE}
-df_clean <- df %>%
-  filter(!is.na(gender), !is.na(selfMade)) %>%
-  mutate(
-    Genre    = if_else(gender == "M", "Homme", "Femme"),
-    SelfMade = if_else(selfMade == TRUE, "Self-made", "Hérité / Autre")
-  )
-
-# Encodage par couleur
-col_selfmade <- c("Self-made"     = "#2C6E9B",
-                  "Hérité / Autre" = "#E07B39")
-
-col_genre    <- c("Homme" = "#2C6E9B",
-                  "Femme" = "#E07B39")
-
-
-gender_counts <- df_clean %>%
-  count(Genre) %>%
-  mutate(pct = n / sum(n),
-         label = paste0(Genre, "\n", comma(n), "\n(", percent(pct, accuracy = 0.1), ")"))
-
-p1 <- ggplot(gender_counts, aes(x = "", y = pct, fill = Genre)) +
-  geom_col(width = 0.55, colour = "white", linewidth = 0.6) +
-  geom_text(aes(label = label),
-            position = position_stack(vjust = 0.5),
-            colour = "white", size = 3.8, fontface = "bold", lineheight = 1.3) +
-  coord_flip() +
-  scale_fill_manual(values = col_genre) +
-  scale_y_continuous(labels = percent_format(), expand = c(0, 0)) +
-  labs(
-    title    = "Répartition des milliardaires selon le genre",
-    subtitle = paste0("N = ", comma(sum(gender_counts$n)), " milliardaires"),
-    x = NULL, y = NULL, fill = NULL
-  ) +
-  theme_minimal(base_size = 12) +
-  theme(
-    plot.title      = element_text(face = "bold", size = 13),
-    plot.subtitle   = element_text(colour = "grey50", size = 10),
-    legend.position = "none",
-    axis.text       = element_blank(),
-    panel.grid      = element_blank()
-  )
-p1
-```
-</details>
-
-<details>
-<summary>Interprétation et réponse</summary>
-</details>
 
 ## VII. Questions annexes
 
