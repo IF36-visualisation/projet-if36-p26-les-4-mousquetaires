@@ -520,7 +520,7 @@ p20
 
 ## III. Fortunes : industries et richesses
 Dans ce dataset, les fortunes des milliardaires sont majoritairement associées à une activité économique, entrepreneuriale ou patrimoniale. Elles proviennent toutes de secteurs variés qui leur permet de faire partie d'une élite économique mais aussi sociale et culturelle. Néanmoins, les milliardaires n'ont pas tous investis les mêmes secteurs économiques, ni le même niveau de fortune. Cette partie cherche à déterminer si certains secteurs économiques/industries concentrent la richesse et les milliardaires.
-n
+
 ### 1. Répartition des fortunes
 
 <details>
@@ -927,7 +927,9 @@ L'hypothèse de départ est validée mais incomplète car il y a des secteurs no
 
 ## IV. Indicateurs de santé économique
 La fortune des milliardaires est constitué de différents revenus, du travail (salaire de PDG) et du capital(actifs). Ils résident dans des pays dont les caractéristiques fiscales et économiques, sont parfois, radicalement différentes.
+
 Il faut souligner que notre jeu de données ne donne pas le lieu d'implantation de leur entreprise et non le lieu d'implantation de leur entreprise. Cependant, il nous renseigne sur le lieu de résidence des milliardaires. Il n'est donc pas possible d'établir directement un lien entre les indicateurs macroéconomiques d'un pays et la performance ou la localisation de leurs sociétés. Néanmoins, on peut supposer qu'il existe un lien entre le pays de résidence et une partie des activités économiques, notammenet lorsqu'il y exerce toujours des fonctions de direction. 
+
 Cette partie cherche à déterminer si les indicateurs macroéconomiques du pays de résidence influencent la présence des milliardaires sur leur sol.
 
 ### 1. Niveau d'inflation
@@ -936,7 +938,7 @@ Q2 - Existe-il une corrélation entre la densité des milliardaires par million 
 <details>
 <summary>Question et problème étudié</summary>
 
-On entend régulièrement qu'une bonne santé économique favorise l'émergence et la prosperité des entreprises. Or, une inflation haute et/ou peu maitrisée ferait fuir les patrons de ces entreprises, dont les milliardaires, qui iraient délocaliser la production de leur entreprise et quitteraient leur pays d'habitation. Il serait intéressant de tester cette hypothèse. 
+On entend régulièrement qu'une bonne santé économique favorise l'émergence et la prosperité des entreprises. Or, une inflation haute et/ou peu maitrisée ferait fuir les patrons de ces entreprises et qu'ils délocaliseraient la production de leur entreprise et quitteraient leur pays de résidence. Dans les discours ambiants, c'est considéré comme dommageable pour le pays qui perdrait des emplois et dont mécaniquement, le taux de chômage augmenterait. Au niveau de la fiscalité sur le revenu du milliardaire, ce serait se priver de recettes pour le pays. Il serait intéressant de tester si le niveau d'inflation d'un pays permet d'expliquer la concentration des milliardaires.
 
 
 </details>
@@ -1000,9 +1002,14 @@ infla_and_billionaires
 result <- cor.test(
   density$density,
   density$inflation, 
-  method = "pearson"
+  method = "spearman"
 )
 result
+model_age <- lm(
+  density ~ inflation,
+  data = density
+)
+model_age
 ```
 
 
@@ -1323,7 +1330,7 @@ La Génération silencieuse reste significative (19,8 %), principalement grâce 
 
 
 
-## VII. Questions annexes
+## VI. Questions annexes
 L'objectif de cette partie est de tester le dataset et de voir s'il y a des choses drôles ou étranges sur les milliardaires. 
 
 Q16 - Dans quel(s) mois sont nés les milliardaires ?
