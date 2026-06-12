@@ -1087,7 +1087,7 @@ Cependant, les outliers trois outliers respectivement les États-Unis, la Chine 
 Ainsi, l'inflation et la concentration des milliardaires dans le pays de résidence est liée. Il semblerait que plus un pays a une inflation élevée moins il y aurait de milliardaires présents sur son sol, ainsi qu'une partie de son activité économique, sans pour autant déterminer de causalité. Quant au taux d'imposition, il n'a pas de lien de corrélation entre les deux variables.
 
 ## V. Profil démographique
-La démographie se compose en plusieurs données telles que l'âge, le genre, le niveau d'étude, la situation professionnelle, la situation familiale, le revenu annuel, le logement et la possession d'une entreprise. Dans le cas des milliardaires, la démographie est déjà établit. Le dataset fournit le revenu annuel pour 2023 (finalWorth), la situation professionnel (chef d'entreprise), la possession d'une entreprise (nom de l'entreprise), l'âge, le genre et le niveau d'étude du pays duquel ils ont la nationalité. La situation familiale et le logement ne sont pas fournis par le dataset. Cependant, ces variables ne sont pas pertinentes pour l'analyse. Etant donnée que la situation professionnel et le revenu annuel sont excellents comparé au reste de la population et qu'ils sont étudiés dans d'autres parties de ce rapport. Le niveau d'étude est aussi étudié dans une autre partie. Cette partie est consacrée à déterminer le profil démographie des milliardaires en étudiant l'âge et au genre. 
+Cette partie est consacrée à dresser le profil démographie des milliardaires en étudiant l'âge et au genre, deux caractéristiques sensibles dans leur profil. 
 
 ### 1. Genre
 Q22 - Quelle est la proportion de femmes et d’hommes parmi les milliardaires en 2023 ?
