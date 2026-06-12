@@ -928,7 +928,7 @@ L'hypothèse de départ est validée mais incomplète car il y a des secteurs no
 ## IV. Indicateurs de santé économique
 La fortune des milliardaires est constitué de différents revenus, du travail (salaire de PDG) et du capital(actifs). Ils résident dans des pays dont les caractéristiques fiscales et économiques, sont parfois, radicalement différentes.
 
-Il faut souligner que notre jeu de données ne donne pas le lieu d'implantation de leur entreprise et non le lieu d'implantation de leur entreprise. Cependant, il nous renseigne sur le lieu de résidence des milliardaires. Il n'est donc pas possible d'établir directement un lien entre les indicateurs macroéconomiques d'un pays et la performance ou la localisation de leurs sociétés. Néanmoins, on peut supposer qu'il existe un lien entre le pays de résidence et une partie des activités économiques, notammenet lorsqu'il y exerce toujours des fonctions de direction. 
+Il faut souligner que notre jeu de données ne donne pas le lieu d'implantation de leur entreprise, mais uniquement le lieu de résidence. Cependant, il nous renseigne sur le lieu de résidence des milliardaires. Il n'est donc pas possible d'établir directement un lien entre les indicateurs macroéconomiques d'un pays et la performance ou la localisation de leurs sociétés. Néanmoins, on peut supposer qu'il existe un lien entre le pays de résidence et une partie des activités économiques, notammenet lorsqu'il y exerce toujours des fonctions de direction. 
 
 Cette partie cherche à déterminer si les indicateurs macroéconomiques du pays de résidence influencent la présence des milliardaires sur leur sol.
 
@@ -938,7 +938,7 @@ Q2 - Existe-il une corrélation entre la densité des milliardaires par million 
 <details>
 <summary>Question et problème étudié</summary>
 
-On entend régulièrement qu'une bonne santé économique favorise l'émergence et la prosperité des entreprises. Or, une inflation haute et/ou peu maitrisée ferait fuir les patrons de ces entreprises et qu'ils délocaliseraient la production de leur entreprise et quitteraient leur pays de résidence. Dans les discours ambiants, c'est considéré comme dommageable pour le pays qui perdrait des emplois et dont mécaniquement, le taux de chômage augmenterait. Au niveau de la fiscalité sur le revenu du milliardaire, ce serait se priver de recettes pour le pays. Il serait intéressant de tester si le niveau d'inflation d'un pays permet d'expliquer la concentration des milliardaires.
+On entend régulièrement qu'une bonne santé économique favorise l'émergence et la prosperité des entreprises. À l'inverse, une inflation haute et/ou peu maitrisée est parfois présentée comme un facteur de réduction de l'attractivité économique d'un pays qui ferait fuir les milliardaires. Il serait intéressant de tester si le niveau d'inflation d'un pays permet d'expliquer la concentration des milliardaires. On peut l'étendre avec beaucoup de précaution et en gardant en tête qu'il y a aussi une influence indirecte sur la localisation de l'entreprise. 
 
 
 </details>
@@ -1018,10 +1018,10 @@ model_age
 <details>
 <summary>Interprétation et réponse</summary>
 L'analyse de corrélation de Pearson montre une relation négative faible entre le taux d'inflation et la densité de milliardaires (r=−0,163). Cependant, cette corrélation n'est pas statistiquement significative car p=0,199. Ainsi, le niveau d'inflation observé en 2019 ne semble pas être corrêlé à la densité de milliardaires.
-Pour neutraliser les effets des outliers, l'analyse de Spearman a été effectué et montre une relation négative (rho = 0.465)hautement significative (p-value = 0,001055) entre le niveau de l'inflation et le nombre de milliardaires dans le pays. 
+Pour neutraliser les effets des outliers, l'analyse de Spearman a été effectuée et montre une relation monotone négative (rho = -0.465)hautement significative (p-value = 0,001055) entre le niveau de l'inflation et le nombre de milliardaires dans le pays. Les résultats suggèrent qu'il y a un lien statistique entre ces variables, mais pas de causalité.
 
 </details>
-
+Ensuite, nous avons décidé de tester le taux d'imposition des pays de résidence des milliardaires. La fiscalité est sujet qui fait débat aujourd'hui d'où notre volonté de l'intégrer dans ce rapport. 
 ### 2. Taux d'imposition
 
 <details>
@@ -1085,6 +1085,7 @@ Sauf quelques outliers, la plupart des pays avec des taux d’imposition variés
 Cependant, les outliers trois outliers respectivement les États-Unis, la Chine et l’Inde sont les pays avec le plus de milliardaires et avec aussi le plus grand nombre d’habitants, ce qui peut laisser supposer que le nombre de milliardaires est plus influencé par la taille de la population et l’économie globale du pays que par le taux d’imposition.
 
 </details>
+Ainsi, l'inflation et la concentration des milliardaires dans le pays de résidence est liée. Il semblerait que plus un pays a un inflation élevé moins il y aurait de milliardaires présents sur son sol, ainsi qu'une partie de son activité économique, sans pour autant déterminer de causalité. Quant au taux d'imposition, il n'a pas de lien de corrélation entre les deux variables.
 
 ## V. Profil démographique
 La démographie se compose en plusieurs données telles que l'âge, le genre, le niveau d'étude, la situation professionnelle, la situation familiale, le revenu annuel, le logement et la possession d'une entreprise. Dans le cas des milliardaires, la démographie est déjà établit. Le dataset fournit le revenu annuel pour 2023 (finalWorth), la situation professionnel (chef d'entreprise), la possession d'une entreprise (nom de l'entreprise), l'âge, le genre et le niveau d'étude du pays duquel ils ont la nationalité. La situation familiale et le logement ne sont pas fournis par le dataset. Cependant, ces variables ne sont pas pertinentes pour l'analyse. Etant donnée que la situation professionnel et le revenu annuel sont excellents comparé au reste de la population et qu'ils sont étudiés dans d'autres parties de ce rapport. Le niveau d'étude est aussi étudié dans une autre partie. Cette partie est consacrée à déterminer le profil démographie des milliardaires en étudiant l'âge et au genre. 
