@@ -28,7 +28,6 @@ library(ggpubr)
 library(forcats)
 
 df <- read_csv(here("data", "Billionaires_Statistics_Dataset.csv"))
-summary(df)
 ```
 # **Introduction**
 
@@ -1062,7 +1061,8 @@ labs(title = "Corrélation niveau d'inflation en 2019 et nombre de milliardaires
 infla_and_billionaires
 result <- cor.test(
   density$density,
-  density$inflation
+  density$inflation, 
+  method = "pearson"
 )
 result
 ```
@@ -1072,9 +1072,8 @@ result
 
 <details>
 <summary>Interprétation et réponse</summary>
-L'analyse de corrélation de Pearson montre une relation négative faible entre le taux d'inflation et la densité de milliardaires (r=−0,163). Cependant, cette corrélation n'est pas statistiquement significative car p=0,199. L'intervalle de confiance à 95 % de la corrélation inclut zéro [−0,393;0,087]. On ne peut alors pas conclure à l'existence d'une relation linéaire entre ces deux variables. Ainsi, le niveau d'inflation observé en 2019 ne semble pas être corrêlé à la densité de milliardaires.
-On peut ajouter des éléments à cette analyse comme la difficulté de délocaliser ses entreprises, la fiscalité, la taille du marché financier ou le niveau de développement économique qui pourraient jouer sur la relation linéaire. 
-
+L'analyse de corrélation de Pearson montre une relation négative faible entre le taux d'inflation et la densité de milliardaires (r=−0,163). Cependant, cette corrélation n'est pas statistiquement significative car p=0,199. Ainsi, le niveau d'inflation observé en 2019 ne semble pas être corrêlé à la densité de milliardaires.
+Pour neutraliser les effets des outliers, l'analyse de Spearman a été effectué et montre une relation négative (rho = 0.465)hautement significative (p-value = 0,001055) entre le niveau de l'inflation et le nombre de milliardaires dans le pays. 
 
 </details>
 
@@ -1143,8 +1142,7 @@ Cependant, les outliers trois outliers respectivement les États-Unis, la Chine 
 </details>
 
 ## VI. Profil démographique
-
-Problématique de la partie: Quel serait le profil démorgraphique du milliardaire?
+La démographie se compose en plusieurs données telles que l'âge, le genre, le niveau d'étude, la situation professionnelle, la situation familiale, le revenu annuel, le logement et la possession d'une entreprise. Dans le cas des milliardaires, la démographie est déjà établit. Le dataset fournit le revenu annuel pour 2023 (finalWorth), la situation professionnel (chef d'entreprise), la possession d'une entreprise (nom de l'entreprise), l'âge, le genre et le niveau d'étude du pays duquel ils ont la nationalité. La situation familiale et le logement ne sont pas fournis par le dataset. Cependant, ces variables ne sont pas pertinentes pour l'analyse. Etant donnée que la situation professionnel et le revenu annuel sont excellents comparé au reste de la population et qu'ils sont étudiés dans d'autres parties de ce rapport. Le niveau d'étude est aussi étudié dans une autre partie. Cette partie est consacrée à déterminer le profil démographie des milliardaires en étudiant l'âge et au genre. 
 
 ### 1. Genre
 Q22 - Quelle est la proportion de femmes et d’hommes parmi les milliardaires en 2023 ?
@@ -1203,31 +1201,37 @@ p1
 <details>
 <summary>Interprétation et réponse</summary>
 </details>
-Q5 - Y a-t-il un lien entre l'âge et la richesse ?
+
+### 2. Influence de l'âge
 
 <details>
 <summary>Question et problème étudié</summary> 
+Nous cherchons à savoir si l'âge et le niveau de fortune sont des variables corrêlées. En effet, plus on vieillit, plus on amasse de l'argent, des actifs car on a le temps et l'expérience pour le faire. Notre hypothèse est qu'il y aurait une corrélation positive entre les deux.
+
+Le choix de la visualisation s'est porté sur un scatter plot. Comme il y a beaucoup de milliardaires au seuil d'entrée, la visualisation risque de ne pas être très lisible. 
 </details>
 
 <details>
 <summary>Visualisation</summary>
 ```{r echo=FALSE}
 age_rich_dt <- df %>% 
-  select(finalWorth, age) %>% 
+  filter(!is.na(finalWorth), !is.na(age)) %>% 
   mutate(finalWorth = finalWorth/1000)
 
 infla_and_billionaires <- age_rich_dt %>% 
   ggplot(aes(x=age, y=finalWorth)) + 
-  geom_point(shape = 10) + 
+  geom_point(shape = 10, alpha = 0.5) + 
   stat_smooth(method=lm, se = FALSE) + 
   stat_regline_equation(
     aes(label = after_stat(eq.label)), 
-    label.x = 8,
-    label.y = max(age_rich_dt$age) * 0.95
+    label.x = min(age_rich_dt$age) + 5,
+    label.y = max(age_rich_dt$finalWorth, na.rm = TRUE) * 0.9
   ) +
-labs(title = "Corrélation entre l'âge et la richesse",
+labs(title = "Corrélation entre l'âge et la fortune",
        x = "Age",
-       y = "Richesse") 
+       y = "Niveau de fortune") +
+  theme_minimal()
+
 infla_and_billionaires
 
 result <- cor.test(
@@ -1240,17 +1244,18 @@ model_age <- lm(
   log(finalWorth) ~ age,
   data = age_rich_dt
 )
+model_age
 
-summary(model_age)
 
 ```
 </details>
 
 <details>
 <summary> Interprétation et réponse</summary>
-</details>
+L'analyse s'appuie sur le coefficient de relation de Spearman qui est plus indiqué car la distribution de la fortune des milliardaires est fortement asymétrique et non paramétrique (présence d'outliers extrêmes). Les résultats indiquent une corrélation positive faible très significative : la fortune augmente avec l'âge.
+L'âge apparait ainsi comme un facteur d'accumulation de richesse mais secondaire, il existe d'autres facteurs plus significatifs qui expliquent le niveau de la fortune comme le secteur d'activité, un environnement favorable, ...
 
-### 2. Âge
+### 2. Âge et génération
 
 Q11 - Quelle est la répartition de l’âge des milliardaires en 2023 ?
 <details>
