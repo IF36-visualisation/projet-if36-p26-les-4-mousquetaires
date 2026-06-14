@@ -482,6 +482,7 @@ p2
 </details>
 
 Pour finir, il serait intéressant de comparer les profils entre selfmade et héritiés afin de capter et comprendre les caractéristiques majeurs qui les influencent. 
+
 ### 3. Portrait du milliardaire self-made
 
 Q18 - Peut-on deviner si un milliardaire s'est fait tout seul à partir de son profil ? (ou "Existe-t-il des différences de profil entre les milliardaires self-made et les héritiés?")
