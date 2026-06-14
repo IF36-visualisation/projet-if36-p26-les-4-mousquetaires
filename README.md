@@ -1,5 +1,6 @@
 # **Introduction**
 
+<<<<<<< Updated upstream
 ## Données
 
 Le [dataset](https://www.kaggle.com/datasets/nelgiriyewithana/billionaires-statistics-dataset/) utilisé par notre groupe contient des données sur les milliardaires à travers le monde contenant 2540 observations et un total de 35 variables.
@@ -217,3 +218,14 @@ Plutôt que de comptabiliser seulement le nombre brut de milliardaires par pays,
 Visualisation envisagée : Carte choroplèthe.
 
 </details>
+=======
+Ce README est à remplacer par votre proposition de dataset.
+
+
+
+Question 1 Quelles villes comptent le plus de milliardaires?
+Question 2 Est-ce que les pays comptant des milliardaires créent de l’inflation ?
+Question 3 Comment se répartissent les milliardaires dans les états américains (map) ?
+Question 4 Est-ce qu’il y a des source de richesse récurrente parmi les milliardaires
+Question 5 Y a-t-il un lien entre l'âge et la richesse ?
+>>>>>>> Stashed changes
