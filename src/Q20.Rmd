@@ -19,3 +19,10 @@ p20 <- ggplot(q20, aes(x = age, y = finalWorth / 1e3, color = selfMade)) +
   theme(legend.position = "bottom")
 
 ggsave("q20_selfmade_profil.png", p20, width = 12, height = 6, dpi = 150)
+```
+
+**Q18 - Peut-on deviner si un milliardaire est self-made à partir de son profil ?**
+
+*Question :* On croise âge, genre et fortune (échelle log) pour voir si le profil distingue self-made et héritiers. On suppose les self-made plus jeunes et les femmes plutôt héritières.
+
+*Interprétation :* Pris seuls, l'âge et la fortune ne séparent pas les statuts (nuages superposés) : on ne peut pas « deviner » sur ces variables. C'est le genre qui discrimine le plus : 74,9 % des hommes sont self-made contre 29 % des femmes (qui ne représentent que ~12 % de l'échantillon et sont donc majoritairement héritières). L'âge médian est un peu plus bas chez les self-made (64 vs 68 ans) et la fortune médiane même légèrement supérieure chez les héritiers (2,6 vs 2,2 Md$). Le genre est donc bien plus discriminant que l'âge ou la fortune.

@@ -22,3 +22,9 @@ p10 <- ggplot(q10, aes(x = reorder(industries, richesse_totale), y = richesse_to
 
 ggsave("q10_repartition_richesse_industrie.png", p10, width = 10, height = 6, dpi = 150)
 ```
+
+**Q15 - Quelles industries concentrent le plus de richesse ?**
+
+*Question :* On s'intéresse à la richesse cumulée par industrie (somme des fortunes), et non au simple nombre de milliardaires. On s'attend aux secteurs à forte création de valeur (tech, finance) en tête.
+
+*Interprétation :* La Technologie domine avec environ 1 880 Milliard de dollars, devant Fashion & Retail (1 700) et Finance & Investments (~1 605). Or en nombre, c'est la finance qui mène (372 milliardaires) mais avec des fortunes plus modestes (~4,3 Md$/tête) contre 6 pour la tech. Le contraste le plus net : l'Automobile, avec seulement 73 milliardaires, pèse 525 Md$, soit la richesse par tête la plus forte (~7 Md$). " Beaucoup de milliardaires " et "beaucoup de richesse" ne vont donc pas systématiquement de pair.
