@@ -307,6 +307,9 @@ On constate que les pays et les villes comptant le plus de milliardaires sont au
 Q19 - Quel est le nombre de milliardaires par millions d'habitant par pays ?
 <details>
 <summary>Question et problème étudié</summary>
+
+Le nombre brut de milliardaires favorise mécaniquement les pays les plus peuplés. Pour mesurer une véritable concentration, on rapporte ce nombre à la population du pays : on obtient un nombre de milliardaires par million d'habitants. On s'attend à voir remonter de petits pays très riches (places financières, paradis fiscaux) plutôt que les géants démographiques comme la Chine ou l'Inde.
+
 </details>
 
 <details>
@@ -336,10 +339,12 @@ p11
 
 <details>
 <summary>Interprétation et réponse</summary>
-</details>
-Bien que les États-Unis apparaissent toujours, la Chine et l'Inde qui sont top 2 et 3 en nombre brute n'apparaissent pas au regard de leur population. Le graphique ci-dessus réaffirme la concentration des milliardaires dans les pays de l'Ouest à deux exceptions près (Singapore et UAE). 
 
-Pour conclure, les milliardaires sont répartis dans les pays de l'Ouest et dans les BRICS, idem pour les nationalités, mais ils sont concentrés dans les pays développés, notamment les paradis fiscaux.
+Bien que les États-Unis apparaissent toujours, la Chine et l'Inde, qui sont top 2 et 3 en nombre brut, n'apparaissent pas au regard de leur population. Le graphique ci-dessus réaffirme la concentration des milliardaires dans les pays de l'Ouest, à deux exceptions près (Singapour et les Émirats arabes unis).
+
+Pour conclure, les milliardaires sont répartis dans les pays de l'Ouest et dans les BRICS, idem pour les nationalités, mais ils sont surtout concentrés dans les pays développés et les petites places financières, notamment les paradis fiscaux.
+
+</details>
 
 <!-- ## II. Concentration des capitaux économique, culturel et social -->
 
@@ -536,6 +541,9 @@ p2
 Q18 - Peut-on deviner si un milliardaire s'est fait tout seul à partir de son profil ? (ou "Existe-t-il des différences de profil entre les milliardaires self-made et les héritiés?")
 <details>
 <summary>Question et problème étudié</summary>
+
+On cherche à savoir si le profil d'un milliardaire(son âge, son genre, le montant de sa fortune) permet de deviner s'il s'est fait tout seul ou s'il a hérité. On suppose que les self-made sont plutôt plus jeunes (une fortune héritée se transmet tard) et que les femmes, du fait des obstacles historiques à l'entrepreneuriat, sont davantage des héritières. On croise donc l'âge et la fortune (en échelle logarithmique pour absorber les écarts énormes entre milliardaires), en distinguant le statut self-made par la couleur et le genre par facettes.
+
 </details>
 
 <details>
@@ -565,6 +573,15 @@ p20
 
 <details>
 <summary>Interprétation et réponse</summary>
+
+Le nuage de points est dense et très superposé : pris seuls, l'âge et la fortune ne séparent pas les deux statuts. On ne peut donc pas vraiment « deviner » si un milliardaire est self-made à partir de ce seul profil — sur ces deux variables, la réponse à la question est plutôt négative.
+
+C'est le facettage par genre qui révèle l'écart le plus marquant : 74,9 % des hommes milliardaires sont self-made, contre seulement 29 % des femmes. Les femmes (307 sur 2 575, soit environ 12 % de l'échantillon) sont donc très majoritairement des héritières, ce qui rejoint l'hypothèse des obstacles structurels à l'entrepreneuriat féminin.
+
+Sur l'âge, l'écart est faible mais cohérent : les self-made ont un âge médian légèrement plus bas (64 ans contre 68 pour les héritiers), conforme à l'idée qu'une fortune héritée se transmet plus tard. Quant à la fortune médiane, elle est même un peu supérieure chez les héritiers (2,6 contre 2,2 Md$) : se faire soi-même ne garantit pas une fortune plus grande.
+
+En résumé, le genre est bien plus discriminant que l'âge ou le montant de la fortune pour caractériser le mode d'acquisition de la richesse.
+
 </details>
 
 
@@ -712,9 +729,12 @@ En conclusion, la richesse des milliardaires ne suit pas une courbe en cloche (n
 
 ### 2. Des industries inégalitaires
 
-Q15 - Quelles sont les différents types d'industrie qui sont les plus représentées ? 
+Q15 - Quelles sont les différents types d'industrie qui sont les plus représentées ?
 <details>
 <summary>Question et problème étudié</summary>
+
+On s'intéresse ici à la richesse cumulée par industrie, c'est à dire la somme des fortunes de tous les milliardaires d'un secteur, et non plus à leur simple nombre. L'objectif est de repérer les industries qui pèsent le plus lourd financièrement, ce qui n'est pas forcément la même chose que celles qui comptent le plus de milliardaires. On s'attend à retrouver en tête les secteurs à forte création de valeur, comme la technologie et la finance.
+
 </details>
 
 <details>
@@ -747,6 +767,13 @@ p14
 <details>
 
 <summary>Interprétation et réponse</summary>
+
+La hiérarchie n'est pas tout à fait celle du nombre de milliardaires. La Technologie arrive en tête avec près de 1 880 milliards de dollars cumulés, devant Fashion & Retail (~1 700) et Finance & Investments (~1 605). Or, en nombre, c'est la finance qui domine : elle compte le plus de milliardaires (372) mais des fortunes individuelles plus modestes en moyenne (~4,3 Md$ par tête), tandis que la tech concentre une richesse plus élevée pour moins de têtes (314 milliardaires, ~6 Md$ chacun).
+
+Le contraste le plus net vient de l'Automobile : avec seulement 73 milliardaires, le secteur pèse tout de même 525 milliards, soit la richesse par tête la plus forte du top 10 (~7 Md$). À l'inverse, des secteurs très peuplés comme Manufacturing ou Healthcare diluent leur richesse sur beaucoup d'individus.
+
+Autrement dit, " beaucoup de milliardaires " et " beaucoup de richesse " ne vont pas systématiquement de pair: il faut distinguer la densité d'un secteur en milliardaires de la concentration de ses fortunes. C'est ce qui motive la question suivante, où l'on regarde cette fois le nombre de milliardaires par industrie.
+
 </details>
 
 Q17 - Quelle est la répartition des milliardaires dans les différentes industries ?
@@ -1390,6 +1417,9 @@ La Génération silencieuse reste significative (19,8 %), principalement grâce 
 Q16 - Dans quel(s) mois sont nés les milliardaires ?
 <details>
 <summary>Question et problème étudié</summary>
+
+On regarde si certains mois de naissance sont surreprésentés parmi les milliardaires. A priori, aucun mois de naissance ne devrait favoriser la réussite : on s'attend donc à une distribution à peu près uniforme. Toute anomalie marquée trahirait plutôt un biais dans les données qu'un véritable phénomène, c'est aussi cela qu'on cherche à vérifier.
+
 </details>
 
 <details>
@@ -1422,6 +1452,13 @@ p16
 
 <details>
 <summary>Interprétation et réponse</summary>
+
+Le résultat est frappant mais trompeur: le mois de janvier explose avec 550 milliardaires, soit plus du double de la moyenne (environ 214, ligne rouge) et près du triple des mois les plus creux. Les onze autres mois, eux, sont remarquablement uniformes (de 153 à 209 naissances), sans tendance particulière.
+
+Ce pic de janvier n'a rien de sociologique :c'est un artefact de saisie classique. Quand la date de naissance exacte est inconnue, elle est très souvent renseignée par défaut au 1er janvier. Le " 550 » agrège donc surtout des dates manquantes ou imprécises, pas de vrais natifs de janvier.
+
+La conclusion est double. D'une part, hors janvier, la distribution est bien uniforme : le mois de naissance n'a aucun lien avec le fait de devenir milliardaire, comme attendu. D'autre part, ce graphe illustre surtout une limite du jeu de données : il faut se méfier des valeurs par défaut, qui peuvent fabriquer de fausses tendances spectaculaires. Cette question est finalement plus instructive sur la qualité des données que sur les milliardaires eux-mêmes.
+
 </details>
 
 

@@ -16,3 +16,9 @@ p23 <- ggplot(q23, aes(x = reorder(industries, n), y = n)) +
 
 ggsave("q23_industries_representees.png", p23, width = 10, height = 6, dpi = 150)
 ```
+
+**Q17 - Quelles industries comptent le plus de milliardaires ?**
+
+*Question :* On regarde cette fois le nombre de milliardaires par secteur. Est-ce réparti équitablement ou quelques secteurs dominent-ils ?
+
+*Interprétation :* C'est très inégal. Finance & Investments, Manufacturing et Technology dominent avec 300 à 370 milliardaires chacun. Derrière (Fashion & Retail, Food & Beverage, Healthcare, Real Estate, Diversified) on tourne autour de 180-270, puis tout le reste tombe sous 100 (Energy, Media, Automotive, Logistics...). Cela colle avec l'économie réelle : les secteurs où circule le plus de capital (finance, tech, manufacturing) produisent le plus de grandes fortunes.

@@ -20,3 +20,9 @@ p11 <- ggplot(q11, aes(x = reorder(country, par_million), y = par_million)) +
 
 ggsave("q11_milliardaires_par_habitant.png", p11, width = 10, height = 7, dpi = 150)
 ```
+
+**Q19 - Combien de milliardaires par million d'habitants par pays ?**
+
+*Question :* Le nombre brut favorise les pays peuplés. En rapportant à la population, on mesure une vraie concentration : on s'attend à voir remonter de petits pays riches plutôt que la Chine ou l'Inde.
+
+*Interprétation :* La Chine et l'Inde, top 2 et 3 en nombre brut, disparaissent une fois ramenées à leur population. Le classement fait remonter les pays de l'Ouest et de petites places financières, avec Singapour et les Émirats arabes unis comme exceptions notables. La richesse est donc concentrée dans les pays développés et les paradis fiscaux.

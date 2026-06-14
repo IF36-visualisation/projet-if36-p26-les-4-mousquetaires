@@ -22,3 +22,9 @@ p1 <- ggplot(q1, aes(x = mois, y = n)) +
 
 ggsave("q01_mois_naissance.png", p1, width = 10, height = 6, dpi = 150)
 ```
+
+**Q16 - Dans quel(s) mois sont nés les milliardaires ?**
+
+*Question :* On regarde si certains mois de naissance sont surreprésentés. A priori aucun mois ne devrait favoriser la réussite : on s'attend à une distribution normale.
+
+*Interprétation :* Le mois de janvier explose avec 550 milliardaires, soit plus du double de la moyenne (~214). les onze autres mois sont uniformes (153 à 209). Ce pic n'a rien de spécial : c'est une sorte de norme de saisie, les dates de naissance inconnues étant souvent renseignées au 1er janvier par défaut. Hors janvier, la distribution est uniforme : le mois de naissance n'a aucun lien avec le fait de devenir milliardaire. Ce graphe est surtout instructif sur la qualité des données (il faut donc faire attention par rapport des valeurs par défaut).
