@@ -532,8 +532,7 @@ C'est le facettage par genre qui révèle l'écart le plus marquant : 74,9 % des
 
 Sur l'âge, l'écart est faible mais cohérent : les self-made ont un âge médian légèrement plus bas (64 ans contre 68 pour les héritiers), conforme à l'idée qu'une fortune héritée se transmet plus tard. Quant à la fortune médiane, elle est même un peu supérieure chez les héritiers (2,6 contre 2,2 Md$) : se faire soi-même ne garantit pas une fortune plus grande.
 
-En résumé, le genre est bien plus discriminant que l'âge ou le montant de la fortune pour caractériser le mode d'acquisition de la richesse.
-
+En résumé, le genre est bien plus discriminant que l'âge ou le montant de la fortune pour caractériser le mode d'acquisition de la richesse. Ce constat pourrait s'expliquer par la discrimination fait au moment de l'héritage intrinsèquement liée à la socialisation genrée. D'un côté, les entreprises familiales sont moins souvent léguées aux femmes en raison d'une idée toujours pregnante : l'héritier mâle est le seul capable de faire fructifier et perpétuer l'héritage familiale ( *Le genre du capital* Céline Bessière et Sibylle Gollac, 2019). La présence de femmes héritières pourrait s'expliquer par le fait qu'elles sont filles uniques et que pour les milliardaires, l'entreprise doit rester dans la famille. De l'autre, la socialisation genrée facilite une autocensure des femmes ("se dire que ce n'est pas pour elle") par elles-mêmes pour l'accession à des postes et on peut imaginer que le coût à l'entrée pour intégrer le monde des milliardaires doit être assez élevé étant donnée la prédominance masculine. Ce sont des hypothèses mais que notre dataset ne permet pas de vérifier. 
 </details>
 
 ## III. Fortunes : industries et richesses
@@ -1402,7 +1401,7 @@ p16
 
 Le résultat est frappant mais trompeur: le mois de janvier explose avec 550 milliardaires, soit plus du double de la moyenne (environ 214, ligne rouge) et près du triple des mois les plus creux. Les onze autres mois, eux, sont remarquablement uniformes (de 153 à 209 naissances), sans tendance particulière.
 
-Ce pic de janvier n'a rien de sociologique :c'est un artefact de saisie classique. Quand la date de naissance exacte est inconnue, elle est très souvent renseignée par défaut au 1er janvier. Le " 550 » agrège donc surtout des dates manquantes ou imprécises, pas de vrais natifs de janvier.
+Ce pic de janvier n'a rien de sociologique: c'est un artefact de saisie classique. Quand la date de naissance exacte est inconnue, elle est très souvent renseignée par défaut au 1er janvier. Le " 550 » agrège donc surtout des dates manquantes ou imprécises, pas de vrais natifs de janvier.
 
 La conclusion est double. D'une part, hors janvier, la distribution est bien uniforme : le mois de naissance n'a aucun lien avec le fait de devenir milliardaire, comme attendu. D'autre part, ce graphe illustre surtout une limite du jeu de données : il faut se méfier des valeurs par défaut, qui peuvent fabriquer de fausses tendances spectaculaires. Cette question est finalement plus instructive sur la qualité des données que sur les milliardaires eux-mêmes.
 
