@@ -1161,7 +1161,11 @@ Sauf quelques outliers, la plupart des pays avec des taux d’imposition variés
 Cependant, les outliers trois outliers respectivement les États-Unis, la Chine et l’Inde sont les pays avec le plus de milliardaires et avec aussi le plus grand nombre d’habitants, ce qui peut laisser supposer que le nombre de milliardaires est plus influencé par la taille de la population et l’économie globale du pays que par le taux d’imposition.
 
 </details>
-Ainsi, l'inflation et la concentration des milliardaires dans le pays de résidence est liée. Il semblerait que plus un pays a une inflation élevée moins il y aurait de milliardaires présents sur son sol, ainsi qu'une partie de son activité économique, sans pour autant déterminer de causalité. Quant au taux d'imposition, il n'a pas de lien de corrélation entre les deux variables.
+
+<details>
+<summary> Conclusion </summary>
+Ainsi, l'inflation et la concentration des milliardaires dans le pays de résidence est liée. Il semblerait que plus un pays a une inflation élevée moins il y aurait de milliardaires présents sur son sol, ainsi qu'une partie de son activité économique, sans pour autant déterminer de causalité. Quant au taux d'imposition, il n'a pas de lien de corrélation avec le nombre de milliardaires présent sur un territoire national.
+</details>
 
 ## V. Profil démographique
 Cette partie est consacrée à dresser le profil démographie des milliardaires en étudiant l'âge et au genre, deux caractéristiques sensibles dans leur profil. 
