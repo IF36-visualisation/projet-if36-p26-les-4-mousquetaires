@@ -570,6 +570,7 @@ Sur l'âge, l'écart est faible mais cohérent : les self-made ont un âge médi
 
 En résumé, le genre est bien plus discriminant que l'âge ou le montant de la fortune pour caractériser le mode d'acquisition de la richesse. Ce constat pourrait s'expliquer par la discrimination fait au moment de l'héritage et la socialisation genrée. D'un côté, les entreprises familiales sont moins souvent léguées aux femmes en raison d'une idée toujours pregnante : l'héritier mâle serait le seul capable de faire fructifier et perpétuer l'héritage familiale ( *Le genre du capital*, Céline Bessière et Sibylle Gollac, 2019). La présence de femmes héritières pourrait s'expliquer par le fait qu'elles sont les seules héritières possibles et que quoi qu'il en coûte l'entreprise doit rester dans la famille. De l'autre, la socialisation genrée facilite une autocensure des femmes ("se dire que ce n'est pas pour elle") pour l'accession des postes. On peut aussi imaginer que le coût à l'entrée pour intégrer le cercle des milliardaires doit être assez élevé pour une femme, sétant donnée, la prédominance masculine. Ce sont des hypothèses mais que notre dataset ne permet pas de vérifier. 
 </details>
+
 <details>
 <summary> Conclusion </summary>
 Pour conclure, le mythe du selfmade man ou woman aurait une certaine réalité. En effet, il y a une legère corrélation entre pays avec taux d'accès à l'enseignement supérieur bas et nombre de milliardaires selfmade. On peut supposer que ces gens ont effectivement beaucoup travaillé pour être milliardaire. Le mythe du selfmade serait plutôt celui d'un homme. On compte beaucoup plus d'hommes self-made et que de femmes. 
@@ -705,6 +706,7 @@ Le club des centimilliardaires : Les individus comme Bernard Arnault ou Elon Mus
 En conclusion, la richesse des milliardaires ne suit pas une courbe en cloche (normale). La distribution est très inégale et montre une concentration des patrimoines  extrême au sommet, reflétant les dynamiques de capitalisation boursière. Ces résultats suggèrent que les inégalités patrimoniales ne s'arrêtent pas à l'entrée dans le club des milliardaires mais se prolongent fortement à l'intérieur de celui-ci.
 
 </details>
+Après cette analyse de la répartition des fortunes, il serait intéressant de constater quelles industries concentrent la richesse et les milliardaires. 
 
 ### 2. Des industries inégalitaires
 
@@ -992,6 +994,11 @@ Le choix s'est porté sur un bar chart stacké en pourcentage pour faciliter la 
 <summary>Interprétation et réponse</summary>
 La limitation à sept du nombre d'occurence affaiblit l'interprétation. Au regard de cette datavisualisation, on voit que certains industries sont dominées par des secteurs particuliers (investment et hedgefund pour finance & investment). On retrouve cette tendance dans les industries finance&investment et fashion&retail tandis que les trois autres sont dominés par des petits secteurs, ce qui indique un plus grande diversité dans les sources de richesse. Ainsi, il n'y a de secteurs phares qui amènerait à créer une fortune. Il faut, encore une fois garder à l'esprit que le tri sur les données a été partielle et que les interprétations s'en retrouvent affaiblit. 
 
+</details>
+
+<details>
+<summary> Conclusion </summary>
+La distribution des fortunes suit une loi de puissance où plus on monte moins il y a de personnes. La majorité des milliardaires sont concentrés au seuil d'entrée. Ils sont répartis dans des secteurs d'activités variés mais les secteurs comme Finance & Investments, Manufacturing & Technology, Fashion & Retail et Food & Beverage concentrent les milliardaires. De plus, à l'intérieur même de ces secteurs, les sources restent assez diversifiées. La Finance & Investments et le retail ont les sources les moins diverses. Cependant, ce ne sont pas les milliardaires qui concentrent le plus les richesses en fonction de leur secteur d'activité. Certains secteurs concentrent les milliardaires sans concentrer beaucoup de richesses (en $).
 </details>
 
 ## IV. Indicateurs de santé économique
