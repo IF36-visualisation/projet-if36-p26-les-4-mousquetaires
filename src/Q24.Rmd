@@ -34,12 +34,13 @@ Le diagramme en barres horizontales présente les 15 pays ayant la plus forte de
 library(dplyr)
 library(ggplot2)
 library(readr)
+library(here)
 
 # --------------------------------------------------
 # 1. Charger les données
 # --------------------------------------------------
 
-df <- read_csv("data/Billionaires_Statistics_Dataset.csv")
+df <- read_csv(here("data", "Billionaires_Statistics_Dataset.csv"))
 
 # --------------------------------------------------
 # 2. Nombre de milliardaires par pays

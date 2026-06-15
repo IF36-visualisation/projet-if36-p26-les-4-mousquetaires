@@ -420,6 +420,13 @@ Il nous a semblé pertinent d'étudier l'influence du genre sur le statut de sel
 Q23 - Les hommes milliardaires sont-ils plus souvent self-made que les femmes ?
 <details>
 <summary>Question et problème étudié</summary>
+On cherche ici à analyser la répartition des milliardaires selon le genre ainsi que la structure de leur richesse (self-made ou héritée).
+On s’attend à une forte domination masculine parmi les milliardaires, en raison de déséquilibres historiques dans l’accès aux opportunités économiques.
+Nous estimons que les femmes seraient plus souvent issues de patrimoines hérités, tandis que les hommes seraient davantage représentés dans la catégorie self-made.
+
+On pense également que la part de self-made chez les hommes pourrait être proche de 50 %.
+
+Pour l’analyse de la structure de la richesse selon le genre, un diagramme en barres empilées à 100% a été choisi afin de comparer les proportions de richesse self-made et héritée entre hommes et femmes.
 </details>
 
 <details>
@@ -484,6 +491,8 @@ p2
 
 <details>
 <summary>Interprétation et réponse</summary>
+Concernant l’origine de la richesse, les données montrent que la majorité des milliardaires sont classés comme self-made, y compris chez les hommes. Contrairement à l’hypothèse initiale, la proportion de milliardaires self-made masculins est supérieure à 50 %, ce qui indique que la création de richesse par soi-même est particulièrement dominante dans ce groupe.
+Ces résultats suggèrent donc deux dynamiques principales : d’une part, une concentration masculine très forte dans la population des milliardaires, et d’autre part, une prédominance globale du modèle “self-made”, particulièrement marquée chez les hommes.
 </details>
 
 Pour finir, il serait intéressant de comparer les profils entre selfmade et héritiés afin de capter et comprendre les caractéristiques majeurs qui les influencent. 
@@ -532,7 +541,7 @@ C'est le facettage par genre qui révèle l'écart le plus marquant : 74,9 % des
 
 Sur l'âge, l'écart est faible mais cohérent : les self-made ont un âge médian légèrement plus bas (64 ans contre 68 pour les héritiers), conforme à l'idée qu'une fortune héritée se transmet plus tard. Quant à la fortune médiane, elle est même un peu supérieure chez les héritiers (2,6 contre 2,2 Md$) : se faire soi-même ne garantit pas une fortune plus grande.
 
-En résumé, le genre est bien plus discriminant que l'âge ou le montant de la fortune pour caractériser le mode d'acquisition de la richesse. Ce constat pourrait s'expliquer par la discrimination fait au moment de l'héritage intrinsèquement liée à la socialisation genrée. D'un côté, les entreprises familiales sont moins souvent léguées aux femmes en raison d'une idée toujours pregnante : l'héritier mâle est le seul capable de faire fructifier et perpétuer l'héritage familiale ( *Le genre du capital* Céline Bessière et Sibylle Gollac, 2019). La présence de femmes héritières pourrait s'expliquer par le fait qu'elles sont filles uniques et que pour les milliardaires, l'entreprise doit rester dans la famille. De l'autre, la socialisation genrée facilite une autocensure des femmes ("se dire que ce n'est pas pour elle") par elles-mêmes pour l'accession à des postes et on peut imaginer que le coût à l'entrée pour intégrer le monde des milliardaires doit être assez élevé étant donnée la prédominance masculine. Ce sont des hypothèses mais que notre dataset ne permet pas de vérifier. 
+En résumé, le genre est bien plus discriminant que l'âge ou le montant de la fortune pour caractériser le mode d'acquisition de la richesse. Ce constat pourrait s'expliquer par la discrimination fait au moment de l'héritage et la socialisation genrée. D'un côté, les entreprises familiales sont moins souvent léguées aux femmes en raison d'une idée toujours pregnante : l'héritier mâle est le seul capable de faire fructifier et perpétuer l'héritage familiale ( *Le genre du capital*, Céline Bessière et Sibylle Gollac, 2019). La présence de femmes héritières pourrait s'expliquer par le fait qu'elles sont filles uniques et que quoi qu'il en coûte l'entreprise doit rester dans la famille. De l'autre, la socialisation genrée facilite une autocensure des femmes ("se dire que ce n'est pas pour elle") pour l'accession des postes. On peut aussi imaginer que le coût à l'entrée pour intégrer le cercle des milliardaires doit être assez élevé pour une femme, sétant donnée, la prédominance masculine. Ce sont des hypothèses mais que notre dataset ne permet pas de vérifier. 
 </details>
 
 ## III. Fortunes : industries et richesses
@@ -1120,6 +1129,10 @@ Cette partie est consacrée à dresser le profil démographie des milliardaires 
 Q22 - Quelle est la proportion de femmes et d’hommes parmi les milliardaires en 2023 ?
 <details>
 <summary>Question et problème étudié</summary>
+On cherche ici à analyser la répartition des milliardaires selon le genre.
+On s’attend à une forte domination masculine parmi les milliardaires, en raison de déséquilibres historiques dans l’accès aux opportunités économiques.
+
+Afin d’obtenir une comparaison claire des distributions, nous avons choisi deux couleurs contrastées et un diagramme en barres est utilisé pour la répartition globale par genre, car il permet de comparer efficacement des effectifs entre deux catégories (hommes et femmes).
 </details>
 
 <details>
@@ -1172,6 +1185,7 @@ p1
 
 <details>
 <summary>Interprétation et réponse</summary>
+Les résultats confirment tout d’abord une forte domination masculine parmi les milliardaires. Les hommes représentent la grande majorité de l’échantillon, tandis que les femmes restent nettement minoritaires.
 </details>
 
 ### 2. Influence de l'âge
@@ -1227,7 +1241,7 @@ model_age
 L'analyse s'appuie sur le coefficient de relation de Spearman qui est plus indiqué car la distribution de la fortune des milliardaires est fortement asymétrique et non paramétrique (présence d'outliers extrêmes). Les résultats indiquent une corrélation positive faible très significative : la fortune augmente avec l'âge.
 L'âge apparait ainsi comme un facteur d'accumulation de richesse mais secondaire, il existe d'autres facteurs plus significatifs qui expliquent le niveau de la fortune comme le secteur d'activité, un environnement favorable, ...
 
-### 2. Âge et génération
+### 3. Âge et génération
 
 Q11 - Quelle est la répartition de l’âge des milliardaires en 2023 ?
 <details>

@@ -4,8 +4,6 @@ title: "Genre et richesse chez les milliardaires"
 author: "Yesmine Fathallah"
 ---
 
-# Nationalités les plus représentées parmi les milliardaires
-
 
 <details>
 <summary>Question et problème étudié</summary>
@@ -26,7 +24,7 @@ Pour l’analyse de la structure de la richesse selon le genre, un diagramme en 
 
   ## Initialisation des bibliothèques et chargement des données
   
-  ```{r}
+```{r}
 library(tidyverse)
 library(scales)
 library(patchwork)
