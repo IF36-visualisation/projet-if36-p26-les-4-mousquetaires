@@ -66,3 +66,45 @@ flux_geo <- mvt_bill %>%
   filter(!is.na(to_lon), !is.na(from_lon))
 
 destinations_choices <- c("Tous", sort(unique(flux_geo$country)))
+
+centroids_iso <- centroids %>%
+  mutate(iso3 = countrycode(name, "country.name", "iso3c")) %>%
+  filter(!is.na(iso3)) %>%
+  select(iso3, lon, lat)
+
+bill_by_country <- data %>%
+  filter(country != "") %>%
+  mutate(iso3 = countrycode(country, "country.name", "iso3c")) %>%
+  filter(!is.na(iso3)) %>%
+  count(country, iso3, name = "n") %>%
+  left_join(centroids_iso, by = "iso3") %>%
+  filter(!is.na(lon), !is.na(lat))
+
+pays_choices <- sort(unique(bill_by_country$country))
+
+gen_levels <- c(
+  "Génération GI\n(avant 1928)",
+  "Génération silencieuse\n(1928–1945)",
+  "Baby-Boomers\n(1946–1964)",
+  "Génération X\n(1965–1980)",
+  "Millennials\n(1981–1996)",
+  "Génération Z\n(1997–2012)"
+)
+
+gen_data <- data %>%
+  filter(!is.na(birthYear)) %>%
+  mutate(
+    gender   = recode(gender, "M" = "Hommes", "F" = "Femmes"),
+    selfMade = ifelse(as.logical(selfMade), "Self-made", "Héritier"),
+    generation = case_when(
+      birthYear >= 1997 & birthYear <= 2012 ~ gen_levels[6],
+      birthYear >= 1981 & birthYear <= 1996 ~ gen_levels[5],
+      birthYear >= 1965 & birthYear <= 1980 ~ gen_levels[4],
+      birthYear >= 1946 & birthYear <= 1964 ~ gen_levels[3],
+      birthYear >= 1928 & birthYear <= 1945 ~ gen_levels[2],
+      birthYear <  1928                     ~ gen_levels[1],
+      TRUE ~ NA_character_
+    )
+  ) %>%
+  filter(!is.na(generation)) %>%
+  mutate(generation = factor(generation, levels = gen_levels))
