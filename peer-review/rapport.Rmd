@@ -302,18 +302,21 @@ Le diagramme est dans le Shiny app.
 <summary> Interprétation et réponse </summary>
 Tout d'abord, il faut rappeler qu'il y a 2640 entrées dans le dataset et dont seulement 196 entrées dont la nationalité et le pays d'habitation divergent, ce qui est peu. 
 La carte est peu lisible sans les filtres mais elle permet de voir dans quels pays il y a du mouvement. On observe beaucoup de mouvements en Europe, Asie, Amérique du Nord et légèrement en Océanie. 
-Les pays très voyants sont les États-Unis, la Russie et l'Europe sans pouvoir déterminer de pays précisement. Il apparait aussi que l'Afrique n'est pas du tout de flux représenté. 
+Les pays très voyants sont les États-Unis, la Russie (beaucoup d'expatriés) et l'Europe sans pouvoir déterminer de pays précisement pour cette dernière. Il apparait aussi que l'Afrique n'est pas du tout de flux représenté. 
 
 Les pays regroupant le plus d'expatriés sont le Royaume-Uni, la Suisse, les États-Unis, la Chine et les Émirats Arabe Unis. Le top 3 regroupe, à lui seul, 65 % des expatriés milliardaires. 
 Pour le Royaume-Uni(24% des expatriés), ce sont les milliardaires des pays du Commonwealth qui émigrent vers ce pays et de partout dans le monde. D'ailleurs, on remarque ce phénomène dans les autres pays du Commonwealth (ex: Inde, Bahamas). Pour la Suisse (21% des expatriés),les expatriés viennent de partout dans le monde: Amérique(US, Canada), Moyen-Orient et d'Europe. 
 Pour les États-Unis (20% des expatriés), les milliardaires immigrent de partout dans le monde (Canada et tous les continents sauf Afrique). Quant à la Chine (9% des expatriés) et les Émirats Arabe Unis (6,6 % des expatriés), les flux viennent des États-Unis, de la Russie, de l'Inde et du Canada. Les autres pays de destination acceuillent des expatriés souvent intra-continentaux ou d'anciennes colonies où la barrière linguistiques est levée. 
 
-Ainsi, l'expatriation est un phénomène qui touche peu les milliardaires car ils sont peu nombreux à vouloir s'expatrier. On pourrait y voir une certaine attache sentimentale. 
+Ainsi, l'expatriation est un phénomène qui touche peu les milliardaires car ils sont peu nombreux à vouloir s'expatrier ou parce que certains ont obtenu la nationalité du pays dans lequel ils résident.
 
 </details>
 
+Ainsi, les nationalités les plus représentées parmis les milliardaires sont les nationalités des pays les plus peuplés, en raison, de la taille de leur pays. Dans le premier diagramme de la sous partie, les États-Unis arrivent en top ont le plus de milliardaires en brut sans être le pays le plus peuplé. Cependant, d'autres facteurs peuvent entrer en ligne de compte. On va chercher des explications sur des mouvements de milliardaires ayant d'autres nationalités mais habitant aux États-Unis, par exemple. Il y a des mouvements entre pays de la nationalité et pays d'habitation mais qui concernent peu de milliardaires. Les pays regroupant plus de la moitié des expatriés sont le Royaume-Unis, la Suisse et les États-Unis. Le premier attire les ressortissants du Commowealth qui bénéficient d'avantages à y habiter, rappelons que la City à Londres est une place boursière importante. La Suisse pratique une fiscalité très avantageuse. Les États-Unis concentrent beaucoup d'entreprises performantes et autres avantages. Les mouvements n'expliquent pas à eux seuls la prédominance des États-Unis dans le classement.
+
+Pour diluer l'effet de la population sur la répartition des milliardaires, nous allons voir où ils sont concentrés. 
+
 ### 3. Concentration des milliardaires
-Q19 - Quel est le nombre de milliardaires par millions d'habitant par pays ?
 <details>
 <summary>Question et problème étudié</summary>
 
@@ -362,7 +365,13 @@ Selon nos données 2023, Monaco et Liechtenstein dominent. Par ailleurs, le top 
 
 Bien que les États-Unis apparaissent toujours, la Chine et l'Inde, qui sont top 2 et 3 en nombre brut, n'apparaissent pas au regard de leur population. Le graphique ci-dessus réaffirme la concentration des milliardaires dans les pays de l'Ouest, à deux exceptions près (Singapour et les Émirats arabes unis).
 
-Pour conclure, les milliardaires sont répartis dans les pays de l'Ouest et dans les BRICS, idem pour les nationalités, mais ils sont surtout concentrés dans les pays développés et les petites places financières, notamment les paradis fiscaux.
+
+</details>
+
+<details>
+<summary> Conclusion </summary>
+Pour conclure, les milliardaires sont répartis majoritairement dans les pays de l'Ouest et dans les BRICS, idem pour les nationalités. On les trouve dans les mégalopoles attractives de ces pays. Certains ne restent pas dans leur pays d'origine sans que cela soit tant significati bien que leur expatriation soit dans des pays comptant déjà beaucoup de milliardaires. Cependant, ils sont surtout concentrés dans les pays développés et les petites places financières d'Europe, surtout dans les paradis fiscaux.
+
 
 </details>
 
