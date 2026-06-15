@@ -443,7 +443,7 @@ Finalement, on observe une légère tendance à ce que les pays avec un taux d'i
 Cependant, la corrélation n'est pas très forte, ce qui suggère que d'autres facteurs, tels que l'environnement économique, les opportunités d'affaires et les politiques gouvernementales, peuvent également jouer un rôle important dans la réussite des milliardaires "self-made".
 
 </details>
-Il nous a semblé pertinent d'étudier l'influence du genre sur le statut de selfmade. En effet, les femmes ont moins souvent accès aux postes à haute décision et aux hautes rémunérations à cause du plafond de verre mais sont pourtant, elles ont des notes plus élevées que les hommes à l'école et sont plus représentées dans l'enseignement supérieur. 
+Il nous a semblé pertinent d'étudier l'influence du genre sur le statut de selfmade. En effet, les femmes ont moins souvent accès aux postes à haute décision et aux hautes rémunérations à cause du plafond de verre alors qu'elles ont des notes plus élevées que les hommes à l'école et sont plus représentées dans l'enseignement supérieur et donc plus diplômées.
 
 ### 2. Genre
 Q23 - Les hommes milliardaires sont-ils plus souvent self-made que les femmes ?
@@ -527,8 +527,6 @@ Ces résultats suggèrent donc deux dynamiques principales : d’une part, une c
 Pour finir, il serait intéressant de comparer les profils entre selfmade et héritiés afin de capter et comprendre les caractéristiques majeurs qui les influencent. 
 
 ### 3. Portrait du milliardaire self-made
-
-Q18 - Peut-on deviner si un milliardaire s'est fait tout seul à partir de son profil ? (ou "Existe-t-il des différences de profil entre les milliardaires self-made et les héritiés?")
 <details>
 <summary>Question et problème étudié</summary>
 
@@ -570,8 +568,15 @@ C'est le facettage par genre qui révèle l'écart le plus marquant : 74,9 % des
 
 Sur l'âge, l'écart est faible mais cohérent : les self-made ont un âge médian légèrement plus bas (64 ans contre 68 pour les héritiers), conforme à l'idée qu'une fortune héritée se transmet plus tard. Quant à la fortune médiane, elle est même un peu supérieure chez les héritiers (2,6 contre 2,2 Md$) : se faire soi-même ne garantit pas une fortune plus grande.
 
-En résumé, le genre est bien plus discriminant que l'âge ou le montant de la fortune pour caractériser le mode d'acquisition de la richesse. Ce constat pourrait s'expliquer par la discrimination fait au moment de l'héritage et la socialisation genrée. D'un côté, les entreprises familiales sont moins souvent léguées aux femmes en raison d'une idée toujours pregnante : l'héritier mâle est le seul capable de faire fructifier et perpétuer l'héritage familiale ( *Le genre du capital*, Céline Bessière et Sibylle Gollac, 2019). La présence de femmes héritières pourrait s'expliquer par le fait qu'elles sont filles uniques et que quoi qu'il en coûte l'entreprise doit rester dans la famille. De l'autre, la socialisation genrée facilite une autocensure des femmes ("se dire que ce n'est pas pour elle") pour l'accession des postes. On peut aussi imaginer que le coût à l'entrée pour intégrer le cercle des milliardaires doit être assez élevé pour une femme, sétant donnée, la prédominance masculine. Ce sont des hypothèses mais que notre dataset ne permet pas de vérifier. 
+En résumé, le genre est bien plus discriminant que l'âge ou le montant de la fortune pour caractériser le mode d'acquisition de la richesse. Ce constat pourrait s'expliquer par la discrimination fait au moment de l'héritage et la socialisation genrée. D'un côté, les entreprises familiales sont moins souvent léguées aux femmes en raison d'une idée toujours pregnante : l'héritier mâle serait le seul capable de faire fructifier et perpétuer l'héritage familiale ( *Le genre du capital*, Céline Bessière et Sibylle Gollac, 2019). La présence de femmes héritières pourrait s'expliquer par le fait qu'elles sont les seules héritières possibles et que quoi qu'il en coûte l'entreprise doit rester dans la famille. De l'autre, la socialisation genrée facilite une autocensure des femmes ("se dire que ce n'est pas pour elle") pour l'accession des postes. On peut aussi imaginer que le coût à l'entrée pour intégrer le cercle des milliardaires doit être assez élevé pour une femme, sétant donnée, la prédominance masculine. Ce sont des hypothèses mais que notre dataset ne permet pas de vérifier. 
 </details>
+<details>
+<summary> Conclusion </summary>
+Pour conclure, le mythe du selfmade man ou woman aurait une certaine réalité. En effet, il y a une legère corrélation entre pays avec taux d'accès à l'enseignement supérieur bas et nombre de milliardaires selfmade. On peut supposer que ces gens ont effectivement beaucoup travaillé pour être milliardaire. Le mythe du selfmade serait plutôt celui d'un homme. On compte beaucoup plus d'hommes self-made et que de femmes. 
+Le portrait du self-made serait celui d'un homme, assez agé (âge médian: 64 ans) et qui ferait partie des "petits milliardaires" (fortune médianne : 2,2 Md$). 
+
+</details>
+
 
 ## III. Fortunes : industries et richesses
 Dans ce dataset, les fortunes des milliardaires sont majoritairement associées à une activité économique, entrepreneuriale ou patrimoniale. Elles proviennent toutes de secteurs variés qui leur permet de faire partie d'une élite économique mais aussi sociale et culturelle. Néanmoins, les milliardaires n'ont pas tous investis les mêmes secteurs économiques, ni le même niveau de fortune. Cette partie cherche à déterminer si certains secteurs économiques/industries concentrent la richesse et les milliardaires.
