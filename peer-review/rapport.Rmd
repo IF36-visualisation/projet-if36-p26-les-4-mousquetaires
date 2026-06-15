@@ -706,7 +706,62 @@ Le club des centimilliardaires : Les individus comme Bernard Arnault ou Elon Mus
 En conclusion, la richesse des milliardaires ne suit pas une courbe en cloche (normale). La distribution est très inégale et montre une concentration des patrimoines  extrême au sommet, reflétant les dynamiques de capitalisation boursière. Ces résultats suggèrent que les inégalités patrimoniales ne s'arrêtent pas à l'entrée dans le club des milliardaires mais se prolongent fortement à l'intérieur de celui-ci.
 
 </details>
-Après cette analyse de la répartition des fortunes, il serait intéressant de constater quelles industries concentrent la richesse et les milliardaires. 
+Après cette analyse de la répartition des fortunes, il serait intéressant de constater si la fortune varie avec l'âge bien que la répartition des fortunes ne suit une loi normale.
+
+<details>
+<summary>Question et problème étudié</summary> 
+Nous cherchons à savoir si l'âge et le niveau de fortune sont des variables corrêlées. En effet, plus on vieillit, plus on amasse de l'argent, des actifs car on a le temps et l'expérience pour le faire. Notre hypothèse est qu'il y aurait une corrélation positive entre les deux.
+
+Le choix de la visualisation s'est porté sur un scatter plot. Comme il y a beaucoup de milliardaires au seuil d'entrée, la visualisation risque de ne pas être très lisible. 
+</details>
+
+<details>
+<summary>Visualisation</summary>
+```{r echo=FALSE}
+age_rich_dt <- df %>% 
+  filter(!is.na(finalWorth), !is.na(age)) %>% 
+  mutate(finalWorth = finalWorth/1000)
+
+infla_and_billionaires <- age_rich_dt %>% 
+  ggplot(aes(x=age, y=finalWorth)) + 
+  geom_point(shape = 10, alpha = 0.5) + 
+  stat_smooth(method=lm, se = FALSE) + 
+  stat_regline_equation(
+    aes(label = after_stat(eq.label)), 
+    label.x = min(age_rich_dt$age) + 5,
+    label.y = max(age_rich_dt$finalWorth, na.rm = TRUE) * 0.9
+  ) +
+labs(title = "Corrélation entre l'âge et la fortune",
+       x = "Age",
+       y = "Niveau de fortune") +
+  theme_minimal()
+
+infla_and_billionaires
+
+result <- cor.test(
+  age_rich_dt$age,
+  age_rich_dt$finalWorth,
+  method="spearman"
+)
+result
+model_age <- lm(
+  log(finalWorth) ~ age,
+  data = age_rich_dt
+)
+model_age
+
+
+```
+</details>
+
+<details>
+<summary> Interprétation et réponse</summary>
+L'analyse s'appuie sur le coefficient de relation de Spearman qui est plus indiqué car la distribution de la fortune des milliardaires est fortement asymétrique et non paramétrique (présence d'outliers extrêmes). Les résultats indiquent une corrélation positive faible très significative : la fortune augmente avec l'âge.
+L'âge apparait ainsi comme un facteur d'accumulation de richesse mais secondaire, il existe d'autres facteurs plus significatifs qui expliquent le niveau de la fortune comme le secteur d'activité, un environnement favorable, ...
+
+</details>
+
+Suite à ces résultats, il serait intéressant de savoir comment sont répartis et concentrés les milliardaires dans les différentes industries ainsi que leur fortune. 
 
 ### 2. Des industries inégalitaires
 
@@ -1168,7 +1223,7 @@ Ainsi, l'inflation et la concentration des milliardaires dans le pays de réside
 </details>
 
 ## V. Profil démographique
-Cette partie est consacrée à dresser le profil démographie des milliardaires en étudiant l'âge et au genre, deux caractéristiques sensibles dans leur profil. 
+Cette partie est consacrée à dresser le profil démographie des milliardaires en étudiant l'âge et au genre, deux caractéristiques essentielles pour comprendre leur répartition dans la population. 
 
 ### 1. Genre
 Q22 - Quelle est la proportion de femmes et d’hommes parmi les milliardaires en 2023 ?
@@ -1234,64 +1289,9 @@ Les résultats confirment tout d’abord une forte domination masculine parmi le
 </details>
 Dans la suite, nous avons décidé de nous concentrer sur l'âge des milliardaires. Tout d'abord, il nous a semblé logique de regarder s'il y avait une corrélation entre âge et richesse. 
 
-### 2. Influence de l'âge
-
-<details>
-<summary>Question et problème étudié</summary> 
-Nous cherchons à savoir si l'âge et le niveau de fortune sont des variables corrêlées. En effet, plus on vieillit, plus on amasse de l'argent, des actifs car on a le temps et l'expérience pour le faire. Notre hypothèse est qu'il y aurait une corrélation positive entre les deux.
-
-Le choix de la visualisation s'est porté sur un scatter plot. Comme il y a beaucoup de milliardaires au seuil d'entrée, la visualisation risque de ne pas être très lisible. 
-</details>
-
-<details>
-<summary>Visualisation</summary>
-```{r echo=FALSE}
-age_rich_dt <- df %>% 
-  filter(!is.na(finalWorth), !is.na(age)) %>% 
-  mutate(finalWorth = finalWorth/1000)
-
-infla_and_billionaires <- age_rich_dt %>% 
-  ggplot(aes(x=age, y=finalWorth)) + 
-  geom_point(shape = 10, alpha = 0.5) + 
-  stat_smooth(method=lm, se = FALSE) + 
-  stat_regline_equation(
-    aes(label = after_stat(eq.label)), 
-    label.x = min(age_rich_dt$age) + 5,
-    label.y = max(age_rich_dt$finalWorth, na.rm = TRUE) * 0.9
-  ) +
-labs(title = "Corrélation entre l'âge et la fortune",
-       x = "Age",
-       y = "Niveau de fortune") +
-  theme_minimal()
-
-infla_and_billionaires
-
-result <- cor.test(
-  age_rich_dt$age,
-  age_rich_dt$finalWorth,
-  method="spearman"
-)
-result
-model_age <- lm(
-  log(finalWorth) ~ age,
-  data = age_rich_dt
-)
-model_age
-
-
-```
-</details>
-
-<details>
-<summary> Interprétation et réponse</summary>
-L'analyse s'appuie sur le coefficient de relation de Spearman qui est plus indiqué car la distribution de la fortune des milliardaires est fortement asymétrique et non paramétrique (présence d'outliers extrêmes). Les résultats indiquent une corrélation positive faible très significative : la fortune augmente avec l'âge.
-L'âge apparait ainsi comme un facteur d'accumulation de richesse mais secondaire, il existe d'autres facteurs plus significatifs qui expliquent le niveau de la fortune comme le secteur d'activité, un environnement favorable, ...
-
-</details>
-
 Si l'âge joue un rôle mineur dans l'expansion de la fortune, nous avons voulu déterminer si les milliardaires étaients des personnes âgées ou non et donc déterminer s'ils sont presque au maximum de leur fortune.
 
-### 3. Âge et génération
+### 2. Âge des milliardaires 
 
 Q11 - Quelle est la répartition de l’âge des milliardaires en 2023 ?
 <details>
@@ -1318,6 +1318,8 @@ Comme nous le pensions, la majorité des milliardaires étaient âgés d'environ
 Cependant, on observe aussi une présence significative de milliardaires plus jeunes, notamment dans la tranche d'âge de 30 à 40 ans, ce qui peut être attribué à la montée en puissance du secteur de la technologie et à l'émergence de jeunes entrepreneurs qui ont réussi à accumuler une grande richesse rapidement.
 
 </details>
+
+### 3. Générations
 
 Pour faire une analyse plus générale, nous avons choisi de passer par les générations.
 
