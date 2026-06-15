@@ -1,112 +1,255 @@
 
 ---
-title: "Distribution des milliardaires par génération"
+title: "Proportion de milliardaires self-made vs héritiers"
 author: "Yesmine Fathallah"
 ---
 
-# Distribution des milliardaires par génération
+# Q21 - Quelle est la proportion de milliardaires ayant hérité de leur fortune par rapport à ceux l'ayant constituée eux-mêmes ?
+
 
 <details>
-
 <summary>Question et problème étudié</summary>
 
-Avant d'analyser les données, plusieurs hypothèses peuvent être formulées.
-Les anciennes générations (Génération X et surtout Baby-Boomers) devraient largement dominer le classement, grâce à des conditions favorables d’accumulation du capital, notamment dans des secteurs comme l'immobilier, la finance et l'industrie et à leur position centrale lors de la révolution technologique (Google, Amazon, Apple, Nvidia).
+Nous cherchons à déterminer dans quelle mesure la richesse des milliardaires est le fruit d’un effort entrepreneurial personnel ou le résultat d’un héritage.
 
-À l’inverse, les Millennials devraient rester minoritaires en raison de leur âge, tandis que la Génération Z serait quasi absente. Les générations plus anciennes, enfin, verraient leur présence réduite par des facteurs démographiques.
+<summary>Hypothèse</summary>
+
+Nous supposons que les milliardaires ayant hérité de leur fortune sont plus nombreux que ceux l'ayant constituée eux-même car ceux qui disposent d'un capital familial souvent bénéficient également d'un réseau préexistant ou d'un accès privilégié aux opportunités, ce qui réduit considérablement les barrières à l'investissement et à la création d'entreprise et offre un avantage par rapport à ceux qui partent véritablement de zéro.
+Parmi les héritiers, nous anticipons que la majorité relève soit d’une transmission patrimoniale classique (statut N : héritier passif), soit d’une reprise familiale à la tête de l’entreprise sans en être le fondateur (statut E : héritier exécutif).
+
+<summary>Choix de visualisation</summary>
+
+Deux diagrammes en barres horizontales ont été utilisés : permet une lecture simple des proportions de milliardaires self-made vs héritiers, Le second croise selfMade avec la variable status sous forme de barres empilées à 100 %, ce qui permet de visualiser simultanément la composition interne de chaque catégorie de statut et d'en comparer les profils.
+
+
 
 </details>
-
 <details>
-
 <summary>Visualisation</summary>
 
-Un diagramme en barres verticales présente le nombre et le pourcentage de milliardaires par génération, de la plus ancienne à la plus récente, afin de comparer clairement leur poids relatif.
 
+  ## Initialisation des bibliothèques et chargement des données
+  
+  ```{r}
 
-```{r}
-# Définition des générations selon birthYear
-billionaires_gen <- df %>%
-  filter(!is.na(birthYear)) %>%
-  mutate(generation = case_when(
-    birthYear >= 1997 & birthYear <= 2012 ~ "Génération Z\n(1997–2012)",
-    birthYear >= 1981 & birthYear <= 1996 ~ "Millennials\n(1981–1996)",
-    birthYear >= 1965 & birthYear <= 1980 ~ "Génération X\n(1965–1980)",
-    birthYear >= 1946 & birthYear <= 1964 ~ "Baby-Boomers\n(1946–1964)",
-    birthYear >= 1928 & birthYear <= 1945 ~ "Génération silencieuse\n(1928–1945)",
-    birthYear <  1928                     ~ "Génération GI\n(avant 1928)",
-    TRUE ~ NA_character_
-  )) %>%
-  filter(!is.na(generation))
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(readr)
+library(forcats)
+library(scales)
 
-# Comptage par génération
-gen_counts <- billionaires_gen %>%
-  count(generation, name = "n_billionaires") %>%
+# ----------------------------------------------------------
+# 1. Chargement des données
+# ----------------------------------------------------------
+df <- read_csv("data/Billionaires_Statistics_Dataset.csv", show_col_types = FALSE)
+
+# ----------------------------------------------------------
+# 2. Nettoyage et recodage
+# ----------------------------------------------------------
+
+# Recodage de selfMade en étiquettes françaises
+df <- df %>%
   mutate(
-    generation = factor(generation, levels = c(
-      "Génération GI\n(avant 1928)",
-      "Génération silencieuse\n(1928–1945)",
-      "Baby-Boomers\n(1946–1964)",
-      "Génération X\n(1965–1980)",
-      "Millennials\n(1981–1996)",
-      "Génération Z\n(1997–2012)"
-    ))
+    selfMade_label = if_else(selfMade, "Self-made", "Héritier(ère)"),
+    # Recodage des codes status selon la documentation du dataset
+    status_label = recode(status,
+                          "D"                    = "Fondateur (Diversified)",
+                          "U"                    = "Cadre / Non-fondateur",
+                          "E"                    = "Héritier actif (Executive)",
+                          "N"                    = "Héritier passif (Non-executive)",
+                          "R"                    = "Relations (Related)",
+                          "Split Family Fortune" = "Fortune familiale partagée"
+    )
   )
 
+# ----------------------------------------------------------
+# 3. Statistiques globales : selfMade TRUE vs FALSE
+# ----------------------------------------------------------
+summary_selfmade <- df %>%
+  count(selfMade_label) %>%
+  mutate(
+    proportion = n / sum(n),
+    pct_label  = paste0(round(proportion * 100, 1), "%")
+  )
 
+cat("=== Répartition globale ===\n")
+print(summary_selfmade)
 
-# Visualisation
-ggplot(gen_counts, aes(x = generation, y = n_billionaires, fill = n_billionaires)) +
-  geom_col(width = 0.65, show.legend = FALSE) +
-  geom_text(
-    aes(label = paste0(n_billionaires, "\n(", round(n_billionaires / sum(n_billionaires) * 100, 1), "%)")),
-    vjust = -0.4,
-    size  = 3.5,
-    fontface = "bold",
-    color = "grey30"
+# ----------------------------------------------------------
+# 4. Répartition par status détaillé
+# ----------------------------------------------------------
+summary_status <- df %>%
+  count(status_label, selfMade_label) %>%
+  group_by(status_label) %>%
+  mutate(
+    total_status = sum(n),
+    proportion   = n / sum(n)
+  ) %>%
+  ungroup() %>%
+  # Ordre décroissant selon le total pour lisibilité
+  mutate(status_label = fct_reorder(status_label, total_status))
+
+cat("\n=== Répartition par statut ===\n")
+print(summary_status)
+
+# ----------------------------------------------------------
+# 5. Graphique 1 – Vue globale : selfMade TRUE vs FALSE
+# ----------------------------------------------------------
+p1 <- ggplot(summary_selfmade,
+             aes(x = proportion, y = reorder(selfMade_label, proportion),
+                 fill = selfMade_label)) +
+  geom_col(width = 0.55, show.legend = FALSE) +
+  geom_text(aes(label = paste0(pct_label, " (n = ", n, ")")),
+            hjust = -0.08, size = 4.2, fontface = "bold", color = "grey20") +
+  scale_x_continuous(
+    labels = scales::percent_format(accuracy = 1),
+    limits = c(0, 0.85),
+    expand = c(0, 0)
   ) +
-  scale_fill_gradient(low = "#a8d0f0", high = "#0d47a1", guide = "none") +
-  scale_y_continuous(
-    expand = expansion(mult = c(0, 0.18)),  # 0.12 → 0.18
-    labels = scales::comma
+  scale_fill_manual(values = c("Self-made" = "#2196F3", "Héritier(ère)" = "#FF7043")) +
+  labs(
+    title    = "Proportion de milliardaires self-made vs héritiers",
+    subtitle = paste0("N = ", nrow(df),
+                      " milliardaires — variable selfMade (autodéclarée)"),
+    x        = "Proportion (%)",
+    y        = NULL,
+    caption  = paste0(
+      "Source : Billionaires Statistics Dataset\n",
+      "Note : La variable selfMade repose sur une autodéclaration,",
+      " ce qui peut introduire un biais de désirabilité sociale."
+    )
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.title       = element_text(face = "bold", size = 15, hjust = 0),
+    plot.subtitle    = element_text(size = 11, color = "grey40", hjust = 0),
+    plot.caption     = element_text(size = 8,  color = "grey50", hjust = 0),
+    axis.text.y      = element_text(size = 12, face = "bold"),
+    axis.text.x      = element_text(size = 10),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor   = element_blank(),
+    plot.margin      = margin(10, 30, 10, 10)
+  )
+
+print(p1)
+ggsave("q21_selfmade_global.png", plot = p1,
+       width = 9, height = 4, dpi = 180, bg = "white")
+cat("\nGraphique 1 sauvegardé : q21_selfmade_global.png\n")
+
+# ----------------------------------------------------------
+# 6. Graphique 2 – Détail par statut (barres empilées 100 %)
+# ----------------------------------------------------------
+p2 <- ggplot(summary_status,
+             aes(x = proportion, y = status_label, fill = selfMade_label)) +
+  geom_col(width = 0.65, position = "stack") +
+  geom_text(
+    aes(label = if_else(proportion >= 0.07,
+                        paste0(round(proportion * 100, 0), "%"), "")),
+    position = position_stack(vjust = 0.5),
+    size = 3.6, color = "white", fontface = "bold"
+  ) +
+  # Annotation : total à droite de chaque barre
+  geom_text(
+    data = summary_status %>% distinct(status_label, total_status),
+    aes(x = 1.02, y = status_label, label = paste0("n = ", total_status)),
+    inherit.aes = FALSE, hjust = 0, size = 3.4, color = "grey35"
+  ) +
+  scale_x_continuous(
+    labels = scales::percent_format(accuracy = 1),
+    limits = c(0, 1.15),
+    expand = c(0, 0)
+  ) +
+  scale_fill_manual(
+    values = c("Self-made" = "#2196F3", "Héritier(ère)" = "#FF7043"),
+    name   = NULL
   ) +
   labs(
-    title    = "Distribution des milliardaires par génération",
-    subtitle = "Quelle génération compte le plus grand nombre de milliardaires ?",
-    x        = NULL,
-    y        = "Nombre de milliardaires",
-    caption  = "Source : Billionaires Statistics Dataset (2023)"
+    title    = "Répartition self-made / héritier selon le statut du milliardaire",
+    subtitle = "Barres empilées à 100 % – chaque ligne représente un code 'status'",
+    x        = "Proportion (%)",
+    y        = NULL,
+    caption  = paste0(
+      "Codes status : D = Diversified (fondateur), U = Autodidacte,\n",
+      "E = Héritier exécutif, N = Héritier non-exécutif,",
+      " R = Relations, Split = Fortune familiale partagée\n",
+      "Source : Billionaires Statistics Dataset"
+    )
   ) +
-  theme_minimal(base_size = 13) + 
+  theme_minimal(base_size = 13) +
   theme(
-    plot.title       = element_text(face = "bold", size = 15, margin = margin(b = 4)),
-    plot.subtitle    = element_text(color = "grey45", size = 11, margin = margin(b = 12)),
-    plot.caption     = element_text(color = "grey60", size = 9, hjust = 1),
-    axis.text.x      = element_text(size = 9, lineheight = 1.2),
-    axis.text.y      = element_text(color = "grey50"),
-    panel.grid.major.x = element_blank(),
+    plot.title       = element_text(face = "bold", size = 15, hjust = 0),
+    plot.subtitle    = element_text(size = 11, color = "grey40", hjust = 0),
+    plot.caption     = element_text(size = 8,  color = "grey50", hjust = 0, lineheight = 1.3),
+    legend.position  = "top",
+    legend.text      = element_text(size = 11),
+    axis.text.y      = element_text(size = 10.5),
+    axis.text.x      = element_text(size = 10),
+    panel.grid.major.y = element_blank(),
     panel.grid.minor   = element_blank(),
-    plot.margin      = margin(16, 16, 12, 16)
+    plot.margin      = margin(10, 50, 10, 10)
   )
-```
 
+print(p2)
+ggsave("q21_selfmade_status.png", plot = p2,
+       width = 10, height = 6, dpi = 180, bg = "white")
+cat("Graphique 2 sauvegardé : q21_selfmade_status.png\n")
+
+# ----------------------------------------------------------
+# 7. Interprétation console
+# ----------------------------------------------------------
+n_selfmade  <- sum(df$selfMade, na.rm = TRUE)
+n_heritier  <- sum(!df$selfMade, na.rm = TRUE)
+pct_sm      <- round(n_selfmade / nrow(df) * 100, 1)
+pct_her     <- round(n_heritier / nrow(df) * 100, 1)
+
+cat("\n========== INTERPRÉTATION ==========\n")
+cat(sprintf("  Self-made : %d milliardaires (%.1f%%)\n", n_selfmade, pct_sm))
+cat(sprintf("  Héritiers : %d milliardaires (%.1f%%)\n", n_heritier, pct_her))
+cat(sprintf("  Ratio self-made / héritier : %.2f\n", n_selfmade / n_heritier))
+cat("  → Confirmation de l'hypothèse : les milliardaires self-made sont\n")
+cat("    majoritaires, mais les héritiers restent un tiers non négligeable.\n")
+cat("    Biais potentiel : autodéclaration de la variable selfMade.\n")
+cat("=====================================\n")
+
+# ----------------------------------------------------------
+# Ouverture automatique des graphiques (mode terminal)
+# En RStudio / R GUI, print() suffit — les graphiques
+# s'affichent déjà dans le panneau Plots.
+# En mode Rscript (terminal), on ouvre les PNG avec le
+# visualiseur par défaut du système.
+# ----------------------------------------------------------
+if (!interactive()) {
+  os <- Sys.info()[["sysname"]]
+  open_cmd <- switch(os,
+                     "Darwin"  = "open",
+                     "Windows" = "start",
+                     "xdg-open"          # Linux
+  )
+  system(paste(open_cmd, "q21_selfmade_global.png"))
+  Sys.sleep(0.5)
+  system(paste(open_cmd, "q21_selfmade_status.png"))
+}
+
+ggsave("Q21_répartition_selfmade_héritiers.png",
+       plot = final_plot,
+       width = 7,
+       height = 8.5,
+       dpi = 300)
+
+```
 </details>
 
 <details>
-
 <summary>Interprétation et réponse</summary>
 
-Les données confirment clairement nos hypothèses.
-Les Baby-Boomers sont la génération la plus représentée (49,2 %), et, avec la Génération X (26,2 %), concentrent plus de 75 % des milliardaires. Cette domination s’explique par leur position favorable dans le temps, leur ayant permis d’accumuler du capital et de profiter pleinement des grandes phases de création de richesse.
+Les résultats infirment notre hypothèse : les milliardaires self-made sont largement majoritaires, représentant 68,6 % de l'échantillon, soit plus du double des héritiers (ratio 2,19 pour 1). Le statut D (fondateur) domine l'ensemble du dataset, reflet d'une forte culture entrepreneuriale mondiale, notamment dans les secteurs technologique et financier.
 
-La Génération silencieuse reste significative (19,8 %), principalement grâce à des patrimoines issus du capitalisme industriel et souvent transmis ou conservés sur le long terme.
+Notre seconde hypothèse se révèle partiellement correcte : E et N constituent bien une part significative des héritiers. Toutefois, un résultat contre-intuitif mérite attention, une majorité des individus classés E et N se déclarent néanmoins self-made, révélant un biais d'autodéclaration qui tend à surestimer la part de richesse autoproduite.
 
-À l’opposé, les Millennials restent marginaux (3,9 %), tandis que la Génération Z est presque inexistante dans l’échantillon (0,2 %).
+Se déclarer self-made ne signifie alors pas nécessairement partir de zéro : réseau familial, capital de départ ou environnement privilégié sont des avantages que la variable selfMade ne mesure pas, mais qui jouent un rôle déterminant dans ces trajectoires. 
+En corrigeant ce biais, la proportion réelle d'héritiers monterait à environ 42,7 % du dataset, un écart bien plus faible qu'il n'y paraît au premier regard, et qui nuance nos résultats. Toutefois, notre hypothèse reste infirmée.
+
+Explication : 497 individus ont un statut objectivement héritier (E, N, Split) mais 298 d'entre eux (60 %) se déclarent self-made. En ajoutant ces 298 "faux self-made" aux 828 héritiers déclarés, on obtient 1 126 héritiers réels, soit 42,7 % du dataset, bien plus que les 31,4 % déclarés. Les vrais self-made (D ou U, déclarés self-made) ne sont plus que 1 449, soit 54,9 % au lieu de 68,6 %.
 
 </details>
-
-
-print(p10)
-
-# Save plot
-ggsave("q21_generations_riches.png", p10, width = 10, height = 6, dpi = 150)
