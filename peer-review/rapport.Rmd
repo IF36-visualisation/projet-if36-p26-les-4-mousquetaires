@@ -1232,6 +1232,7 @@ p1
 <summary>Interprétation et réponse</summary>
 Les résultats confirment tout d’abord une forte domination masculine parmi les milliardaires. Les hommes représentent la grande majorité de l’échantillon, tandis que les femmes restent nettement minoritaires.
 </details>
+Dans la suite, nous avons décidé de nous concentrer sur l'âge des milliardaires. Tout d'abord, il nous a semblé logique de regarder s'il y avait une corrélation entre âge et richesse. 
 
 ### 2. Influence de l'âge
 
@@ -1286,6 +1287,10 @@ model_age
 L'analyse s'appuie sur le coefficient de relation de Spearman qui est plus indiqué car la distribution de la fortune des milliardaires est fortement asymétrique et non paramétrique (présence d'outliers extrêmes). Les résultats indiquent une corrélation positive faible très significative : la fortune augmente avec l'âge.
 L'âge apparait ainsi comme un facteur d'accumulation de richesse mais secondaire, il existe d'autres facteurs plus significatifs qui expliquent le niveau de la fortune comme le secteur d'activité, un environnement favorable, ...
 
+</details>
+
+Si l'âge joue un rôle mineur dans l'expansion de la fortune, nous avons voulu déterminer si les milliardaires étaients des personnes âgées ou non et donc déterminer s'ils sont presque au maximum de leur fortune.
+
 ### 3. Âge et génération
 
 Q11 - Quelle est la répartition de l’âge des milliardaires en 2023 ?
@@ -1313,6 +1318,8 @@ Comme nous le pensions, la majorité des milliardaires étaient âgés d'environ
 Cependant, on observe aussi une présence significative de milliardaires plus jeunes, notamment dans la tranche d'âge de 30 à 40 ans, ce qui peut être attribué à la montée en puissance du secteur de la technologie et à l'émergence de jeunes entrepreneurs qui ont réussi à accumuler une grande richesse rapidement.
 
 </details>
+
+Pour faire une analyse plus générale, nous avons choisi de passer par les générations.
 
 Q20 - Quelle est la génération qui regroupe le plus grand nombre de milliardaires ?
 <details>
@@ -1413,6 +1420,13 @@ La Génération silencieuse reste significative (19,8 %), principalement grâce 
 À l’opposé, les Millennials restent marginaux (3,9 %), tandis que la Génération Z est presque inexistante dans l’échantillon (0,2 %).
 
 </details>
+
+<details>
+<summary>Conclusion/summary>
+Le profil type démographique d'un milliardaire serait celui d'un homme entre 50 et 70 ans : un baby-boomer.
+
+</details>
+
 
 
 
