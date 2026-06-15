@@ -401,10 +401,6 @@ Deux diagrammes en barres horizontales ont été utilisés : permet une lecture 
 <summary>Visualisation</summary>
   
 ```{r}
-# ----------------------------------------------------------
-# 2. Nettoyage et recodage
-# ----------------------------------------------------------
-
 # Recodage de selfMade en étiquettes françaises
 df <- df %>%
   mutate(
@@ -420,9 +416,7 @@ df <- df %>%
     )
   )
 
-# ----------------------------------------------------------
-# 3. Statistiques globales : selfMade TRUE vs FALSE
-# ----------------------------------------------------------
+#Récupération de la variable SelfMade
 summary_selfmade <- df %>%
   count(selfMade_label) %>%
   mutate(
@@ -430,29 +424,6 @@ summary_selfmade <- df %>%
     pct_label  = paste0(round(proportion * 100, 1), "%")
   )
 
-cat("=== Répartition globale ===\n")
-print(summary_selfmade)
-
-# ----------------------------------------------------------
-# 4. Répartition par status détaillé
-# ----------------------------------------------------------
-summary_status <- df %>%
-  count(status_label, selfMade_label) %>%
-  group_by(status_label) %>%
-  mutate(
-    total_status = sum(n),
-    proportion   = n / sum(n)
-  ) %>%
-  ungroup() %>%
-  # Ordre décroissant selon le total pour lisibilité
-  mutate(status_label = fct_reorder(status_label, total_status))
-
-cat("\n=== Répartition par statut ===\n")
-print(summary_status)
-
-# ----------------------------------------------------------
-# 5. Graphique 1 – Vue globale : selfMade TRUE vs FALSE
-# ----------------------------------------------------------
 p1 <- ggplot(summary_selfmade,
              aes(x = proportion, y = reorder(selfMade_label, proportion),
                  fill = selfMade_label)) +
@@ -489,14 +460,29 @@ p1 <- ggplot(summary_selfmade,
     plot.margin      = margin(10, 30, 10, 10)
   )
 
-print(p1)
-ggsave("q21_selfmade_global.png", plot = p1,
-       width = 9, height = 4, dpi = 180, bg = "white")
-cat("\nGraphique 1 sauvegardé : q21_selfmade_global.png\n")
+p1
 
-# ----------------------------------------------------------
-# 6. Graphique 2 – Détail par statut (barres empilées 100 %)
-# ----------------------------------------------------------
+```
+
+```{r}
+#Tri par les status
+summary_status <- df %>%
+  count(status_label, selfMade_label) %>%
+  group_by(status_label) %>%
+  mutate(
+    total_status = sum(n),
+    proportion   = n / sum(n)
+  ) %>%
+  ungroup() %>%
+  # Ordre décroissant selon le total pour lisibilité
+  mutate(status_label = fct_reorder(status_label, total_status))
+
+cat("\n=== Répartition par statut ===\n")
+print(summary_status)
+
+
+# 6. Graphique 2 – Détail par statut 
+
 p2 <- ggplot(summary_status,
              aes(x = proportion, y = status_label, fill = selfMade_label)) +
   geom_col(width = 0.65, position = "stack") +
@@ -547,28 +533,7 @@ p2 <- ggplot(summary_status,
     plot.margin      = margin(10, 50, 10, 10)
   )
 
-print(p2)
-ggsave("q21_selfmade_status.png", plot = p2,
-       width = 10, height = 6, dpi = 180, bg = "white")
-cat("Graphique 2 sauvegardé : q21_selfmade_status.png\n")
-
-# ----------------------------------------------------------
-# 7. Interprétation console
-# ----------------------------------------------------------
-n_selfmade  <- sum(df$selfMade, na.rm = TRUE)
-n_heritier  <- sum(!df$selfMade, na.rm = TRUE)
-pct_sm      <- round(n_selfmade / nrow(df) * 100, 1)
-pct_her     <- round(n_heritier / nrow(df) * 100, 1)
-
-cat("\n========== INTERPRÉTATION ==========\n")
-cat(sprintf("  Self-made : %d milliardaires (%.1f%%)\n", n_selfmade, pct_sm))
-cat(sprintf("  Héritiers : %d milliardaires (%.1f%%)\n", n_heritier, pct_her))
-cat(sprintf("  Ratio self-made / héritier : %.2f\n", n_selfmade / n_heritier))
-cat("  → Confirmation de l'hypothèse : les milliardaires self-made sont\n")
-cat("    majoritaires, mais les héritiers restent un tiers non négligeable.\n")
-cat("    Biais potentiel : autodéclaration de la variable selfMade.\n")
-cat("=====================================\n")
-
+p2
 
 ```
 </details>
@@ -585,6 +550,7 @@ En corrigeant ce biais, la proportion réelle d'héritiers monterait à environ 
 
 Explication : 497 individus ont un statut objectivement héritier (E, N, Split) mais 298 d'entre eux (60 %) se déclarent self-made. En ajoutant ces 298 "faux self-made" aux 828 héritiers déclarés, on obtient 1 126 héritiers réels, soit 42,7 % du dataset, bien plus que les 31,4 % déclarés. Les vrais self-made (D ou U, déclarés self-made) ne sont plus que 1 449, soit 54,9 % au lieu de 68,6 %.
 
+À partir de ce constat, nous avons choisi de voir si l'éducation de ces milliardaires n'avaient pas joué un rôle dans leur enrichissement.
 </details>
 
 ### 2. Accès à l'éducation

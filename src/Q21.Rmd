@@ -30,7 +30,7 @@ Deux diagrammes en barres horizontales ont été utilisés : permet une lecture 
 
   ## Initialisation des bibliothèques et chargement des données
   
-  ```{r}
+```{r}
 
 library(ggplot2)
 library(dplyr)
