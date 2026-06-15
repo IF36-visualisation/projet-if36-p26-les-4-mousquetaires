@@ -1,16 +1,32 @@
-```{r stats}
-# Chargement des librairies nécessaires
-library(tidyverse)
 
-```
-#Q21 - Quelle est la génération qui regroupe le plus grand nombre de milliardaires ?
-```{r stats}
+---
+title: "Distribution des milliardaires par génération"
+author: "Yesmine Fathallah"
+---
 
-# Chargement des données
-billionaires <- read_csv("C:/Users/pret/Downloads/bil-data/Billionaires-Statistics-Dataset.csv")
+# Distribution des milliardaires par génération
 
+<details>
+
+<summary>Question et problème étudié</summary>
+
+Avant d'analyser les données, plusieurs hypothèses peuvent être formulées.
+Les anciennes générations (Génération X et surtout Baby-Boomers) devraient largement dominer le classement, grâce à des conditions favorables d’accumulation du capital, notamment dans des secteurs comme l'immobilier, la finance et l'industrie et à leur position centrale lors de la révolution technologique (Google, Amazon, Apple, Nvidia).
+
+À l’inverse, les Millennials devraient rester minoritaires en raison de leur âge, tandis que la Génération Z serait quasi absente. Les générations plus anciennes, enfin, verraient leur présence réduite par des facteurs démographiques.
+
+</details>
+
+<details>
+
+<summary>Visualisation</summary>
+
+Un diagramme en barres verticales présente le nombre et le pourcentage de milliardaires par génération, de la plus ancienne à la plus récente, afin de comparer clairement leur poids relatif.
+
+
+```{r}
 # Définition des générations selon birthYear
-billionaires_gen <- billionaires %>%
+billionaires_gen <- df %>%
   filter(!is.na(birthYear)) %>%
   mutate(generation = case_when(
     birthYear >= 1997 & birthYear <= 2012 ~ "Génération Z\n(1997–2012)",
@@ -72,6 +88,25 @@ ggplot(gen_counts, aes(x = generation, y = n_billionaires, fill = n_billionaires
     panel.grid.minor   = element_blank(),
     plot.margin      = margin(16, 16, 12, 16)
   )
+```
 
-`ggsave("q21_generations_riches.png", p10, width = 10, height = 6, dpi = 150)
-````
+</details>
+
+<details>
+
+<summary>Interprétation et réponse</summary>
+
+Les données confirment clairement nos hypothèses.
+Les Baby-Boomers sont la génération la plus représentée (49,2 %), et, avec la Génération X (26,2 %), concentrent plus de 75 % des milliardaires. Cette domination s’explique par leur position favorable dans le temps, leur ayant permis d’accumuler du capital et de profiter pleinement des grandes phases de création de richesse.
+
+La Génération silencieuse reste significative (19,8 %), principalement grâce à des patrimoines issus du capitalisme industriel et souvent transmis ou conservés sur le long terme.
+
+À l’opposé, les Millennials restent marginaux (3,9 %), tandis que la Génération Z est presque inexistante dans l’échantillon (0,2 %).
+
+</details>
+
+
+print(p10)
+
+# Save plot
+ggsave("q21_generations_riches.png", p10, width = 10, height = 6, dpi = 150)

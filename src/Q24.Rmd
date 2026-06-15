@@ -1,1 +1,179 @@
 #
+---
+title: "Densité de milliardaires par pays"
+author: "Yesmine Fathallah"
+---
+
+# Densité de milliardaires par pays
+
+<details>
+
+<summary>Question et problème étudié</summary>
+
+On cherche ici à identifier les pays qui possèdent la plus forte densité de milliardaires, c'est-à-dire le nombre de milliardaires rapporté à la population totale du pays.
+
+Avant d'analyser les données, plusieurs hypothèses peuvent être formulées. On peut s'attendre à retrouver parmi les premiers pays des États disposant d'un niveau de vie élevé et d'une forte concentration de richesse, comme la Suisse, Singapour ou Monaco. À l'inverse, des pays très peuplés comme la Chine ou l'Inde pourraient compter un grand nombre de milliardaires en valeur absolue sans pour autant afficher une densité élevée.
+
+Afin de comparer efficacement les pays, le nombre de milliardaires est rapporté à un million d'habitants. Un diagramme en barres horizontales a été choisi car il permet de classer clairement les pays et de visualiser facilement les écarts de densité entre eux.
+</details>
+
+<details>
+
+<summary>Visualisation</summary>
+
+Le diagramme en barres horizontales présente les 15 pays ayant la plus forte densité de milliardaires, mesurée en nombre de milliardaires par million d'habitants. Des étiquettes supplémentaires indiquent également le nombre total de milliardaires ainsi que leur poids relatif dans la population du pays.
+
+```{r}
+
+# ==========================================
+# Q24 - Densité de milliardaires par pays
+# Top 15 des pays
+# ==========================================
+
+# Packages
+library(dplyr)
+library(ggplot2)
+library(readr)
+
+# --------------------------------------------------
+# 1. Charger les données
+# --------------------------------------------------
+
+df <- read_csv("data/Billionaires_Statistics_Dataset.csv")
+
+# --------------------------------------------------
+# 2. Nombre de milliardaires par pays
+# --------------------------------------------------
+
+nb_milliardaires <- df %>%
+  group_by(country) %>%
+  summarise(
+    nombre_milliardaires = n(),
+    .groups = "drop"
+  )
+
+# --------------------------------------------------
+# 3. Population de chaque pays
+# --------------------------------------------------
+
+population <- df %>%
+  select(country, population_country) %>%
+  distinct()
+
+# --------------------------------------------------
+# 4. Calcul de la densité
+# --------------------------------------------------
+
+densite <- nb_milliardaires %>%
+  left_join(population, by = "country") %>%
+  mutate(
+    milliardaires_par_million =
+      (nombre_milliardaires / population_country) * 1000000,
+    
+    pourcentage_population =
+      (nombre_milliardaires / population_country) * 100
+  ) %>%
+  filter(
+    !is.na(population_country),
+    population_country > 0
+  ) %>%
+  arrange(desc(milliardaires_par_million))
+
+# --------------------------------------------------
+# 5. Top 15
+# --------------------------------------------------
+
+top15 <- densite %>%
+  slice_head(n = 15)
+
+
+
+# --------------------------------------------------
+# 6. Création des étiquettes
+# Exemple :
+# 17 milliardaires | 436.3/M | 0.0436%
+# --------------------------------------------------
+
+top15 <- top15 %>%
+  mutate(
+    etiquette = paste0(
+      nombre_milliardaires,
+      " milliardaires | ",
+      round(milliardaires_par_million, 1),
+      "/M | ",
+      sprintf("%.4f", pourcentage_population),
+      "%"
+    )
+  )
+
+# --------------------------------------------------
+# 7. Affichage du tableau
+# --------------------------------------------------
+
+print(
+  top15 %>%
+    select(
+      country,
+      nombre_milliardaires,
+      milliardaires_par_million,
+      pourcentage_population
+    )
+)
+
+# --------------------------------------------------
+# 8. Graphique
+# --------------------------------------------------
+
+ggplot(
+  top15,
+  aes(
+    x = reorder(country, milliardaires_par_million),
+    y = milliardaires_par_million
+  )
+) +
+  geom_col(fill = "steelblue") +
+  geom_text(
+    aes(label = etiquette),
+    hjust = -0.1,
+    size = 3.5
+  ) +
+  coord_flip() +
+  expand_limits(
+    y = max(top15$milliardaires_par_million) * 1.45
+  ) +
+  labs(
+    title = "Top 15 des pays par densité de milliardaires",
+    subtitle = "Nombre de milliardaires rapporté à la population",
+    x = "Pays",
+    y = "Milliardaires par million d'habitants"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    plot.title = element_text(face = "bold"),
+    axis.text.y = element_text(size = 10)
+  )
+```
+
+</details>
+
+<details>
+
+<summary>Interprétation et réponse</summary>
+
+Les résultats confirment partiellement nos hypothèses. Les pays les plus densément représentés ne sont pas nécessairement les plus peuplés, mais plutôt ceux qui concentrent une grande quantité de richesse par habitant.
+
+On observe que plusieurs pays de petite taille ou à haut revenu occupent les premières positions, ce qui montre que la densité de milliardaires dépend davantage de la concentration de richesse que de la population totale.
+
+À l'inverse, certains pays très peuplés peuvent compter un nombre important de milliardaires sans apparaître en tête du classement, car leur population réduit mécaniquement leur densité.
+
+Cette analyse confirme notre hypothèse et montre donc que le nombre absolu de milliardaires et leur densité sont deux indicateurs différents : le premier reflète la taille économique d'un pays, tandis que le second met davantage en évidence la concentration de richesse au sein de sa population.
+Selon nos données 2023, Monaco et Liechtenstein dominent. Cependant, des sources plus récentes (Forbes 2026) révèlent que Cyprus est actuellement le leader incontesté avec 10.89 milliardaires par million, suivi de Hong Kong (8.94) et Singapour (6.59). Les États-Unis, malgré leurs 989 milliardaires en chiffres absolus, ne se classent que 8e en densité (2.42/M), démontrant que la concentration de richesse extrême est bien plus forte dans les petits États et places financières asiatiques.
+</details>
+
+
+print(p10)
+
+# Save plot
+ggsave("q24_densité_milliardaires_pays.png", p12, width = 10, height = 6, dpi = 150)
+
+
