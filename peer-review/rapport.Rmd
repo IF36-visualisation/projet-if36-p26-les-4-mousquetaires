@@ -289,6 +289,8 @@ Pour expliquer la dynamique des lieux d'habitations et des nationalités les plu
 <details>
 <summary>Question et problème étudié </summary>
 On part du constat que les milliardaires ont la possibilité de bouger et d'habiter des endroits plus favorables au développement de leur business. Cependant, certains ont pu naitre dans des pays peu propices à ce développement. Ainsi, on peut supposer que pour certains profils, il y a une différence entre la nationalité (d'origine, naissance) et leur lieu d'habitation. On propose une vue statique de ces mouvements sur l'année 2023.
+
+La datavisualisation est une carte du monde représentant les flux de milliardaires entre pays, symbolisés par des flèches. Selon le nombre de milliardaires venant du même pays et émigrant vers le même, l'épaisseur du trait grossit. Sans ajustement, la Just Noticeable Difference est peu respectée. Le graphique est rendu plus lisible dans le Shiny App. 
 </details>
 
 <details>
@@ -298,10 +300,17 @@ Le diagramme est dans le Shiny app.
 
 <details>
 <summary> Interprétation et réponse </summary>
+Tout d'abord, il faut rappeler qu'il y a 2640 entrées dans le dataset et dont seulement 196 entrées dont la nationalité et le pays d'habitation divergent, ce qui est peu. 
+La carte est peu lisible sans les filtres mais elle permet de voir dans quels pays il y a du mouvement. On observe beaucoup de mouvements en Europe, Asie, Amérique du Nord et légèrement en Océanie. 
+Les pays très voyants sont les États-Unis, la Russie et l'Europe sans pouvoir déterminer de pays précisement. Il apparait aussi que l'Afrique n'est pas du tout de flux représenté. 
 
+Les pays regroupant le plus d'expatriés sont le Royaume-Uni, la Suisse, les États-Unis, la Chine et les Émirats Arabe Unis. Le top 3 regroupe, à lui seul, 65 % des expatriés milliardaires. 
+Pour le Royaume-Uni(24% des expatriés), ce sont les milliardaires des pays du Commonwealth qui émigrent vers ce pays et de partout dans le monde. D'ailleurs, on remarque ce phénomène dans les autres pays du Commonwealth (ex: Inde, Bahamas). Pour la Suisse (21% des expatriés),les expatriés viennent de partout dans le monde: Amérique(US, Canada), Moyen-Orient et d'Europe. 
+Pour les États-Unis (20% des expatriés), les milliardaires immigrent de partout dans le monde (Canada et tous les continents sauf Afrique). Quant à la Chine (9% des expatriés) et les Émirats Arabe Unis (6,6 % des expatriés), les flux viennent des États-Unis, de la Russie, de l'Inde et du Canada. Les autres pays de destination acceuillent des expatriés souvent intra-continentaux ou d'anciennes colonies où la barrière linguistiques est levée. 
+
+Ainsi, l'expatriation est un phénomène qui touche peu les milliardaires car ils sont peu nombreux à vouloir s'expatrier. On pourrait y voir une certaine attache sentimentale. 
 
 </details>
-On constate que les pays et les villes comptant le plus de milliardaires sont aussi ceux avec le plus de ressortissants milliardaires. Ces aires géographiques attirent les milliardaires des pays moins développés. Toutefois, nous avons travaillé sur des chiffres brutes ce qui peut orienter nos interprétations. 
 
 ### 3. Concentration des milliardaires
 Q19 - Quel est le nombre de milliardaires par millions d'habitant par pays ?
@@ -309,6 +318,8 @@ Q19 - Quel est le nombre de milliardaires par millions d'habitant par pays ?
 <summary>Question et problème étudié</summary>
 
 Le nombre brut de milliardaires favorise mécaniquement les pays les plus peuplés. Pour mesurer une véritable concentration, on rapporte ce nombre à la population du pays : on obtient un nombre de milliardaires par million d'habitants. On s'attend à voir remonter de petits pays très riches (places financières, paradis fiscaux) plutôt que les géants démographiques comme la Chine ou l'Inde.
+
+Afin de comparer efficacement les pays, le nombre de milliardaires est rapporté à un million d'habitants. Un diagramme en barres horizontales a été choisi car il permet de classer clairement les pays et de visualiser facilement les écarts de densité entre eux.
 
 </details>
 
@@ -339,6 +350,15 @@ p11
 
 <details>
 <summary>Interprétation et réponse</summary>
+Les résultats confirment partiellement nos hypothèses. Les pays les plus densément représentés ne sont pas nécessairement les plus peuplés, mais plutôt ceux qui concentrent une grande quantité de richesse par habitant.
+
+On observe que plusieurs pays de petite taille ou à haut revenu occupent les premières positions, ce qui montre que la densité de milliardaires dépend davantage de la concentration de richesse que de la population totale.
+
+À l'inverse, certains pays très peuplés peuvent compter un nombre important de milliardaires sans apparaître en tête du classement, car leur population réduit mécaniquement leur densité.
+
+Cette analyse confirme notre hypothèse et montre donc que le nombre absolu de milliardaires et leur densité sont deux indicateurs différents : le premier reflète la taille économique d'un pays, tandis que le second met davantage en évidence la concentration de richesse au sein de sa population.
+Selon nos données 2023, Monaco et Liechtenstein dominent. Par ailleurs, le top 4 est un ensemble de paradis fiscaux européen tandis que Singapore est aussi connu pour avoir une fiscalité avantageuse et une croissance économique effrenée. 
+
 
 Bien que les États-Unis apparaissent toujours, la Chine et l'Inde, qui sont top 2 et 3 en nombre brut, n'apparaissent pas au regard de leur population. Le graphique ci-dessus réaffirme la concentration des milliardaires dans les pays de l'Ouest, à deux exceptions près (Singapour et les Émirats arabes unis).
 
