@@ -72,6 +72,7 @@ Notre travail s'articule autour de cette question : Quels facteurs expliquent l'
 
 Les milliardaires ont la possibilité de s’établir où ils le souhaitent en raison de leur revenu. Cependant, le choix de leur résidence n’est pas laissé au hasard. Le choix du lieu de résidence peut être influencé par de nombreux facteurs, tels que la proximité des centres économiques, des sièges sociaux, des marchés financiers ou encore des infrastructures et services de haut niveau. Cette partie cherche à déterminer si une concentration géographique apparaît effectivement dans les données.
 
+
 ### 1. Lieux d'habitation des milliardaires
 
 #### a. Où sont répartis les milliardaires dans le monde ?
@@ -370,10 +371,10 @@ Bien que les États-Unis apparaissent toujours, la Chine et l'Inde, qui sont top
 
 <details>
 <summary> Conclusion </summary>
-Pour conclure, les milliardaires sont répartis majoritairement dans les pays de l'Ouest et dans les BRICS, idem pour les nationalités. On les trouve dans les mégalopoles attractives de ces pays. Certains ne restent pas dans leur pays d'origine sans que cela soit tant significati bien que leur expatriation soit dans des pays comptant déjà beaucoup de milliardaires. Cependant, ils sont surtout concentrés dans les pays développés et les petites places financières d'Europe, surtout dans les paradis fiscaux.
-
+Pour conclure, les milliardaires sont répartis majoritairement dans les pays de l'Ouest et dans les BRICS, idem pour les nationalités. On les trouve dans les mégalopoles attractives de ces pays. Certains ne restent pas dans leur pays d'origine sans que cela soit tant significatif bien que leur expatriation soit dans des pays comptant déjà beaucoup de milliardaires. Cependant, ils sont surtout concentrés dans les pays développés et les petites places financières d'Europe, surtout dans les paradis fiscaux. Après avoir identifié où se concentrent les milliardaires, intéressons-nous à leur trajectoire d'enrichissement.
 
 </details>
+
 
 ## II. Le mythe du self-made man
 Le mythe du self-made man est apparu aux États-Unis à partir de 1830. C'est l'idée selon laquelle quelqu'un pourrait se faire tout seul mais surtout, sans bénéficier d'un héritage conséquent. Cela peut sous-entendre, qu'au moins aux États-Unis, il y a un système méritocratique qui permet à tout un chacun de s'élever socialement car il est volontaire et travailleur. Sa représentation dans les supports culturels est toujours présente aujourd'hui comme dans le film "Le Loup de Wall Street" (2013). Certains millionnaires et milliardaires cultivent eux-mêmes cette image comme Elon Musk. Le dataset a une variable "self-made", qui n'engage que l'auteur et correspond à sa définition. Cette partie cherche à déterminer s'il y a des traits récurrents parmis les self-made. 
