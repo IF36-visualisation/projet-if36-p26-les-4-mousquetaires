@@ -28,7 +28,6 @@ library(ggpubr)
 library(forcats)
 
 df <- read_csv(here("data", "Billionaires_Statistics_Dataset.csv"))
-View(df)
 ```
 # **Introduction**
 
@@ -85,9 +84,9 @@ On s’attend à ce que les milliardaires soient fortement concentrés dans les 
 Ces pays offrent des écosystèmes favorables à la création de richesse, avec des marchés financiers matures, des infrastructures solides et des opportunités d’affaires.
 opportunités d’affaires.
 
+<summary>Choix de visualisation</summary>
 Le choix du diagramme se portera sur une carte du monde avec des points représentant les villes où résident les milliardaires, la taille des points étant proportionnelle au nombre de milliardaires dans chaque ville. 
-Cette visualisation permettra de mettre en évidence les zones de forte concentration de milliardaires à travers le monde.
-
+Cette visualisation permettra de mettre en évidence les zones de forte concentration de milliardaires à travers le monde
 
 </details>
 
@@ -151,6 +150,9 @@ Ensuite, nous avons choisi d'affiner notre analyse pour regarder dans quelles vi
 
 L'objectif est de voir où vivent les milliardaires. On suppose qu'ils vivent dans des mégalopoles dans l'hémisphère Nord où il y a des opportunités économiques intéressantes. On peut penser à New York, Los Angeles, Hong Kong, Londres mais aussi des villes en Chine et des villes de pays émergents.
 
+<summary>Choix de visualisation</summary>
+Mon choix s'est porté sur un diagramme à barre qui est fait pour montrer une répartition. J'ai choisi de montrer les 20 villes concentrant le plus de milliardaires par soucis, de lisibilité et de pertinence. 
+
 </details>
 
 <details>
@@ -167,22 +169,23 @@ data_cities <- ggplot(cities_top_20, aes(x=reorder(city,n), y=n)) + geom_col() +
        y = "Nombre de milliardaires")
 data_cities
 ```
-Mon choix s'est porté sur un diagramme à barre qui est fait pour montrer une répartition. J'ai choisi de montrer les 20 villes concentrant le plus de milliardaires par soucis, de lisibilité et de pertinence. 
 </details>
 
 <details>
 <summary>Interprétation et réponse</summary>
  L'hypothèse de départ est vérifiée. New York est en tête de loin et cela peut s'expliquer car la ville concentre énormément d'industries et donc d'opportunités mais elle est aussi extrêmement peuplée. La présence de ces villes, qui dépassent, pour la plupart sauf San Francisco, le million d'habitants, s'expliquent par la présence d'industries, de main d'œuvres et d'un tissu économique favorable au développement de la richesse des milliardaires. Cette concentration peut s'expliquer par un environnement économique favorable et par des effets d'agglomération, sans que les données permettent d'établir un lien causal direct.
 </details>
-Nous avons fait le choix de regarder où se concentrent les milliardaires américains car plusieurs villes se retrouvent dans le Top ci-dessus et que les États-Unis sont assez visibles sur la carte du a.
+Nous avons fait le choix de regarder où se concentrent les milliardaires américains car plusieurs villes se retrouvent dans le top ci-dessus et que les États-Unis sont assez visibles sur la carte du a.
 
 #### c. Focus US
-Q3 - Comment se répartissent les milliardaires dans les états américains ?
 <details>
 
 <summary>Question et problème étudié</summary>
 
 Les États-Unis sont un grand pays qui concentrent des milliardaires. Cependant, la répartition de la population dans ce pays est inégale donc on suppose que les milliardaires se concentrent dans les grandes villes qui sont dans les États qui concentrent la population (Californie, New York, ...). Les états ruraux comptent pas ou peu de milliardaires en comparaison (Wyoming, ...). L'objectif de cette data visualisation est de vérifier cette hypothèse.
+
+<summary>Choix de visualisation</summary>
+On a choisi de représenter cela avec une carte pour rendre cela visuel, pour avoir l'information qui accroche le regard. Par ailleurs, représenter cela avec un diagramme à barre, qui convient tout à fait, nous aurait fait perdre de la donnée car représenter 50 données en abscisse prend de la place. La carte est mieux pour représenter l'ensemble de données. Le nombre de milliardaires est representé par un gradient de couleurs respectant la magnitude estimation et la just noticeable difference. 
 
 </details>
 
@@ -208,8 +211,6 @@ american_billionaires_map <- american_billionaires_map_data %>% ggplot(aes(map_i
   labs(title="Répartition des milliardaires dans les états américains", x="Longitude", y="Latitude", fill="Nombre de milliardaires" )
 american_billionaires_map
 ```
-On a choisi de représenter cela avec une carte pour rendre cela visuel, pour avoir l'information qui accroche le regard. Par ailleurs, représenter cela avec un diagramme à barre, qui convient tout à fait, nous aurait fait perdre de la données car représenter 42 données en abscisse prend de la place. La carte est mieux pour représenter l'ensemble de données.
-
 </details>
 
 <details>
@@ -219,7 +220,7 @@ Sans surprise, les autres états comptent entre 0 et 50 milliardaires.
 
 </details>
 
-Ainsi, numériquement, les riches se trouvent dans les pays occidentaux, économiquement développés, mais aussi dans les pays émergents (BRICS) dans les mégalopoles qui sont déjà des centres de concentration de richesses et d'opportunités. Le focus sur les États-Unis montrent qu'en effet, il y a peu, voire quasiment pas de milliardaires en milieu rural. On peut supposer que cela s'étend au monde. Cependant, il faudrait savoir si ces pays "produisent" des milliardaires. On peut alors regarder les nationalités des milliardaires.
+Numériquement, les riches se trouvent dans les pays occidentaux, économiquement développés, mais aussi dans les pays émergents (BRICS) dans les mégalopoles qui sont déjà des centres de concentration de richesses et d'opportunités. Le focus sur les États-Unis montrent qu'en effet, il y a peu, voire quasiment pas de milliardaires en milieu rural. On peut supposer que cela s'étend au monde. Cependant, il faudrait savoir si ces pays "produisent" des milliardaires. On peut alors regarder les nationalités des milliardaires.
 
 ### 2. Origine et mouvements des milliardaires
 
@@ -232,6 +233,7 @@ On cherche ici à identifier les nationalités les plus représentées parmi les
 On s'attends à ce que les pays avec les nationalités les plus représentées soient des pays ayant une forte densité de population ou une économie développée, comme les États-Unis, la Chine, l'Inde, etc.
 Cependant, il est également possible que certains pays avec une population plus petite mais une forte concentration de richesse soient bien représentés comme la Suisse.
 
+<summary>Choix de visualisation</summary>
 L'objectif est de comparer les 10 nationalités les plus fréquentes, le choix du diagramme se portera sur un bar chart horizontal, avec les nationalités en ordonnée et le nombre de milliardaires en abscisse, permettant ainsi de visualiser clairement les différences entre les nationalités. 
 
 </details>
@@ -292,6 +294,7 @@ Pour expliquer la dynamique des lieux d'habitations et des nationalités les plu
 <summary>Question et problème étudié </summary>
 On part du constat que les milliardaires ont la possibilité de bouger et d'habiter des endroits plus favorables au développement de leur business. Cependant, certains ont pu naitre dans des pays peu propices à ce développement. Ainsi, on peut supposer que pour certains profils, il y a une différence entre la nationalité (d'origine, naissance) et leur lieu d'habitation. On propose une vue statique de ces mouvements sur l'année 2023.
 
+<summary>Choix de visualisation</summary>
 La datavisualisation est une carte du monde représentant les flux de milliardaires entre pays, symbolisés par des flèches. Selon le nombre de milliardaires venant du même pays et émigrant vers le même, l'épaisseur du trait grossit. Sans ajustement, la Just Noticeable Difference est peu respectée. Le graphique est rendu plus lisible dans le Shiny App. 
 </details>
 
@@ -314,7 +317,7 @@ Ainsi, l'expatriation est un phénomène qui touche peu les milliardaires car il
 
 </details>
 
-Ainsi, les nationalités les plus représentées parmis les milliardaires sont les nationalités des pays les plus peuplés, en raison, de la taille de leur pays. Dans le premier diagramme de la sous partie, les États-Unis arrivent en top ont le plus de milliardaires en brut sans être le pays le plus peuplé. Cependant, d'autres facteurs peuvent entrer en ligne de compte. On va chercher des explications sur des mouvements de milliardaires ayant d'autres nationalités mais habitant aux États-Unis, par exemple. Il y a des mouvements entre pays de la nationalité et pays d'habitation mais qui concernent peu de milliardaires. Les pays regroupant plus de la moitié des expatriés sont le Royaume-Unis, la Suisse et les États-Unis. Le premier attire les ressortissants du Commowealth qui bénéficient d'avantages à y habiter, rappelons que la City à Londres est une place boursière importante. La Suisse pratique une fiscalité très avantageuse. Les États-Unis concentrent beaucoup d'entreprises performantes et autres avantages. Les mouvements n'expliquent pas à eux seuls la prédominance des États-Unis dans le classement.
+Ainsi, les nationalités les plus représentées parmis les milliardaires sont les nationalités des pays les plus peuplés, en raison, de la taille de leur pays. Dans le premier diagramme de la sous partie, les États-Unis arrivent en top ont le plus de milliardaires en brut sans être le pays le plus peuplé. Cependant, d'autres facteurs peuvent entrer en ligne de compte. On va chercher des explications sur des mouvements de milliardaires ayant d'autres nationalités mais habitant dans d'autres pays. Il y a des mouvements entre pays de la nationalité et pays d'habitation mais qui concernent peu de milliardaires. Les pays regroupant plus de la moitié des expatriés sont le Royaume-Unis, la Suisse et les États-Unis.
 
 Pour diluer l'effet de la population sur la répartition des milliardaires, nous allons voir où ils sont concentrés. 
 
@@ -324,6 +327,7 @@ Pour diluer l'effet de la population sur la répartition des milliardaires, nous
 
 Le nombre brut de milliardaires favorise mécaniquement les pays les plus peuplés. Pour mesurer une véritable concentration, on rapporte ce nombre à la population du pays : on obtient un nombre de milliardaires par million d'habitants. On s'attend à voir remonter de petits pays très riches (places financières, paradis fiscaux) plutôt que les géants démographiques comme la Chine ou l'Inde.
 
+<summary>Choix de visualisation</summary>
 Afin de comparer efficacement les pays, le nombre de milliardaires est rapporté à un million d'habitants. Un diagramme en barres horizontales a été choisi car il permet de classer clairement les pays et de visualiser facilement les écarts de densité entre eux.
 
 </details>
@@ -364,21 +368,19 @@ On observe que plusieurs pays de petite taille ou à haut revenu occupent les pr
 Cette analyse confirme notre hypothèse et montre donc que le nombre absolu de milliardaires et leur densité sont deux indicateurs différents : le premier reflète la taille économique d'un pays, tandis que le second met davantage en évidence la concentration de richesse au sein de sa population.
 Selon nos données 2023, Monaco et Liechtenstein dominent. Par ailleurs, le top 4 est un ensemble de paradis fiscaux européen tandis que Singapore est aussi connu pour avoir une fiscalité avantageuse et une croissance économique effrenée. 
 
-
 Bien que les États-Unis apparaissent toujours, la Chine et l'Inde, qui sont top 2 et 3 en nombre brut, n'apparaissent pas au regard de leur population. Le graphique ci-dessus réaffirme la concentration des milliardaires dans les pays de l'Ouest, à deux exceptions près (Singapour et les Émirats arabes unis).
 
 
 </details>
 
-<details>
-<summary> Conclusion </summary>
+### Conclusion 
 Pour conclure, les milliardaires sont répartis majoritairement dans les pays de l'Ouest et dans les BRICS, idem pour les nationalités. On les trouve dans les mégalopoles attractives de ces pays. Certains ne restent pas dans leur pays d'origine sans que cela soit tant significatif bien que leur expatriation soit dans des pays comptant déjà beaucoup de milliardaires. Cependant, ils sont surtout concentrés dans les pays développés et les petites places financières d'Europe, surtout dans les paradis fiscaux. Après avoir identifié où se concentrent les milliardaires, intéressons-nous à leur trajectoire d'enrichissement.
 
-</details>
 
 
 ## II. Le mythe du self-made man
 Le mythe du self-made man est apparu aux États-Unis à partir de 1830. C'est l'idée selon laquelle quelqu'un pourrait se faire tout seul mais surtout, sans bénéficier d'un héritage conséquent. Cela peut sous-entendre, qu'au moins aux États-Unis, il y a un système méritocratique qui permet à tout un chacun de s'élever socialement car il est volontaire et travailleur. Sa représentation dans les supports culturels est toujours présente aujourd'hui comme dans le film "Le Loup de Wall Street" (2013). Certains millionnaires et milliardaires cultivent eux-mêmes cette image comme Elon Musk. Le dataset a une variable "self-made", qui n'engage que l'auteur et correspond à sa définition. Cette partie cherche à déterminer s'il y a des traits récurrents parmis les self-made. 
+
 ### 1. Proportion des milliardaires 
 <details>
 <summary>Question et problème étudié</summary>
@@ -477,9 +479,6 @@ summary_status <- df %>%
   # Ordre décroissant selon le total pour lisibilité
   mutate(status_label = fct_reorder(status_label, total_status))
 
-cat("\n=== Répartition par statut ===\n")
-print(summary_status)
-
 
 # 6. Graphique 2 – Détail par statut 
 
@@ -562,6 +561,7 @@ L'objectif est de déterminer si les milliardaires qui ont construit leur fortun
 On s'attend à ce que les milliardaires "self-made" soient plus fréquents dans des pays avec un taux d'inscription dans le supérieur plus bas, car cela pourrait indiquer que ces individus ont dû faire preuve de plus de détermination et d'innovation pour réussir sans bénéficier d'une éducation formelle avancée.
 Cependant, il est également possible que certains milliardaires "self-made" proviennent de pays avec un taux d'inscription dans le supérieur élevé, ce qui pourrait indiquer que l'accès à l'éducation n'est pas le seul facteur déterminant pour devenir un milliardaire "self-made".
 
+<summary>Choix de visualisation</summary>
 Le diagramme choisi pour visualiser cette relation sera un scatterplot, avec le taux d'inscription dans le supérieur en abscisse et le nombre de milliardaires "self-made" en ordonnée, permettant ainsi de visualiser toute corrélation potentielle entre ces deux variables.
 
 </details>
@@ -621,7 +621,6 @@ Cependant, la corrélation n'est pas très forte, ce qui suggère que d'autres f
 Il nous a semblé pertinent d'étudier l'influence du genre sur le statut de selfmade. En effet, les femmes ont moins souvent accès aux postes à haute décision et aux hautes rémunérations à cause du plafond de verre alors qu'elles ont des notes plus élevées que les hommes à l'école et sont plus représentées dans l'enseignement supérieur et donc plus diplômées.
 
 ### 3. Genre
-Q23 - Les hommes milliardaires sont-ils plus souvent self-made que les femmes ?
 <details>
 <summary>Question et problème étudié</summary>
 On cherche ici à analyser la répartition des milliardaires selon le genre ainsi que la structure de leur richesse (self-made ou héritée).
@@ -630,6 +629,7 @@ Nous estimons que les femmes seraient plus souvent issues de patrimoines hérit�
 
 On pense également que la part de self-made chez les hommes pourrait être proche de 50 %.
 
+<summary>Choix de visualisation</summary>
 Pour l’analyse de la structure de la richesse selon le genre, un diagramme en barres empilées à 100% a été choisi afin de comparer les proportions de richesse self-made et héritée entre hommes et femmes.
 </details>
 
@@ -705,7 +705,9 @@ Pour finir, il serait intéressant de comparer les profils entre selfmade et hé
 <details>
 <summary>Question et problème étudié</summary>
 
-On cherche à savoir si le profil d'un milliardaire(son âge, son genre, le montant de sa fortune) permet de deviner s'il s'est fait tout seul ou s'il a hérité. On suppose que les self-made sont plutôt plus jeunes (une fortune héritée se transmet tard) et que les femmes, du fait des obstacles historiques à l'entrepreneuriat, sont davantage des héritières. On croise donc l'âge et la fortune (en échelle logarithmique pour absorber les écarts énormes entre milliardaires), en distinguant le statut self-made par la couleur et le genre par facettes.
+On cherche à savoir si le profil d'un milliardaire(son âge, son genre, le montant de sa fortune) permet de deviner s'il s'est fait tout seul ou s'il a hérité. On suppose que les self-made sont plutôt plus jeunes (une fortune héritée se transmet tard) et que les femmes, du fait des obstacles historiques à l'entrepreneuriat, sont davantage des héritières. 
+<summary>Choix de visualisation</summary>
+On croise donc l'âge et la fortune (en échelle logarithmique pour absorber les écarts énormes entre milliardaires), en distinguant le statut self-made par la couleur et le genre par facettes.
 
 </details>
 
@@ -746,14 +748,10 @@ Sur l'âge, l'écart est faible mais cohérent : les self-made ont un âge médi
 En résumé, le genre est bien plus discriminant que l'âge ou le montant de la fortune pour caractériser le mode d'acquisition de la richesse. Ce constat pourrait s'expliquer par la discrimination fait au moment de l'héritage et la socialisation genrée. D'un côté, les entreprises familiales sont moins souvent léguées aux femmes en raison d'une idée toujours pregnante : l'héritier mâle serait le seul capable de faire fructifier et perpétuer l'héritage familiale ( *Le genre du capital*, Céline Bessière et Sibylle Gollac, 2019). La présence de femmes héritières pourrait s'expliquer par le fait qu'elles sont les seules héritières possibles et que quoi qu'il en coûte l'entreprise doit rester dans la famille. De l'autre, la socialisation genrée facilite une autocensure des femmes ("se dire que ce n'est pas pour elle") pour l'accession des postes. On peut aussi imaginer que le coût à l'entrée pour intégrer le cercle des milliardaires doit être assez élevé pour une femme, sétant donnée, la prédominance masculine. Ce sont des hypothèses mais que notre dataset ne permet pas de vérifier. 
 </details>
 
-<details>
-<summary> Conclusion </summary>
+### Conclusion
 Pour conclure, le mythe du selfmade man ou woman aurait une certaine réalité. En effet, il y a une legère corrélation entre pays avec taux d'accès à l'enseignement supérieur bas et nombre de milliardaires selfmade. On peut supposer que ces gens ont effectivement beaucoup travaillé pour être milliardaire. Le mythe du selfmade serait plutôt celui d'un homme. On compte beaucoup plus d'hommes self-made et que de femmes. 
 Le portrait du self-made serait celui d'un homme, assez agé (âge médian: 64 ans) et qui ferait partie des "petits milliardaires" (fortune médianne : 2,2 Md$). 
 Une fois le mode d'acquisition de la richesse étudié, il est naturel d'examiner les secteurs économiques dont elle est issue.
-
-</details>
-
 
 ## III. Fortunes : industries et richesses
 Dans ce dataset, les fortunes des milliardaires sont majoritairement associées à une activité économique, entrepreneuriale ou patrimoniale. Elles proviennent toutes de secteurs variés qui leur permet de faire partie d'une élite économique mais aussi sociale et culturelle. Néanmoins, les milliardaires n'ont pas tous investis les mêmes secteurs économiques, ni le même niveau de fortune. Cette partie cherche à déterminer si certains secteurs économiques/industries concentrent la richesse et les milliardaires.
@@ -766,6 +764,7 @@ On cherche ici à comprendre la structure de la richesse au sein même du club d
 
 L’hypothèse est une distribution suivant une loi de puissance : une immense majorité de “petits” milliardaires (entre 1 et 5 milliards) et une poignée d’individus possédant des fortunes dépassant l’entendement, créant une inégalité flagrante même au sein de l’élite.
 
+<summary>Choix de visualisation</summary>
 Tout d'abord, pour faire une observation générale, j'ai choisi de faire un box plot. C'est une manière efficace d'analyser les données puisqu'on a plusieurs données mathématiques.
 </details>
 <details>
@@ -795,7 +794,9 @@ distr_rich_quart_plot
 </details>
 <details>
 <summary>Interprétation et ouverture</summary>
-La richesse des milliardaires est effectivement très concentrée. La médiane est faible relativement aux plus grandes fortunes observées. Il y a énormément d'outliers, ce qui confirme une distribution très inégale de la richesse parmis les milliardaires. Pour avoir une analyse plus fine, nous proposons de diviser les observations en déciles plutôt qu'en quartiles car le box plot risque d'être encore peu lisible. 
+La richesse des milliardaires est effectivement très concentrée. La médiane est faible relativement aux plus grandes fortunes observées. Il y a énormément d'outliers, ce qui confirme une distribution très inégale de la richesse parmis les milliardaires.
+<summary>Choix de visualisation</summary>
+Pour avoir une analyse plus fine, nous proposons de diviser les observations en déciles plutôt qu'en quartiles car le box plot risque d'être encore peu lisible. 
 </details>
 
 <details>
@@ -888,7 +889,8 @@ Après cette analyse de la répartition des fortunes, il serait intéressant de 
 <summary>Question et problème étudié</summary> 
 Nous cherchons à savoir si l'âge et le niveau de fortune sont des variables corrêlées. En effet, plus on vieillit, plus on amasse de l'argent, des actifs car on a le temps et l'expérience pour le faire. Notre hypothèse est qu'il y aurait une corrélation positive entre les deux.
 
-Le choix de la visualisation s'est porté sur un scatter plot. Comme il y a beaucoup de milliardaires au seuil d'entrée, la visualisation risque de ne pas être très lisible. 
+<summary>Choix de visualisation</summary>
+Le choix de la visualisation s'est porté sur un scatter plot. Comme il y a beaucoup de milliardaires au seuil d'entrée, la visualisation risque de ne pas être très lisible.
 </details>
 
 <details>
@@ -940,12 +942,13 @@ L'âge apparait ainsi comme un facteur d'accumulation de richesse mais secondair
 Suite à ces résultats, il serait intéressant de savoir comment sont répartis et concentrés les milliardaires dans les différentes industries ainsi que leur fortune. 
 
 ### 2. Des industries inégalitaires
-
-Q15 - Quelles sont les différents types d'industrie qui sont les plus représentées ?
 <details>
 <summary>Question et problème étudié</summary>
 
 On s'intéresse ici à la richesse cumulée par industrie, c'est à dire la somme des fortunes de tous les milliardaires d'un secteur, et non plus à leur simple nombre. L'objectif est de repérer les industries qui pèsent le plus lourd financièrement, ce qui n'est pas forcément la même chose que celles qui comptent le plus de milliardaires. On s'attend à retrouver en tête les secteurs à forte création de valeur, comme la technologie et la finance.
+
+<summary>Choix de visualisation</summary>
+On fera un diagramme à barre cumulant la fortune des milliardaires ayant faire leur fortune dans ce secteur industriel. On appliquera un gradient de couleurs pour représenter la richesse cumulée. Cela renforce la just noticeable difference en encodant la donnée deux fois. 
 
 </details>
 
@@ -984,11 +987,10 @@ La hiérarchie n'est pas tout à fait celle du nombre de milliardaires. La Techn
 
 Le contraste le plus net vient de l'Automobile : avec seulement 73 milliardaires, le secteur pèse tout de même 525 milliards, soit la richesse par tête la plus forte du top 10 (~7 Md$). À l'inverse, des secteurs très peuplés comme Manufacturing ou Healthcare diluent leur richesse sur beaucoup d'individus.
 
-Autrement dit, " beaucoup de milliardaires " et " beaucoup de richesse " ne vont pas systématiquement de pair: il faut distinguer la densité d'un secteur en milliardaires de la concentration de ses fortunes. C'est ce qui motive la question suivante, où l'on regarde cette fois le nombre de milliardaires par industrie.
+Autrement dit, "beaucoup de milliardaires" et "beaucoup de richesse" ne vont pas systématiquement de pair: il faut distinguer la densité d'un secteur en milliardaires de la concentration de ses fortunes. C'est ce qui motive la question suivante, où l'on regarde cette fois le nombre de milliardaires par industrie.
 
 </details>
 
-Q17 - Quelle est la répartition des milliardaires dans les différentes industries ?
 <details>
 
 <summary>Question et problème étudié</summary>
@@ -996,6 +998,9 @@ Q17 - Quelle est la répartition des milliardaires dans les différentes industr
 On se demande dans quelles industries on trouve le plus de milliardaires. Est-ce que c'est réparti à peu près équitablement, ou est-ce que quelques secteurs dominent largement ?
 
 On parie plutôt sur la seconde option : la finance, la tech et l'industrie devraient concentrer la majorité des fortunes.
+
+<summary>Choix de visualisation</summary>
+Un diagramme en barres horizontales du Top 15 des industries, trié du plus grand au plus petit. Les barres horizontales permettent de lire plus facilement les noms, et la longueur reste le meilleur canal pour comparer des effectifs d'un coup d'œil.
 
 </details>
 
@@ -1020,7 +1025,6 @@ p15 <- ggplot(q15, aes(x = reorder(industries, n), y = n)) +
 p15
 ```
 
-Un diagramme en barres horizontales du Top 15 des industries, trié du plus grand au plus petit. Les barres horizontales permettent de lire plus facilement les noms, et la longueur reste le meilleur canal pour comparer des effectifs d'un coup d'œil.
 </details>
 
 <details>
@@ -1041,6 +1045,9 @@ Suite à cette question, nous avons choisi de détailler celle-ci en regardant l
 L'objectif de cette data visualisation est de voir plus précisement où se concentrent les milliardaires. Les données sont nettoyées partiellement donc l'analyse risque de ne pas être complète. On imagine que dans l'investissement et l'agrobusiness, il y a beaucoup de milliardaires. On suppose que les entreprises les plus connues des plus gros milliardaires ne seront pas représentées (LVMH, Amazon, Microsoft,...) car cela ne concerne que peu de personne. 
 
 À noter : N'est affiché dans le bar chart les occurences de sources supérieures à 7 pour plus de lisibilité. En dessous de 7, la source est renommé en "others".
+
+<summary>Choix de visualisation</summary>
+Le choix s'est porté sur un bar chart stacké en pourcentage pour faciliter la lecture du nombre de milliardaires dans chaque industrie. On a choisi des couleurs assez différentes pour respecter la magnitude estimation.
 
 </details>
 
@@ -1216,8 +1223,6 @@ economic_sector_bar_chart_2 <- eco_sector_source_pct %>%
 economic_sector_bar_chart_2
 
 ```
-
-Le choix s'est porté sur un bar chart stacké en pourcentage pour faciliter la lecture du nombre de milliardaires dans chaque industrie. On a choisi des couleurs assez différentes pour respecter la magnitude estimation.
 </details>
 
 <details>
@@ -1227,22 +1232,21 @@ La limitation à sept du nombre d'occurence affaiblit l'interprétation. Au rega
 
 </details>
 
-<details>
-<summary> Conclusion </summary>
+### Conclusion 
 La distribution des fortunes suit une loi de puissance où plus on monte moins il y a de personnes. La majorité des milliardaires sont concentrés au seuil d'entrée. Ils sont répartis dans des secteurs d'activités variés mais les secteurs comme Finance & Investments, Manufacturing & Technology, Fashion & Retail et Food & Beverage concentrent les milliardaires. De plus, à l'intérieur même de ces secteurs, les sources restent assez diversifiées. La Finance & Investments et le retail ont les sources les moins diverses. Cependant, ce ne sont pas les milliardaires qui concentrent le plus les richesses en fonction de leur secteur d'activité. Certains secteurs concentrent les milliardaires sans concentrer beaucoup de richesses (en $). 
 Les secteurs expliquent une partie des fortunes et on peut creuser pour essayer de trouver des traits démographiques redondants chez les milliardaires.
-</details>
+
 
 ## IV. Profil démographique
 Cette partie est consacrée à dresser le profil démographie des milliardaires en étudiant l'âge et au genre, deux caractéristiques essentielles pour comprendre leur répartition dans la population. 
 
 ### 1. Genre
-Q22 - Quelle est la proportion de femmes et d’hommes parmi les milliardaires en 2023 ?
 <details>
 <summary>Question et problème étudié</summary>
 On cherche ici à analyser la répartition des milliardaires selon le genre.
 On s’attend à une forte domination masculine parmi les milliardaires, en raison de déséquilibres historiques dans l’accès aux opportunités économiques.
 
+<summary>Choix de visualisation</summary>
 Afin d’obtenir une comparaison claire des distributions, nous avons choisi deux couleurs contrastées et un diagramme en barres est utilisé pour la répartition globale par genre, car il permet de comparer efficacement des effectifs entre deux catégories (hommes et femmes).
 </details>
 
@@ -1299,12 +1303,9 @@ p1
 Les résultats confirment tout d’abord une forte domination masculine parmi les milliardaires. Les hommes représentent la grande majorité de l’échantillon, tandis que les femmes restent nettement minoritaires.
 </details>
 Dans la suite, nous avons décidé de nous concentrer sur l'âge des milliardaires. Tout d'abord, il nous a semblé logique de regarder s'il y avait une corrélation entre âge et richesse. 
-
 Si l'âge joue un rôle mineur dans l'expansion de la fortune, nous avons voulu déterminer si les milliardaires étaients des personnes âgées ou non et donc déterminer s'ils sont presque au maximum de leur fortune.
 
 ### 2. Âge des milliardaires 
-
-Q11 - Quelle est la répartition de l’âge des milliardaires en 2023 ?
 <details>
 <summary>Question et problème étudié</summary>
 
@@ -1312,6 +1313,7 @@ On cherche à comprendre la répartition de l'âge des milliardaires en 2023, af
 On s'attends à ce que la majorité des milliardaires soient âgés de 50 à 70 ans, car c'est généralement à cet âge que les individus ont eu suffisamment de temps pour accumuler une grande richesse. 
 Cependant, il est également possible de trouver des milliardaires plus jeunes, notamment dans le secteur de la technologie, où des entrepreneurs peuvent atteindre une grande richesse à un âge relativement jeune.
 
+<summary>Choix de visualisation</summary>
 Le choix du diagramme se portera sur un histogramme de l'âge des milliardaires, avec des barres représentant le nombre de milliardaires dans différentes tranches d'âge (par exemple, 0-20 ans, 21-30 ans, etc.).
 Cette visualisation permettra de mettre en évidence les tranches d'âge les plus représentées parmi les milliardaires en 2023.
 
@@ -1333,8 +1335,6 @@ Cependant, on observe aussi une présence significative de milliardaires plus je
 ### 3. Générations
 
 Pour faire une analyse plus générale, nous avons choisi de passer par les générations.
-
-Q20 - Quelle est la génération qui regroupe le plus grand nombre de milliardaires ?
 <details>
 
 <summary>Question et problème étudié</summary>
@@ -1344,13 +1344,16 @@ Les anciennes générations (Génération X et surtout Baby-Boomers) devraient l
 
 À l’inverse, les Millennials devraient rester minoritaires en raison de leur âge, tandis que la Génération Z serait quasi absente. Les générations plus anciennes, enfin, verraient leur présence réduite par des facteurs démographiques.
 
+<summary>Choix de visualisation</summary>
+Un diagramme en barres verticales présente le nombre et le pourcentage de milliardaires par génération, de la plus ancienne à la plus récente, afin de comparer clairement leur poids relatif.
+
+
 </details>
 
 <details>
 
 <summary>Visualisation</summary>
 
-Un diagramme en barres verticales présente le nombre et le pourcentage de milliardaires par génération, de la plus ancienne à la plus récente, afin de comparer clairement leur poids relatif.
 
 
 ```{r}
@@ -1434,11 +1437,8 @@ La Génération silencieuse reste significative (19,8 %), principalement grâce 
 
 </details>
 
-<details>
-<summary>Conclusion/summary>
+### Conclusion
 Le profil type démographique d'un milliardaire serait celui d'un homme entre 50 et 70 ans, un baby-boomer, bien que dans la plupart des pays cela recouvre une réalité plus diverse et complexe. Une fois, cette analyse sur l'individu fini, nous pouvons nous pencher sur l'influence des États dans l'émergence et la concentration des milliardaires.
-
-</details>
 
 ## V. Indicateurs de santé économique
 La fortune des milliardaires est constitué de différents revenus, du travail (salaire de PDG) et du capital(actifs). Ils résident dans des pays dont les caractéristiques fiscales et économiques, sont parfois, radicalement différentes.
@@ -1448,18 +1448,18 @@ Il faut souligner que notre jeu de données ne donne pas le lieu d'implantation 
 Cette partie cherche à déterminer si les indicateurs macroéconomiques du pays de résidence influencent la présence des milliardaires sur leur sol.
 
 ### 1. Niveau d'inflation
-Q2 - Existe-il une corrélation entre la densité des milliardaires par million d'habitants et le niveau d'inflation sur l'année 2019 ?
 
 <details>
 <summary>Question et problème étudié</summary>
 
 On entend régulièrement qu'une bonne santé économique favorise l'émergence et la prospérité des entreprises. À l'inverse, une inflation élevée et/ou peu maitrîsée est parfois présentée comme un facteur de réduction de l'attractivité économique d'un pays qui ferait fuir les milliardaires. Il serait intéressant de tester si le niveau d'inflation d'un pays permet d'expliquer la concentration des milliardaires. On peut l'étendre avec beaucoup de précaution et en gardant en tête qu'il y a aussi une influence indirecte sur la localisation de l'entreprise. 
 
-
+<summary>Choix de visualisation</summary>
+Le choix de la visualisation se porte sur un scatter plot, utilisé pour chercher une corrélation entre deux variables. Pour annuler l'effet "taille la population", nous regardons le nombre de milliardaires par pays par million d'habitants. Beaucoup de pays ayant des niveaux d'inflation proches, la datavisualisation n'est pas très lisible sauf pour les valeurs extrêmes. Par soucis de clarté et de transparence, les points représentant les pays sont légendés si leur lecture est possible. 
 </details>
 <details>
 <summary> Visualisation </summary>
-Le choix de la visualisation se porte sur un scatter plot, utilisé pour chercher une corrélation entre deux variables. Pour annuler l'effet "taille la population", nous regardons le nombre de milliardaires par pays par million d'habitants. Beaucoup de pays ayant des niveaux d'inflation proches, la datavisualisation n'est pas très lisible sauf pour les valeurs extrêmes. Par soucis de clarté et de transparence, les points représentant les pays sont légendés si leur lecture est possible. 
+
 
 ```{r, echo=FALSE}
 #Calcul de la densité des milliardaires par pays 
@@ -1536,7 +1536,8 @@ L'analyse de corrélation de Pearson montre une relation négative faible entre 
 Pour neutraliser les effets des outliers, l'analyse de Spearman a été effectuée et montre une relation monotone négative (rho = -0.465)hautement significative (p-value = 0,001055) entre le niveau de l'inflation et le nombre de milliardaires dans le pays. Les résultats suggèrent qu'il y a un lien statistique entre ces variables, mais pas de causalité.
 
 </details>
-Ensuite, nous avons décidé de tester le taux d'imposition des pays de résidence des milliardaires. La fiscalité est sujet qui fait débat aujourd'hui d'où notre volonté de l'intégrer dans ce rapport. 
+Ensuite, nous avons décidé de tester le taux d'imposition des pays de résidence des milliardaires. La fiscalité est sujet qui fait débat aujourd'hui d'où notre volonté de l'intégrer dans ce rapport.
+
 ### 2. Taux d'imposition
 
 <details>
@@ -1546,6 +1547,7 @@ On se demande maintenant si le taux d’imposition sur les entreprises dans un p
 On s’attend à ce que les pays avec des taux d’imposition plus bas attirent davantage de milliardaires, car ils offrent un environnement fiscal plus favorable pour la création et la préservation de la richesse.
 Cependant, il est important de noter que d’autres facteurs, tels que la stabilité politique, les infrastructures, les opportunités économiques et la qualité de vie, peuvent également jouer un rôle crucial dans l’attraction des milliardaires, ce qui pourrait atténuer l’impact du taux d’imposition.
 
+<summary>Choix de visualisation</summary>
 La question est donc de savoir s’il existe une corrélation. De ce fait, le diagramme sera un scatterplot avec le taux d’imposition sur les entreprises en abscisse et le nombre de milliardaires en ordonnée, avec une ligne de tendance pour visualiser la corrélation.
 
 </details>
@@ -1601,19 +1603,17 @@ Cependant, les outliers trois outliers respectivement les États-Unis, la Chine 
 
 </details>
 
-<details>
-<summary> Conclusion </summary>
+### Conclusion
 Ainsi, l'inflation et la concentration des milliardaires dans le pays de résidence est liée. Il semblerait que plus un pays a une inflation élevée moins il y aurait de milliardaires présents sur son sol, ainsi qu'une partie de son activité économique, sans pour autant déterminer de causalité. Quant au taux d'imposition, il n'a pas de lien de corrélation avec le nombre de milliardaires présent sur un territoire national.
-</details>
+
 
 ## VI. Questions annexes
-L'objectif de cette partie est de tester le dataset et de voir s'il y a des choses drôles ou étranges sur les milliardaires. 
-
-Q16 - Dans quel(s) mois sont nés les milliardaires ?
+L'objectif de cette partie est de tester le dataset et de voir s'il y a des choses drôles ou étranges sur les milliardaires ou le dataset.
 <details>
 <summary>Question et problème étudié</summary>
 
 On regarde si certains mois de naissance sont surreprésentés parmi les milliardaires. A priori, aucun mois de naissance ne devrait favoriser la réussite : on s'attend donc à une distribution à peu près uniforme. Toute anomalie marquée trahirait plutôt un biais dans les données qu'un véritable phénomène, c'est aussi cela qu'on cherche à vérifier.
+<summary>Choix de visualisation</summary>
 
 </details>
 
