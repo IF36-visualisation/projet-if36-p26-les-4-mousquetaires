@@ -1684,7 +1684,7 @@ Tout le monde s'est chargé de trouver des questions à étudier. Chacun a fait 
 Le membre s'est chargé de manager le groupe, de relancer et de prévoir les rencontres. Il s'est chargé de rendre le rendu pour la proposition de projet et fait la partie "Présentation du dataset". Il s'est aussi chargé du rendu du rapport pour le peer-review. Il a organisé le Git Hub. Il a largement contribué au diaporama de présentation. 
 
 ## Alexis
-Le membre s'est chargé de faire le Shiny App et d'intégrer les diagrammes des différents membres. Il a ajouté son diagramme au diaporama. Il s'est chargé d'ajouter sa question, ses hypothèses et son analyse sur la proposition de projet et idem pour le peer-review. 
+Le membre s'est chargé de faire le Shiny App et d'intégrer les diagrammes des différents membres. Il a ajouté son diagramme au diaporama et l'a publié sur Git Hub. Il s'est chargé d'ajouter sa question, ses hypothèses et son analyse sur la proposition de projet et idem pour le peer-review. 
 ## Yesmine
 Le membre s'est chargé de faire une datavisualisation en Tableau et d'ajouter les slides correspondantes sur le diaporama. Elle s'est chargée d'ajouter sa question, ses hypothèses et son analyse sur la proposition de projet et idem pour le peer-review. 
 ## Emma
