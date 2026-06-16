@@ -1658,7 +1658,7 @@ La conclusion est double. D'une part, hors janvier, la distribution est bien uni
 
 
 # **Conclusion**
-# Conclusion générale
+## Conclusion générale
 L’analyse de ce dataset montre une chose certaine : il n’existe pas de facteur unique permettant d’expliquer l’émergence et la concentration des milliardaires. Ces phénomènes résultent de la combinaison de facteurs géographiques, économiques, sociaux et individuels.
 
 D’un point de vue géographique, les milliardaires sont répartis principalement dans les grandes métropoles des pays développés et des économies émergentes, qui offrent un environnement économique favorable et un accès privilégié aux marchés, aux capitaux et aux réseaux d’affaires. Ils se concentrent dans les pays offrant des avantages fiscaux en Europ et en Asie. Cette concentration demeure visible même lorsque l’on s’intéresse à leur nationalité ou à leur pays de résidence.
@@ -1673,4 +1673,22 @@ Enfin, les indicateurs macroéconomiques étudiés montrent des résultats contr
 
 En définitive, l’émergence et la concentration des milliardaires semblent davantage s’expliquer par un ensemble de facteurs structurels – dynamisme économique, spécialisation sectorielle, concentration urbaine et caractéristiques sociales – que par un indicateur isolé. Les résultats de cette étude doivent toutefois être interprétés avec prudence en raison des limites du jeu de données, notamment l’absence d’informations sur la localisation réelle des entreprises ou sur les trajectoires individuelles des milliardaires, notamment les autodéclarées. Ils constituent néanmoins une base intéressante pour mieux comprendre les mécanismes associés à la très grande richesse à l’échelle mondiale.
 
+## Ouverture
+
+## Commentaires des membres
+
+
 # **Annexe**
+Tout le monde s'est chargé de trouver des questions à étudier. Chacun a fait ses diagrammes, les hypothèses et les analyses.
+## Marco
+Le membre s'est chargé de manager le groupe, de relancer et de prévoir les rencontres. Il s'est chargé de rendre le rendu pour la proposition de projet et fait la partie "Présentation du dataset". Il s'est aussi chargé du rendu du rapport pour le peer-review. Il a organisé le Git Hub. Il a largement contribué au diaporama de présentation. 
+
+## Alexis
+Le membre s'est chargé de faire le Shiny App et d'intégrer les diagrammes des différents membres. Il a ajouté son diagramme au diaporama. Il s'est chargé d'ajouter sa question, ses hypothèses et son analyse sur la proposition de projet et idem pour le peer-review. 
+## Yesmine
+Le membre s'est chargé de faire une datavisualisation en Tableau et d'ajouter les slides correspondantes sur le diaporama. Elle s'est chargée d'ajouter sa question, ses hypothèses et son analyse sur la proposition de projet et idem pour le peer-review. 
+## Emma
+Le membre s'est chargé d'ajouter sa question, ses hypothèses et son analyse sur la proposition de projet (et celle d'un autre membre) et idem pour le peer-review. Pour la proposition de projet, elle a ajouté des précisions sur les variables dans "Présentation du dataset". Elle a contribué aussi à la partie Introduction du diaporama. Elle s'est chargée de faire le squelette du rapport avec les questions choisies, d'écrire les transitions et les conclusions.
+
+
+
