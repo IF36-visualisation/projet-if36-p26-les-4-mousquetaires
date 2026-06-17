@@ -74,13 +74,6 @@ diagramme <- ggplot(pays_stats,
   )
 
 diagramme
-
-ggsave(
-  "tax_vs_billionaires.png",
-  diagramme,
-  width = 10,
-  height = 6
-)
 ```
 
 <details>
