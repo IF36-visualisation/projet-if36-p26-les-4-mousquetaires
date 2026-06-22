@@ -1395,7 +1395,6 @@ gen_counts <- billionaires_gen %>%
   )
 
 
-
 # Visualisation
 ggplot(gen_counts, aes(x = generation, y = n_billionaires, fill = n_billionaires)) +
   geom_col(width = 0.65, show.legend = FALSE) +
@@ -1432,6 +1431,17 @@ ggplot(gen_counts, aes(x = generation, y = n_billionaires, fill = n_billionaires
 ```
 
 </details>
+
+<details>
+<summary>Visualisation sur Tableau</summary>
+
+```{r tableau-gen, echo=FALSE, out.width="100%", fig.cap=" Répartition des milliardaires par génération sur Tableau."}
+knitr::include_graphics(here("assets", "tableau_gen.png"))
+```
+Ce graphique a été réalisé sur Tableau. Nous avons trouvé l’interface intuitive et facile à prendre en main pour une première utilisation comparé à R. Son principal point fort est l’interactivité. En passant la souris sur les barres, il est possible d’obtenir des informations détaillées, ce qui facilite l’interprétation des résultats et la comparaison entre les générations.
+Cette fonctionnalité rend la visualisation plus claire et plus dynamique que des graphiques statiques.
+</details>
+
 
 <details>
 

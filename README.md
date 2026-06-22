@@ -1,7 +1,5 @@
 # **Introduction**
 
-<<<<<<< Updated upstream
-
 ## Données
 
 Le [dataset](https://www.kaggle.com/datasets/nelgiriyewithana/billionaires-statistics-dataset/) utilisé par notre groupe contient des données sur les milliardaires à travers le monde contenant 2540 observations et un total de 35 variables.
