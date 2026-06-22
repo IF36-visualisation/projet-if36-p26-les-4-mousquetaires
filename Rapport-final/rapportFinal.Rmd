@@ -1685,6 +1685,12 @@ Pour ce projet, l'apprentissage du langage R est un plus mais ne sera pas un out
 ### Emma
 J'ai apprécié cette matière, surtout pour la partie qui n'était du code précisement. Ça a développé ma culture générale. Je trouve que cette partie est importante pour avoir de l'esprit critique, notamment pour analyser des graphiques sur Internet et dans la presse. L'utilisation de R a parfois été un peu compliquée pour faire des visualisations complexes.
 
+### Yesmine
+J’ai beaucoup apprécié ce projet et cette matière car ils m’ont permis de développer des connaissances concrètes sur la visualisation de données. Il était aussi intéressant de comparer nos hypothèses aux résultats obtenus, certaines se sont révélées justes, tandis que d’autres étaient plus surprenantes, notamment concernant l’écart entre le statut réel des milliardaires et leur déclaration comme self-made à travers les variables status et self-made.
+Ce projet m’a donc appris qu’il est important de toujours garder un regard critique sur les données et les visualisations, car les résultats doivent être interprétés avec prudence et nuancés.
+Enfin, je pense que l'apprentissage de R, PowerBI et Tableau me sera utile dans mon projet professionnel. Tableau m’a semblé plus intuitif, mais R permet de réaliser des analyses plus poussées. Je juge avoir acquis les bases nécessaires pour utiliser ces outils, même si je pense avoir besoin davantage de pratique pour créer des visualisations plus complexes, notamment sur PowerBI et Tableau.
+
+
 # **Annexe**
 Tout le monde s'est chargé de trouver des questions à étudier. Chacun a fait ses diagrammes, les hypothèses et les analyses.
 
@@ -1696,7 +1702,6 @@ Le membre s'est chargé de faire le Shiny App et d'intégrer les diagrammes des 
 
 ## Yesmine
 Le membre s'est chargé de faire une datavisualisation en Tableau et d'ajouter les slides correspondantes sur le diaporama. Elle s'est chargée d'ajouter sa question, ses hypothèses et son analyse sur la proposition de projet et idem pour le peer-review. 
-
 
 ## Emma
 Le membre s'est chargé d'ajouter sa question, ses hypothèses et son analyse sur la proposition de projet (et celle d'un autre membre) et idem pour le peer-review. Pour la proposition de projet, elle a ajouté des précisions sur les variables dans "Présentation du dataset". Elle a contribué aussi à la partie Introduction du diaporama. Elle s'est chargée de faire le squelette du rapport avec les questions choisies, d'écrire les transitions et les conclusions.
