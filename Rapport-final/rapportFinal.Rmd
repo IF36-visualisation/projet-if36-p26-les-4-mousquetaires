@@ -299,7 +299,12 @@ La datavisualisation est une carte du monde représentant les flux de milliardai
 
 <details>
 <summary> Visualisation </summary>
-Le diagramme est dans le Shiny app. 
+
+```{r shiny-flux, echo=FALSE, out.width="100%", fig.cap="Carte des flux migratoires des milliardaires (capture de l'application Shiny, onglet « Flux migratoires »)."}
+knitr::include_graphics(here("assets", "shiny_flux.png"))
+```
+
+*Ce diagramme n'a pas été généré directement dans le rapport mais dans notre application Shiny : le lecteur peut s'y rendre pour interagir avec la carte, en filtrant sur le volume minimum d'un flux et sur le pays de résidence (destination).*
 </details>
 
 <details>
@@ -1318,7 +1323,12 @@ Cette visualisation permettra de mettre en évidence les tranches d'âge les plu
 
 <details>
 <summary>Visualisation</summary>
-Cette visualisation est disponible dans le Shiny App.
+
+```{r shiny-age, echo=FALSE, out.width="100%", fig.cap="Histogramme de la répartition de l'âge des milliardaires en 2023 (capture de l'application Shiny, onglet « Répartition des âges »)."}
+knitr::include_graphics(here("assets", "shiny_age.png"))
+```
+
+* Ce diagramme n'a pas été généré directement dans le rapport mais dans notre application Shiny : le lecteur peut s'y rendre pour interagir avec l'histogramme, en ajustant la largeur des classes d'âge et en filtrant par genre, origine de la fortune et industrie.*
 </details>
 
 <details>
@@ -1684,6 +1694,10 @@ Pour ce projet, l'apprentissage du langage R est un plus mais ne sera pas un out
 
 ### Emma
 J'ai apprécié cette matière, surtout pour la partie qui n'était du code précisement. Ça a développé ma culture générale. Je trouve que cette partie est importante pour avoir de l'esprit critique, notamment pour analyser des graphiques sur Internet et dans la presse. L'utilisation de R a parfois été un peu compliquée pour faire des visualisations complexes.
+
+### Alexis
+J'ai beaucoup apprécié IF36, et je remarque à quel point la visualisation de données est très importante, et ses différents enjeux. La compétence que je retiens de ce projet est la création de visualisations interactives avec Shiny, c'est ce qui distingue le plus la dataviz d'un simple graphique, puisqu'on laisse l'utilisateur manipuler les données plutôt que de lui imposer une seule lecture. J'ai aussi gagné en rigueur sur le choix du bon type de graphique selon la question posée. La question qu'on a porté sur ce projet était super intéressante, et la visualisatino a permis de vite voir les différentes valeurs, c'est une belle mise en pratique de ce qu'on a appris lors des cours de la matière. En revanche, j'aurais aimé pouvoir déployer l'application Shiny en ligne pour qu'elle soit réellement consultable par tous, avec un plus gros dataset, avoir des feed-backs et voir ce qui se fait dans des contextes d'entreprise, etc. et y intégrer des filtres croisés plus poussés (par secteur et par pays simultanément).
+
 
 # **Annexe**
 Tout le monde s'est chargé de trouver des questions à étudier. Chacun a fait ses diagrammes, les hypothèses et les analyses.
