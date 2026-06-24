@@ -9,6 +9,27 @@ output:
     code_folding: hide
 ---
 ```{r, include=FALSE}
+
+install.packages("tidyr")
+install.packages("maps")
+install.packages("ggplot2")
+install.packages("dplyr")
+install.packages("readr")
+install.packages("ggrepel")
+install.packages("stringr")
+install.packages("sf")
+install.packages("rnaturalearthdata")
+install.packages("tidygeocoder")
+install.packages("countrycode")
+install.packages("stringi")
+install.packages("here")
+install.packages("scales")
+install.packages("patchwork")
+install.packages("ggpubr")
+install.packages("forcats")
+install.packages("mapproj")
+
+
 library(tidyr)
 library(maps)
 library(ggplot2) 
@@ -26,6 +47,7 @@ library(scales)
 library(patchwork)
 library(ggpubr)
 library(forcats)
+library(mapproj)
 
 df <- read_csv(here("data", "Billionaires_Statistics_Dataset.csv"))
 ```
@@ -92,7 +114,16 @@ Cette visualisation permettra de mettre en évidence les zones de forte concentr
 <details>
 <summary>Visualisation</summary>
 
-```{r stats, eval=FALSE, include=FALSE}
+```{r stats, echo=FALSE}
+
+# Chargement des bibliothèques pour la géocodification et les données géographiques
+library(tidygeocoder)
+library(sf)
+library(rnaturalearth)
+library(here)
+
+world <- ne_countries(scale = "medium", returnclass = "sf")
+
 # Filtrage des données pour ne conserver que les villes et pays valides
 # Compte le nombre de milliardaires par ville pour former des groupes uniques
 villes <- df %>% filter(
